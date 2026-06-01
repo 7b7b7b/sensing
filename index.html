@@ -279,6 +279,39 @@
       background: #fff;
     }
     .formula-item strong { display: block; margin-bottom: 8px; }
+    .figure-gallery {
+      display: grid;
+      gap: 16px;
+    }
+    .figure-card {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.92fr) minmax(0, 1.08fr);
+      gap: 16px;
+      align-items: start;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 8px 20px rgba(23, 32, 31, 0.05);
+    }
+    .figure-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .figure-card h3 {
+      margin-top: 0;
+    }
+    .figure-card ul {
+      margin: 8px 0 0;
+      padding-left: 20px;
+    }
+    .figure-card li {
+      margin: 5px 0;
+    }
     .checklist { display: grid; gap: 9px; margin-top: 14px; }
     .check-item {
       display: flex;
@@ -316,6 +349,7 @@
       main { padding: 18px 16px 48px; }
       .mobile-nav { display: block; }
       .hero, .grid.two, .grid.three, .formula-list { grid-template-columns: 1fr; }
+      .figure-card { grid-template-columns: 1fr; }
       table { min-width: 680px; }
     }
     @media print {
@@ -341,6 +375,7 @@
       <p class="nav-label">讲义目录</p>
       <a class="nav-link" href="#map"><span class="nav-number">0</span>课程地图</a>
       <a class="nav-link" href="#formula"><span class="nav-number">F</span>公式速查</a>
+      <a class="nav-link" href="#figures"><span class="nav-number">图</span>逐图精讲</a>
       <a class="nav-link" href="#transfer"><span class="nav-number">1</span>传递函数与校准</a>
       <a class="nav-link" href="#characteristics"><span class="nav-number">2</span>传感器特性</a>
       <a class="nav-link" href="#biomarker"><span class="nav-number">3</span>生物标志物</a>
@@ -363,6 +398,7 @@
         <select onchange="if (this.value) location.hash=this.value">
           <option value="#map">0. 课程地图</option>
           <option value="#formula">公式速查</option>
+          <option value="#figures">逐图精讲</option>
           <option value="#transfer">1. 传递函数与校准</option>
           <option value="#characteristics">2. 传感器特性</option>
           <option value="#biomarker">3. 生物标志物</option>
@@ -466,6 +502,660 @@
           <div class="formula-item"><strong>抗体亲和力</strong>\[K_D=\frac{[A][B]}{[AB]}=\frac{k_{off}}{k_{on}}\]<p>\(K_D\) 越小，结合越强；它的单位是浓度。</p></div>
           <div class="formula-item"><strong>电容传感</strong>\[C\approx \varepsilon_0\varepsilon_r\frac{ab}{d}\]<p>面积和介电常数增大，电容增大；板间距增大，电容减小。</p></div>
           <div class="formula-item"><strong>Wheatstone bridge</strong>\[V_{TH}=V\left(\frac{R_1}{R_1+R_3}-\frac{R_2}{R_2+R_4}\right)\]<p>用于把小电阻变化转成可测电压差。</p></div>
+        </div>
+      </section>
+
+      <section id="figures" class="section">
+        <h2>逐图精讲：把 PPT 里的图拆开看</h2>
+        <p class="lead">这一节是对前面讲义的补强。PPT 是精简版，很多“真正要懂的东西”藏在图里：坐标轴、箭头、反应物、检测线、电极、梁结构和公式变量。下面按 PDF 页码把核心图裁出来逐个解释。</p>
+        <div class="figure-gallery">
+          <article class="figure-card">
+            <img src="assets/figures/fig-03-signal-chain.jpg" loading="lazy" alt="传感链路：measurand 到 sensor 到 display">
+            <div>
+              <h3>图 3-1：传感链路不是“传感器等于答案”</h3>
+              <ul>
+                <li><strong>图里：</strong>左边的 measurand 是真实世界的被测对象，中间 sensor 把物理测量变量 \(X\) 转成信号变量 \(S\)，右边 display 再把信号变成读数 \(M\)。</li>
+                <li><strong>读法：</strong>考试写工作原理时要按“被测量 - 换能 - 信号 - 显示/算法”四步写。只说“用了某材料”不够。</li>
+                <li><strong>考点：</strong>校准发生在 \(S\) 与 \(X\) 或 \(M\) 的关系上；误差可能来自传感器、显示系统，也可能来自被测对象本身的扰动。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-03-beer-lambert.jpg" loading="lazy" alt="Beer-Lambert Law">
+            <div>
+              <h3>图 3-2：Beer-Lambert Law 是一个标准传递函数</h3>
+              <ul>
+                <li><strong>图里：</strong>\(A=\log_{10}(I_0/I)=\varepsilon lc\)。输入是浓度 \(c\)，输出是吸光度 \(A\)。</li>
+                <li><strong>读法：</strong>\(I_0\) 是入射光，\(I\) 是透射光；吸收越强，\(I\) 越小，\(A\) 越大。</li>
+                <li><strong>考点：</strong>固定波长和光程时，\(\varepsilon l\) 就是校准斜率。超出线性范围、浑浊散射或仪器杂散光会让这个关系失效。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-04-dynamic-response.jpg" loading="lazy" alt="动态响应 transient steady state">
+            <div>
+              <h3>图 4-1：动态响应由暂态进入稳态</h3>
+              <ul>
+                <li><strong>图里：</strong>输入突然变化后，输出 \(c(t)\) 不是立刻到稳态，而是先经历 transient state，再接近 steady state。</li>
+                <li><strong>读法：</strong>曲线越快贴近虚线稳态值，响应越快；若存在振荡，还要看超调和稳定时间。</li>
+                <li><strong>考点：</strong>稳态准确不代表动态快。温度计、压力传感器、酶传感器都可能有响应滞后。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-04-response-decomposition.jpg" loading="lazy" alt="c(t)=ctr(t)+css(t)">
+            <div>
+              <h3>图 4-2：响应可以分成暂态项和稳态项</h3>
+              <ul>
+                <li><strong>图里：</strong>\(c(t)=c_{tr}(t)+c_{ss}(t)\)，其中 \(c_{tr}(t)\) 是暂态响应，\(c_{ss}(t)\) 是稳态响应。</li>
+                <li><strong>读法：</strong>暂态项通常随时间衰减；稳态项决定最终读数。动态分析主要关心暂态项消失得多快。</li>
+                <li><strong>考点：</strong>若题目问 settling time 或 response time，它问的是暂态何时足够小，而不是最终值是多少。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-05-calibration.jpg" loading="lazy" alt="校准曲线">
+            <div>
+              <h3>图 5-1：校准曲线把物理输入变成信号输出</h3>
+              <ul>
+                <li><strong>图里：</strong>横轴是 physical input \(X\)，纵轴是 signal output \(Y\)。点是标准样本，直线是拟合出的校准关系。</li>
+                <li><strong>读法：</strong>斜率代表灵敏度，截距代表零点偏置或背景信号。</li>
+                <li><strong>考点：</strong>未知样本只能在校准范围内插值。若未知点落在最高标准点之外，严格来说是外推，可信度下降。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-05-precision-accuracy.jpg" loading="lazy" alt="precision and accuracy">
+            <div>
+              <h3>图 5-2：精密度和准确度是两件事</h3>
+              <ul>
+                <li><strong>图里：</strong>左侧点群很集中但偏离靶心，说明 precision 高、accuracy 低；右侧点分散但均值接近靶心，说明 accuracy 可以还行但 precision 差。</li>
+                <li><strong>读法：</strong>precision 看重复测量的散布，accuracy 看均值离真值的距离。</li>
+                <li><strong>考点：</strong>系统误差影响 accuracy，随机噪声影响 precision；校准主要修正系统误差，重复测量和降噪主要改善 precision。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-05-lod-loq.jpg" loading="lazy" alt="noise LOD LOQ">
+            <div>
+              <h3>图 5-3：LOD 是“看得见”，LOQ 是“量得准”</h3>
+              <ul>
+                <li><strong>图里：</strong>绿色线是 baseline，蓝色波动是 noise。Peak A 只达到 LOD，Peak B 达到 LOQ。</li>
+                <li><strong>读法：</strong>LOD 要求峰超过噪声到可辨认；LOQ 要求峰足够高，可以给可靠数值。</li>
+                <li><strong>考点：</strong>降低噪声、提高校准斜率都能降低 LOD/LOQ。不要把低于 LOQ 的信号报告成精确浓度。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-05-confusion-matrix.jpg" loading="lazy" alt="sensitivity specificity confusion matrix">
+            <div>
+              <h3>图 5-4：灵敏度和特异性的分母不同</h3>
+              <ul>
+                <li><strong>图里：</strong>四格表把真实疾病状态和测试结果交叉：TP、FP、FN、TN。</li>
+                <li><strong>读法：</strong>sensitivity 看“有病的人里检出多少”：\(TP/(TP+FN)\)；specificity 看“没病的人里排除多少”：\(TN/(TN+FP)\)。</li>
+                <li><strong>考点：</strong>假阴性 FN 会伤害 sensitivity，假阳性 FP 会伤害 specificity。筛查通常重视 sensitivity，确诊通常更重视 specificity。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-05-sensitivity-curve.jpg" loading="lazy" alt="sensitivity saturation limit of linearity">
+            <div>
+              <h3>图 5-5：斜率是灵敏度，平台是饱和</h3>
+              <ul>
+                <li><strong>图里：</strong>信号随浓度增加先上升，随后逐渐变平。箭头标出 LOL，limit of linearity。</li>
+                <li><strong>读法：</strong>初始斜率越大，低浓度区越敏感；平台区说明识别位点、反应速率或读出电路接近饱和。</li>
+                <li><strong>考点：</strong>线性校准只能用于线性范围。饱和区里再增加浓度，信号变化很小，定量误差会很大。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-06-thermometer-equations.jpg" loading="lazy" alt="mercury thermometer equations">
+            <div>
+              <h3>图 6-1：水银温度计的灵敏度和响应速度相互牵制</h3>
+              <ul>
+                <li><strong>图里：</strong>灵敏度 \(k=K_{ex}V_b/A_c\)，时间常数 \(\tau=\rho C V_b/(UA_b)\)。</li>
+                <li><strong>读法：</strong>\(V_b\) 增大能让温度变化产生更大的液柱位移，但也增大热容量，使响应变慢。</li>
+                <li><strong>考点：</strong>设计题不能只追求灵敏度。高灵敏度可能带来更大 \(\tau\)，需要通过增大接触面积 \(A_b\) 等方式补偿。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-06-thermometer-geometry.jpg" loading="lazy" alt="mercury thermometer geometry">
+            <div>
+              <h3>图 6-2：几何量决定温度计读数和动态</h3>
+              <ul>
+                <li><strong>图里：</strong>球泡与液柱相连，温度从 \(T_i(t)\) 变化到最终 \(T_f\)，液柱位移用 \(x_o\) 表示。</li>
+                <li><strong>读法：</strong>细管横截面积 \(A_c\) 越小，同样体积膨胀产生的位移越大；球泡与环境接触面积影响换热速度。</li>
+                <li><strong>考点：</strong>这是典型一阶系统。若题目给阶跃温度变化，输出不会瞬间到达最终读数。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-07-second-order-step.jpg" loading="lazy" alt="second order system step response">
+            <div>
+              <h3>图 7-1：二阶系统用曲线读出四个时间域指标</h3>
+              <ul>
+                <li><strong>图里：</strong>输出从 0 上升，超过稳态值产生 overshoot \(\alpha\)，随后振荡衰减并进入 \(\pm\Delta\%\) 误差带。</li>
+                <li><strong>读法：</strong>rise time \(t_r\) 是从 10% 到 90%；response/settling time \(t_s\) 是进入误差带并保持稳定；\(\alpha_1\) 是下一个峰的超调。</li>
+                <li><strong>考点：</strong>快不一定好。很短 rise time 如果伴随大 overshoot，在医疗传感或控制里可能不可接受。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-08-biomarker-definition.jpg" loading="lazy" alt="biomarker definition and examples">
+            <div>
+              <h3>图 8-1：Biomarker 不只等于“血液里的分子”</h3>
+              <ul>
+                <li><strong>图里：</strong>生物标志物是可测量特征，用于指示正常生物过程、病理过程或治疗响应。</li>
+                <li><strong>读法：</strong>类型包括 molecular、histologic、radiographic、physiologic；例子包括血糖、肿瘤大小、血压。</li>
+                <li><strong>考点：</strong>传感器课程里的 biomarker 可以是分子浓度，也可以是生理量或影像量。不要把 biomarker 狭义理解成蛋白或核酸。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-09-concentration.jpg" loading="lazy" alt="single molecule concentration in bacterial volume">
+            <div>
+              <h3>图 9-1：单分子在细菌体积里就是 nM 量级</h3>
+              <ul>
+                <li><strong>图里：</strong>细菌体积约 \(1\ \mu m^3=1\ fL\)，一个分子除以 \(1\ fL\) 后换算成摩尔浓度约 \(1.6\ nM\)。</li>
+                <li><strong>读法：</strong>这是数量级直觉，不是精确生物学常数。不同细胞体积会改变结果。</li>
+                <li><strong>考点：</strong>看到 LOD 时要能判断是否够用。若目标是单细胞稀有分子，\(\mu M\) 或 100 nM 检测限往往不够。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-10-induced-fit.jpg" loading="lazy" alt="enzyme induced fit model">
+            <div>
+              <h3>图 10-1：酶识别不是硬钥匙模型，而是诱导契合</h3>
+              <ul>
+                <li><strong>图里：</strong>底物进入 active site 后，酶构象略变，形成 enzyme-substrate complex，再生成产物并释放。</li>
+                <li><strong>读法：</strong>传感器利用的是酶对底物的选择性和催化放大能力。</li>
+                <li><strong>考点：</strong>温度、pH、抑制剂、底物类似物都会影响酶构象和活性，因此会影响传感信号。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-10-michaelis-menten.jpg" loading="lazy" alt="Michaelis-Menten equation">
+            <div>
+              <h3>图 10-2：Michaelis-Menten 解释“低浓度线性、高浓度饱和”</h3>
+              <ul>
+                <li><strong>图里：</strong>\(v_0=V_{\max}[S]/(K_M+[S])\)，底物浓度进入分子和分母。</li>
+                <li><strong>读法：</strong>\([S]\ll K_M\) 时 \(v_0\) 近似正比于 \([S]\)；\([S]\gg K_M\) 时 \(v_0\) 接近 \(V_{\max}\)。</li>
+                <li><strong>考点：</strong>酶传感器的定量最好放在线性或可校准区间。高浓度饱和会降低区分能力。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-11-glucose-reactions.jpg" loading="lazy" alt="glucose oxidase and dehydrogenase reactions">
+            <div>
+              <h3>图 11-1：两条葡萄糖酶反应路线</h3>
+              <ul>
+                <li><strong>图里：</strong>GOx 路线消耗 \(O_2\)，生成 gluconolactone 和 \(H_2O_2\)；GDH 路线使用 \(NAD^+\)，生成 NADH。</li>
+                <li><strong>读法：</strong>这两条路线都把葡萄糖变成可读出的化学变化，但读出对象不同。</li>
+                <li><strong>考点：</strong>GOx 第一代传感器常通过 \(H_2O_2\) 电氧化读电流；GDH 系统可能使用辅因子或介体传递电子。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-11-first-gen-glucose.jpg" loading="lazy" alt="first generation glucose biosensor">
+            <div>
+              <h3>图 11-2：第一代葡萄糖传感器的信号来自 \(H_2O_2\)</h3>
+              <ul>
+                <li><strong>图里：</strong>葡萄糖经 GOx 反应生成 gluconolactone，同时 \(O_2/H_2O_2\) 参与氧化还原，最后电子进入电极。</li>
+                <li><strong>读法：</strong>电极并不“直接看见葡萄糖”，而是看见酶反应产物 \(H_2O_2\) 的电化学氧化。</li>
+                <li><strong>考点：</strong>依赖氧气、工作电位较高、可能被抗坏血酸/尿酸等干扰，这是第一代方案的经典问题。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-12-amperometric-cell.jpg" loading="lazy" alt="amperometric sensor cell">
+            <div>
+              <h3>图 12-1：安培型传感器用电极反应产生电流</h3>
+              <ul>
+                <li><strong>图里：</strong>Ag/AgCl 参考电极、Pt 工作电极和外加 350 mV 构成电化学测量环境；葡萄糖和氧进入酶层，产物 \(H_2O_2\) 到达 Pt。</li>
+                <li><strong>读法：</strong>参考电极稳定电位，工作电极发生目标氧化还原反应，电流由电子转移形成。</li>
+                <li><strong>考点：</strong>amperometric 的定义是测电流，不是测电压。电位只是为了驱动特定电极反应。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-12-electrode-reactions.jpg" loading="lazy" alt="electrode reactions of glucose sensor">
+            <div>
+              <h3>图 12-2：把总反应拆成酶反应和电极反应</h3>
+              <ul>
+                <li><strong>图里：</strong>第一步是 GOx 催化葡萄糖生成葡萄糖酸和 \(H_2O_2\)；第二步是 \(H_2O_2\) 在 Pt 阳极氧化；后面是参考/辅助电极反应。</li>
+                <li><strong>读法：</strong>不要把所有反应混成一个黑箱。传感选择性来自酶，电信号来自电极反应。</li>
+                <li><strong>考点：</strong>若电极反应受限或扩散受限，电流不再只由葡萄糖浓度决定。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-13-em-spectrum.jpg" loading="lazy" alt="electromagnetic spectrum and molecular transitions">
+            <div>
+              <h3>图 13-1：不同波段激发不同类型的物质响应</h3>
+              <ul>
+                <li><strong>图里：</strong>频率从 gamma ray 到 radio wave 递减，波长递增；可见光只是很窄一段。</li>
+                <li><strong>读法：</strong>UV/visible 主要关联电子跃迁，IR 关联分子振动，microwave 关联转动或电子自旋，radio wave 关联核自旋。</li>
+                <li><strong>考点：</strong>选择光谱方法时要先问目标物会在哪个能量尺度上响应，而不是所有分子都用同一种光。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-13-beer-setup.jpg" loading="lazy" alt="Beer-Lambert cuvette setup">
+            <div>
+              <h3>图 13-2：比色皿里的 \(l\) 是光程，不是液体高度</h3>
+              <ul>
+                <li><strong>图里：</strong>光从左到右穿过 cuvette，箭头下方的 \(l\) 是光穿过样品的距离。</li>
+                <li><strong>读法：</strong>吸光度与 \(l\) 和 \(c\) 都成正比，所以不同光程的比色皿不能直接比较吸光度。</li>
+                <li><strong>考点：</strong>题目给 0.5 cm 或 1 cm 光程时，必须代入。不要默认所有 cuvette 都是 1 cm。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-13-uvvis.jpg" loading="lazy" alt="UV-vis optical path">
+            <div>
+              <h3>图 13-3：UV-vis 的核心是选波长再测透过光</h3>
+              <ul>
+                <li><strong>图里：</strong>光源发出宽谱光，经过入口狭缝、色散元件和出口狭缝选出窄波长，再穿过样品到 detector。</li>
+                <li><strong>读法：</strong>monochromator 的作用是让检测只发生在指定波长，避免不同波长混在一起。</li>
+                <li><strong>考点：</strong>吸收峰最大处通常灵敏度高；但若样品基质也吸收同一波长，会产生干扰。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-13-fluorescence.jpg" loading="lazy" alt="fluorescence spectroscopy">
+            <div>
+              <h3>图 13-4：荧光读的是发射光，不是透过光</h3>
+              <ul>
+                <li><strong>图里：</strong>蓝色是 absorption，绿色是 fluorescence，红色是 phosphorescence。发射峰通常比吸收峰波长更长。</li>
+                <li><strong>读法：</strong>荧光传感常用“是否发光、发光增强/淬灭、峰位变化”来报告目标存在。</li>
+                <li><strong>考点：</strong>荧光很灵敏，但会受光漂白、自发荧光、内滤效应和探针环境影响。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-13-ftir.jpg" loading="lazy" alt="FTIR stretch bending">
+            <div>
+              <h3>图 13-5：FTIR 看的是分子振动方式</h3>
+              <ul>
+                <li><strong>图里：</strong>stretch 是键长方向的伸缩，bending 是键角改变的弯曲。</li>
+                <li><strong>读法：</strong>不同化学键和官能团有特征振动频率，因此 FTIR 常用于识别化学组成。</li>
+                <li><strong>考点：</strong>FTIR 不像 UV-vis 那样主要问电子吸收，而是问分子振动；水和复杂基质的吸收可能干扰。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-14-nir-window.jpg" loading="lazy" alt="near infrared optical window">
+            <div>
+              <h3>图 14-1：NIR 窗口来自血红蛋白和水吸收的夹缝</h3>
+              <ul>
+                <li><strong>图里：</strong>可见光区血红蛋白吸收强；650 nm 后血红蛋白吸收下降；950 nm 后水吸收开始显著增强。</li>
+                <li><strong>读法：</strong>NIR-I 大致在 650-950 nm，NIR-II 在更长波段。PPT 强调 650-950 nm 是吸收较低的组织窗口。</li>
+                <li><strong>考点：</strong>近红外能进组织更深，不是因为“能量更高”，而是因为主要吸收体在这个窗口吸收较低。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-14-penetration-depth.jpg" loading="lazy" alt="wavelength and penetration depth">
+            <div>
+              <h3>图 14-2：波长越长，组织穿透通常越深</h3>
+              <ul>
+                <li><strong>图里：</strong>550、630、700、800 nm 的相对穿透深度逐步增加。</li>
+                <li><strong>读法：</strong>长波长散射更弱，且在 NIR 窗口吸收低，所以更容易穿透组织。</li>
+                <li><strong>考点：</strong>穿透深不等于分辨率一定好。长波长通常衍射极限更大，成像分辨率可能降低。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-15-antibody-kinetics.jpg" loading="lazy" alt="antibody kinetics and KD">
+            <div>
+              <h3>图 15-1：抗体检测的核心量是结合与解离</h3>
+              <ul>
+                <li><strong>图里：</strong>抗体结构旁边给出 \(A+B\rightleftharpoons AB\)，结合速率 \(k_{on}[A][B]\)，解离速率 \(k_{off}[AB]\)。</li>
+                <li><strong>读法：</strong>平衡时二者相等，得到 \(K_D=[A][B]/[AB]=k_{off}/k_{on}\)。</li>
+                <li><strong>考点：</strong>\(K_D\) 越小，亲和力越强。传感器不仅要有强结合，还要有低非特异吸附和合适的解离动力学。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-15-spr.jpg" loading="lazy" alt="SPR sensing principle">
+            <div>
+              <h3>图 15-2：SPR 用折射率变化读出表面结合</h3>
+              <ul>
+                <li><strong>图里：</strong>光经棱镜照到金膜，表面有流道和识别分子；结合事件改变反射光的共振条件。</li>
+                <li><strong>读法：</strong>sensorgram 的上升段对应结合，平台接近平衡，下降段对应解离。</li>
+                <li><strong>考点：</strong>SPR 可无标记、实时测 \(k_{on}\)、\(k_{off}\) 和 \(K_D\)，但对表面固定化和非特异吸附很敏感。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-15-qcmd.jpg" loading="lazy" alt="QCM-D frequency and dissipation">
+            <div>
+              <h3>图 15-3：QCM-D 同时看质量加载和层的软硬</h3>
+              <ul>
+                <li><strong>图里：</strong>\(\Delta f\) 下降通常表示表面吸附质量增加；\(\Delta D\) 变化表示耗散增加或层变软。</li>
+                <li><strong>读法：</strong>刚性薄层主要表现为频率变化；软、含水、黏弹性层会带来明显耗散变化。</li>
+                <li><strong>考点：</strong>QCM-D 不是只测质量。细胞粘附、蛋白吸附和多层膜组装中，\(\Delta D\) 对解释结构很重要。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-16-elisa-types.jpg" loading="lazy" alt="ELISA types">
+            <div>
+              <h3>图 16-1：三种 ELISA 流程的差别在“谁固定、谁竞争、谁带酶”</h3>
+              <ul>
+                <li><strong>图里：</strong>indirect ELISA 固定抗原，测样品抗体；sandwich ELISA 固定捕获抗体，夹住抗原；competitive ELISA 让样品目标与已知结合物竞争。</li>
+                <li><strong>读法：</strong>每个箭头后的 wash 都是在去除未结合分子，降低背景。</li>
+                <li><strong>考点：</strong>competitive ELISA 常出现“目标越多，颜色越浅”的反向关系；sandwich ELISA 特异性高但要求两个表位。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-17-lfa-results.jpg" loading="lazy" alt="lateral flow results">
+            <div>
+              <h3>图 17-1：侧向层析先看 C 线，再看 T 线</h3>
+              <ul>
+                <li><strong>图里：</strong>只有 C 线是阴性；C 线和 T 线都有是阳性；没有 C 线就是无效。</li>
+                <li><strong>读法：</strong>C 线证明液体成功流过、标记物有效、试纸基本工作。T 线才用于判断目标。</li>
+                <li><strong>考点：</strong>不能因为 T 线模糊就忽略 C 线。没有 C 线时，任何结果都不能判读。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-17-lfa-architecture.jpg" loading="lazy" alt="lateral flow assay architecture">
+            <div>
+              <h3>图 17-2：侧向层析是“流动 + 捕获 + 显色”的集成系统</h3>
+              <ul>
+                <li><strong>图里：</strong>sample pad 接收样品，conjugate pad 提供标记抗体，nitrocellulose membrane 承载 test line 和 control line，wicking pad 提供毛细驱动力。</li>
+                <li><strong>读法：</strong>金颗粒、乳胶或荧光标签既是识别复合物的一部分，也是可视化 transducer。</li>
+                <li><strong>考点：</strong>纳米材料可同时作为 sensor 和 transducer：它携带识别分子，也提供颜色/荧光/散射信号。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-18-aptamer.jpg" loading="lazy" alt="aptamer folding and binding">
+            <div>
+              <h3>图 18-1：Aptamer 靠折叠后的三维结构识别目标</h3>
+              <ul>
+                <li><strong>图里：</strong>线性核酸先 folding 成特定结构，再 binding 到靶标形成 target-aptamer complex。</li>
+                <li><strong>读法：</strong>它不是普通 PCR 引物那种“只靠互补配对”，而是像抗体一样用形状和化学相互作用识别目标。</li>
+                <li><strong>考点：</strong>Aptamer 易合成、易修饰，但结构受盐浓度、温度和样品基质影响。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-18-covid-strategies.jpg" loading="lazy" alt="Covid-19 diagnostics strategies">
+            <div>
+              <h3>图 18-2：Covid-19 检测分 RNA、抗原、抗体三条线</h3>
+              <ul>
+                <li><strong>图里：</strong>病毒由 RNA、膜和蛋白组成；诊断策略包括检测病毒 RNA、检测完整病毒/抗原、检测宿主抗体。</li>
+                <li><strong>读法：</strong>RNA 检测回答“样品有无病毒遗传物质”；抗原检测回答“有无病毒蛋白”；抗体检测回答“宿主是否产生免疫反应”。</li>
+                <li><strong>考点：</strong>抗体阳性不能直接等于当前感染，抗原阴性也不一定排除低载量感染。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-18-pcr-probes.jpg" loading="lazy" alt="PCR fluorescent probes">
+            <div>
+              <h3>图 18-3：PCR 探针把序列识别变成荧光变化</h3>
+              <ul>
+                <li><strong>图里：</strong>TaqMan 是双染料水解探针；FRET 探针依赖供体-受体距离；还有部分双链、单染料杂交探针。</li>
+                <li><strong>读法：</strong>荧光只有在正确杂交或被聚合酶处理后明显变化，因此能提高序列特异性。</li>
+                <li><strong>考点：</strong>PCR 的信号不只是“扩增变多”，而是扩增过程通过探针化学转换成可实时读出的荧光。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-19-potentiometer.jpg" loading="lazy" alt="potentiometer displacement sensor">
+            <div>
+              <h3>图 19-1：电位器位移传感器把位置变成分压</h3>
+              <ul>
+                <li><strong>图里：</strong>滑动触点改变有效电阻 \(R_x\)，输出电压 \(U_x\) 随位置变化。</li>
+                <li><strong>读法：</strong>若电阻丝均匀，位移和电阻近似线性；再由分压关系得到电压输出。</li>
+                <li><strong>考点：</strong>优点是简单直观；缺点是接触磨损、摩擦、噪声和寿命问题。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-19-strain-gauge.jpg" loading="lazy" alt="strain gauge">
+            <div>
+              <h3>图 19-2：应变片用电阻变化读机械变形</h3>
+              <ul>
+                <li><strong>图里：</strong>拉伸导致电阻增加，压缩导致电阻减小；应变片主要对特定方向的应变敏感。</li>
+                <li><strong>读法：</strong>应变片不是直接测力，而是测材料变形；力需要通过结构力学关系换算。</li>
+                <li><strong>考点：</strong>安装方向、温度补偿和桥路读出非常关键。横向力不一定被有效测到。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-19-capacitive.jpg" loading="lazy" alt="capacitive sensor examples">
+            <div>
+              <h3>图 19-3：电容传感可以测距离、液位和材料</h3>
+              <ul>
+                <li><strong>图里：</strong>示例包括接近检测、液位检测和平行板材料分析。</li>
+                <li><strong>读法：</strong>电容由面积、距离和介电常数决定。目标靠近、液体进入或材料介电性质改变都会改变 \(C\)。</li>
+                <li><strong>考点：</strong>电容传感对寄生电容、湿度、屏蔽和电极布置敏感。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-19-inductive.jpg" loading="lazy" alt="inductive sensor">
+            <div>
+              <h3>图 19-4：电感传感靠磁场和线圈耦合</h3>
+              <ul>
+                <li><strong>图里：</strong>电流增加时，线圈磁场变化会产生反向感应电压。</li>
+                <li><strong>读法：</strong>金属接近、磁芯位置改变或线圈几何改变都会改变电感和感应信号。</li>
+                <li><strong>考点：</strong>适合非接触检测，但容易受外部磁场、附近金属和线圈温升影响。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-19-wheatstone.jpg" loading="lazy" alt="Wheatstone bridge">
+            <div>
+              <h3>图 19-5：Wheatstone bridge 把小电阻变化放大成差分电压</h3>
+              <ul>
+                <li><strong>图里：</strong>四个电阻组成桥路，中间测量 \(V_{TH}=V_{CD}\)。</li>
+                <li><strong>读法：</strong>桥路平衡时输出接近 0；某一臂电阻因应变或温度变化，桥路失衡产生电压。</li>
+                <li><strong>考点：</strong>应变片常和桥路一起用，因为单个电阻变化很小，直接测量容易被噪声淹没。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-20-capacitive-apps.jpg" loading="lazy" alt="capacitive applications">
+            <div>
+              <h3>图 20-1：一页图串起四类电容应用</h3>
+              <ul>
+                <li><strong>图里：</strong>压力传感改变极板间距，液位传感改变介电环境，触摸传感引入手指电容，穿戴传感利用人体和电极之间的耦合。</li>
+                <li><strong>读法：</strong>统一公式是 \(C\approx\varepsilon_0\varepsilon_r ab/d\)：面积和介电常数增大，电容增大；距离增大，电容减小。</li>
+                <li><strong>考点：</strong>不要死背应用名称。先判断输入变量改变了 \(a,b,d,\varepsilon_r\) 中哪一个。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-21-piezo-material.jpg" loading="lazy" alt="piezoelectric material">
+            <div>
+              <h3>图 21-1：压电效应和逆压电效应是一对</h3>
+              <ul>
+                <li><strong>图里：</strong>机械应力使材料产生电场；施加交流电压又会让晶体振动或剪切变形。</li>
+                <li><strong>读法：</strong>直接压电效应用于传感，逆压电效应用于驱动或振荡。</li>
+                <li><strong>考点：</strong>石英、蔗糖、DNA、丝、肌腱等都可表现压电性，但工程传感常用稳定、可加工的压电材料。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-21-piezo-transducer.jpg" loading="lazy" alt="piezoelectric pressure transducer">
+            <div>
+              <h3>图 21-2：压电换能器用电极收集应力产生的电压</h3>
+              <ul>
+                <li><strong>图里：</strong>外力压在压电块上，材料两侧电极收集电荷，输出电压 \(E_o\)。</li>
+                <li><strong>读法：</strong>力的方向、材料极化方向和电极布置决定输出极性和大小。</li>
+                <li><strong>考点：</strong>压电传感器对动态变化敏感；静态长期压力可能因电荷泄漏导致漂移。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-21-piezo-pressure.jpg" loading="lazy" alt="piezoelectric pressure output">
+            <div>
+              <h3>图 21-3：动态压力曲线会转成交流样输出</h3>
+              <ul>
+                <li><strong>图里：</strong>压力 \(P\) 随时间有微小波动，右侧输出 \(V_{out}\) 呈随时间变化的电压波形。</li>
+                <li><strong>读法：</strong>压电压力传感器特别适合脉动、振动、高静压背景下的小动态压力变化。</li>
+                <li><strong>考点：</strong>若题目问“为什么适合动态而非纯静态”，答案是电荷输出与应力变化相关且存在泄漏/漂移。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-22-colorimetric.jpg" loading="lazy" alt="colorimetric sensors enzyme reference">
+            <div>
+              <h3>图 22-1：比色传感常需要 reference 通道</h3>
+              <ul>
+                <li><strong>图里：</strong>一个通道含 enzyme，另一个是 reference；下方电桥式图形表示比较两个响应。</li>
+                <li><strong>读法：</strong>reference 用来抵消光源强度、环境、基底颜色或非特异变化。</li>
+                <li><strong>考点：</strong>双通道或比值测量比单通道更抗干扰，这是光学/比色传感常见设计思想。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-22-fiber-modes.jpg" loading="lazy" alt="optical fiber modulation modes">
+            <div>
+              <h3>图 22-2：光纤传感的三种读出：强度、波长、相位</h3>
+              <ul>
+                <li><strong>图里：</strong>上图是受力导致 intensity modulation；中图是光纤光栅导致 wavelength modulation；下图是干涉结构导致 phase modulation。</li>
+                <li><strong>读法：</strong>强度法简单但受光源和连接损耗影响；波长法抗强度波动；相位法灵敏度高但系统更复杂。</li>
+                <li><strong>考点：</strong>看到光纤题，先判断被测量改变的是光强、中心波长还是光程差。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-23-hall-basic.jpg" loading="lazy" alt="Hall effect basic principle">
+            <div>
+              <h3>图 23-1：Hall sensor 把磁场变成横向电压</h3>
+              <ul>
+                <li><strong>图里：</strong>恒定电流流过 p-type semiconductor，外加磁场 \(H\) 垂直作用，载流子偏转，在横向形成 \(V_H\)。</li>
+                <li><strong>读法：</strong>输入是磁场，输出是 Hall voltage。电流方向、磁场方向和电压极性遵循载流子受力方向。</li>
+                <li><strong>考点：</strong>Hall sensor 可用于测磁场，也可借助磁珠把生物结合事件转成磁信号。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-23-hall-bioarray.jpg" loading="lazy" alt="Hall biosensor with magnetic nanoparticles">
+            <div>
+              <h3>图 23-2：磁纳米颗粒让 Hall 阵列能做生物检测</h3>
+              <ul>
+                <li><strong>图里：</strong>靶标结合后引入 magnetic nanoparticles，Hall-effect device array 检测局部磁场变化。</li>
+                <li><strong>读法：</strong>识别仍来自抗体/探针，Hall 器件负责把磁标记转成电信号。</li>
+                <li><strong>考点：</strong>这是“生物识别层 + 纳米标签 + 物理传感器”的混合方案，体现课程跨生物和物理传感的整合。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-23-hall-dna.jpg" loading="lazy" alt="Hall DNA hybridization">
+            <div>
+              <h3>图 23-3：DNA 杂交可作为 Hall 检测前端识别事件</h3>
+              <ul>
+                <li><strong>图里：</strong>probe DNA 固定在表面，complementary target DNA 与其杂交。</li>
+                <li><strong>读法：</strong>DNA 互补配对提供序列选择性；若结合磁性标签，就能通过 Hall 读出。</li>
+                <li><strong>考点：</strong>核酸识别本身不一定直接产生电信号，常需要荧光、酶、纳米颗粒或磁标签转导。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-23-hall-wearable.jpg" loading="lazy" alt="wearable Hall sensor">
+            <div>
+              <h3>图 23-4：可穿戴 Hall 传感把形变转成磁场变化</h3>
+              <ul>
+                <li><strong>图里：</strong>手部夹板、弹性体、钕磁铁和 Hall sensor 组成结构；形变改变磁铁与传感器相对位置。</li>
+                <li><strong>读法：</strong>Hall 器件测的仍是磁场，但磁场变化由机械运动间接引起。</li>
+                <li><strong>考点：</strong>许多可穿戴传感器是间接测量：目标是运动/压力，真正读出的可能是电阻、电容或磁场。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-24-mems-beams.jpg" loading="lazy" alt="MEMS fixed and mobile beams">
+            <div>
+              <h3>图 24-1：MEMS 加速度计靠微梁和活动质量块工作</h3>
+              <ul>
+                <li><strong>图里：</strong>尺度条是 \(10\ \mu m\)，fixed beams 固定，mobile beams/质量块可相对移动。</li>
+                <li><strong>读法：</strong>加速度使活动结构产生微小位移，再通过电容、压电或其他方式读出。</li>
+                <li><strong>考点：</strong>MEMS 的优势是小型化和可批量制造，但也带来封装、噪声、温漂和微尺度加工误差问题。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-24-mems-transducers.jpg" loading="lazy" alt="MEMS transducers">
+            <div>
+              <h3>图 24-2：MEMS 是传感器和执行器的平台，不是一种单一原理</h3>
+              <ul>
+                <li><strong>图里：</strong>MEMS 可包含 sensors 和 actuators，主要换能类型包括 capacitive、piezoelectric、thermal，另有 microfluidic。</li>
+                <li><strong>读法：</strong>MEMS 描述的是微尺度器件平台；具体传感机制还要看它用电容、压电、热还是流体。</li>
+                <li><strong>考点：</strong>答题时不要把 MEMS 当成“电容传感器”的同义词。MEMS 可以承载多种换能机制。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-25-fda-classes.jpg" loading="lazy" alt="FDA medical device classes">
+            <div>
+              <h3>图 25-1：医疗器械分类按风险和监管强度划分</h3>
+              <ul>
+                <li><strong>图里：</strong>Class I 是 general controls 低风险；Class II 是 general + special controls 中等风险；Class III 是 general controls + premarket approval 高风险。</li>
+                <li><strong>读法：</strong>牙线、医用剪刀等是低风险；MRI、临床水银温度计等需要特殊控制；除颤器、人工心脏瓣膜属于高风险。</li>
+                <li><strong>考点：</strong>分类不是按技术复杂度，而是按使用风险和失效后果。越可能维持生命或造成严重伤害，监管越严格。</li>
+              </ul>
+            </div>
+          </article>
         </div>
       </section>
 

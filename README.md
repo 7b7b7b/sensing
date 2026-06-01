@@ -9,5 +9,5 @@ https://sensing.wormforce.net/
 ## Files
 
 - `index.html`: standalone lecture-note page with formulas, examples, quiz items, and a progress checklist.
+- `assets/figures/`: cropped figures from the review PPT with figure-by-figure explanations in `index.html`.
 - `CNAME`: custom domain configuration for GitHub Pages.
-
