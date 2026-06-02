@@ -40,7 +40,12 @@
       color: var(--ink);
       font: 16px/1.72 "Inter", "Segoe UI", "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
       letter-spacing: 0;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
+    img, svg { -webkit-user-drag: none; user-drag: none; }
     a { color: var(--teal); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .page {
@@ -121,6 +126,7 @@
     }
     main {
       width: min(1160px, 100%);
+      justify-self: center;
       padding: 28px clamp(18px, 4vw, 54px) 60px;
     }
     .mobile-nav { display: none; margin-bottom: 18px; }
@@ -135,15 +141,6 @@
       color: var(--muted);
       font-size: 13px;
     }
-    .print-btn {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fff;
-      padding: 7px 10px;
-      color: var(--ink);
-      cursor: pointer;
-    }
-    .print-btn:hover { border-color: var(--teal); color: var(--teal); }
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
@@ -362,12 +359,22 @@
       table { min-width: 680px; }
     }
     @media print {
-      body { background: #fff; }
-      .sidebar, .mobile-nav, .top-strip, .print-btn { display: none; }
-      .page { display: block; }
-      main { width: auto; padding: 0; }
-      .hero, .card, .worked, .quiz, .callout, .table-wrap { box-shadow: none; break-inside: avoid; }
-      .quiz div { display: block; }
+      * {
+        visibility: hidden !important;
+        box-shadow: none !important;
+      }
+      html, body {
+        margin: 0 !important;
+        background: #fff !important;
+      }
+      body::before {
+        content: "Printing is disabled for this page.";
+        display: block;
+        visibility: visible !important;
+        padding: 40px;
+        color: #000;
+        font: 18px/1.5 Arial, sans-serif;
+      }
     }
   </style>
 </head>
@@ -423,7 +430,6 @@
 
       <div class="top-strip">
         <span>来源：当前目录 PDF <code>short review(1).pdf</code>，按 medicalmmz 类讲义结构重写。</span>
-        <button class="print-btn" type="button" onclick="window.print()">打印 / 导出 PDF</button>
       </div>
 
       <section class="hero">
@@ -1635,6 +1641,32 @@
   </div>
 
   <script>
+    (function () {
+      const protectedEvents = ["copy", "cut", "paste", "contextmenu", "selectstart", "dragstart"];
+      const protectedKeys = new Set(["a", "c", "p", "s", "x"]);
+
+      protectedEvents.forEach((type) => {
+        document.addEventListener(type, (event) => {
+          const target = event.target;
+          if (target && /^(INPUT|TEXTAREA|SELECT|BUTTON)$/i.test(target.tagName || "")) return;
+          event.preventDefault();
+          event.stopPropagation();
+        }, true);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        const key = (event.key || "").toLowerCase();
+        if ((event.ctrlKey || event.metaKey) && protectedKeys.has(key)) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+      }, true);
+
+      try {
+        window.print = function () { return false; };
+      } catch (_) { }
+    })();
+
     (function () {
       const checks = Array.from(document.querySelectorAll("[data-check]"));
       const progress = document.querySelector("[data-progress]");
