@@ -396,7 +396,7 @@
       <a class="nav-link" href="#characteristics"><span class="nav-number">2</span>传感器特性</a>
       <a class="nav-link" href="#biomarker"><span class="nav-number">3</span>生物标志物</a>
       <a class="nav-link" href="#electrochem"><span class="nav-number">4</span>酶与电化学传感</a>
-      <a class="nav-link" href="#spectroscopy"><span class="nav-number">5</span>分子光谱与 NIR</a>
+      <a class="nav-link" href="#spectroscopy"><span class="nav-number">5</span>光谱、气味与 NIR</a>
       <a class="nav-link" href="#immuno"><span class="nav-number">6</span>免疫检测与纳米材料</a>
       <a class="nav-link" href="#nucleic"><span class="nav-number">7</span>核酸检测</a>
       <a class="nav-link" href="#physical"><span class="nav-number">8</span>物理传感器与 MEMS</a>
@@ -419,7 +419,7 @@
           <option value="#characteristics">2. 传感器特性</option>
           <option value="#biomarker">3. 生物标志物</option>
           <option value="#electrochem">4. 酶与电化学传感</option>
-          <option value="#spectroscopy">5. 分子光谱与 NIR</option>
+          <option value="#spectroscopy">5. 光谱、气味与 NIR</option>
           <option value="#immuno">6. 免疫检测与纳米材料</option>
           <option value="#nucleic">7. 核酸检测</option>
           <option value="#physical">8. 物理传感器与 MEMS</option>
@@ -429,14 +429,14 @@
       </div>
 
       <div class="top-strip">
-        <span>来源：当前目录 PDF <code>short review(1).pdf</code>，按 medicalmmz 类讲义结构重写。</span>
+        <span>来源：当前目录 PDF <code>short review(3).pdf</code>，按 medicalmmz 类讲义结构重写。</span>
       </div>
 
       <section class="hero">
         <div>
           <div class="eyebrow">Intelligent Sensing Technology</div>
           <h1>智能传感技术复习讲义：概念、公式、例题与题库</h1>
-          <p>这份讲义把 PPT 中 26 页复习内容扩展成可独立学习的版本。主线是：被测对象产生刺激，传感器把刺激转成信号，系统用校准和统计方法把信号解释成可靠测量，最后进入生物检测、光学检测、免疫检测、核酸检测、物理传感器和医疗器械转化。</p>
+          <p>这份讲义把 <code>short review(3).pdf</code> 中 26 页复习内容扩展成可独立学习的版本。主线是：被测对象产生刺激，传感器把刺激转成信号，系统用校准和统计方法把信号解释成可靠测量，随后进入生物标志物、酶与电化学检测、光谱和气味传感、免疫与核酸检测、物理传感器、MEMS 和医疗器械转化。</p>
           <div class="tags">
             <span class="tag">按页重组</span>
             <span class="tag blue">公式解释</span>
@@ -492,12 +492,12 @@
             <tbody>
               <tr><td>3</td><td>Transfer function</td><td>理解 \(S=f(X)\)，会解释线性、对数、指数、多项式响应。</td><td>给校准曲线或 Beer-Lambert Law，判断输入、输出、灵敏度。</td></tr>
               <tr><td>4-7</td><td>传感器静态/动态特性</td><td>掌握 accuracy、precision、sensitivity、specificity、LOD、LOQ、SNR、response time 等。</td><td>比较两个传感器优劣；根据混淆矩阵计算灵敏度和特异性；解释超调。</td></tr>
-              <tr><td>8-9</td><td>Biomarkers 与浓度直觉</td><td>能把生物标志物分成 molecular、histologic、radiographic、physiologic；能估算细胞体积中的分子浓度。</td><td>为什么单分子在细菌体积里就是 nM 量级？</td></tr>
-              <tr><td>10-12</td><td>酶传感与安培型葡萄糖传感</td><td>掌握 Michaelis-Menten、potentiometric/amperometric/conductometric、GOx 反应链。</td><td>解释第一代葡萄糖传感器如何把葡萄糖浓度转成电流。</td></tr>
-              <tr><td>13-14</td><td>分子光谱与 NIR</td><td>理解 UV-vis、荧光、FTIR 的物理对象；掌握 650-950 nm 组织光学窗口。</td><td>为什么近红外适合组织成像？Beer-Lambert Law 如何定量？</td></tr>
+              <tr><td>8</td><td>Biomarkers</td><td>能把生物标志物分成 molecular、histologic、radiographic、physiologic，并说明每类对应什么检测对象。</td><td>血糖、肿瘤大小、血压分别属于哪类 biomarker？</td></tr>
+              <tr><td>9-11</td><td>酶传感与安培型葡萄糖传感</td><td>掌握 induced fit、Michaelis-Menten、potentiometric/amperometric/conductometric、GOx 反应链。</td><td>解释第一代葡萄糖传感器如何把葡萄糖浓度转成电流。</td></tr>
+              <tr><td>12-14</td><td>分子光谱、气味传感与 NIR</td><td>理解 UV-vis、荧光、FTIR 的物理对象；会解释嗅觉受体阵列如何形成气味模式；掌握 NIR 组织光学窗口。</td><td>为什么近红外适合组织成像？气味受体矩阵为什么像传感器阵列？</td></tr>
               <tr><td>15-17</td><td>免疫检测、ELISA、侧向层析</td><td>掌握 \(K_D\)、SPR、QCM-D、ELISA 类型和 lateral flow 结构。</td><td>比较 sandwich ELISA 与 competitive ELISA；解释 test line/control line。</td></tr>
-              <tr><td>18</td><td>核酸检测</td><td>理解 aptamer、PCR probe、Covid-19 的 RNA/抗原/抗体三类检测。</td><td>RNA 检测、抗原检测、抗体检测分别回答什么问题？</td></tr>
-              <tr><td>19-24</td><td>物理传感器与 MEMS</td><td>掌握电阻、电容、电感、压电、光纤、霍尔、MEMS 的输入输出关系。</td><td>给结构图，判断传感原理、信号类型和优缺点。</td></tr>
+              <tr><td>18</td><td>核酸检测</td><td>理解 aptamer 的结构识别，以及 TaqMan、FRET 等 PCR 荧光探针如何把序列识别转成光信号。</td><td>Aptamer 和普通互补核酸探针有什么不同？PCR 探针为什么能提高特异性？</td></tr>
+              <tr><td>19-24</td><td>物理传感器与 MEMS</td><td>掌握电阻、电容、压电、量热、光纤、霍尔、MEMS 的输入输出关系。</td><td>给结构图，判断传感原理、信号类型和优缺点。</td></tr>
               <tr><td>25</td><td>医疗器械分类</td><td>理解 FDA Class I/II/III 按风险与监管强度分类。</td><td>给设备例子，判断风险级别和监管要求。</td></tr>
             </tbody>
           </table>
@@ -516,7 +516,6 @@
           <div class="formula-item"><strong>Michaelis-Menten</strong>\[v_0=\frac{V_{\max}[S]}{K_M+[S]}\]<p>\([S]\ll K_M\) 时近似一阶；\([S]\gg K_M\) 时趋于饱和。</p></div>
           <div class="formula-item"><strong>抗体亲和力</strong>\[K_D=\frac{[A][B]}{[AB]}=\frac{k_{off}}{k_{on}}\]<p>\(K_D\) 越小，结合越强；它的单位是浓度。</p></div>
           <div class="formula-item"><strong>电容传感</strong>\[C\approx \varepsilon_0\varepsilon_r\frac{ab}{d}\]<p>面积和介电常数增大，电容增大；板间距增大，电容减小。</p></div>
-          <div class="formula-item"><strong>Wheatstone bridge</strong>\[V_{TH}=V\left(\frac{R_1}{R_1+R_3}-\frac{R_2}{R_2+R_4}\right)\]<p>用于把小电阻变化转成可测电压差。</p></div>
         </div>
       </section>
 
@@ -681,21 +680,9 @@
           </article>
 
           <article class="figure-card">
-            <img src="assets/figures/fig-09-concentration.jpg" loading="lazy" alt="single molecule concentration in bacterial volume">
-            <div>
-              <h3>图 9-1：单分子在细菌体积里就是 nM 量级</h3>
-              <div class="figure-explain">
-                <p>这张图在训练浓度的物理直觉。很多同学看到 nM、pM、fM 只是背单位，但不知道它在细胞尺度意味着什么。图中假设一个细菌体积约为 1 微米立方，也就是 1 fL。如果这个体积里只有一个分子，把分子数换算成摩尔数，再除以体积，就得到约 1.6 nM。</p>
-                <p>这个计算的关键是阿伏伽德罗常数。一个分子等于 1/(6×10^23) mol，而 1 fL 等于 10^-15 L，所以浓度大约是 10^-9 mol/L 的量级。PPT 给出的经验规则是：一个细菌体积中的一个分子，大约就是 nM 量级。</p>
-                <p>这张图的价值在于帮助你判断检测限是否够用。如果某传感器的 LOD 是 100 nM，它在单个细菌尺度上可能只能看见几十到上百个分子等效浓度；如果要检测单细胞内极低丰度分子，就需要更低的检测限，或者需要扩增、富集、标记放大等策略。</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="figure-card">
             <img src="assets/figures/fig-10-induced-fit.jpg" loading="lazy" alt="enzyme induced fit model">
             <div>
-              <h3>图 10-1：酶识别不是硬钥匙模型，而是诱导契合</h3>
+              <h3>图 9-1：酶识别不是硬钥匙模型，而是诱导契合</h3>
               <div class="figure-explain">
                 <p>这张图用 induced-fit 模型解释酶为什么能作为识别元件。底物先接近酶的 active site，结合后酶的形状会发生轻微调整，使底物以更适合反应的构型被固定。随后形成 enzyme-products complex，产物离开，酶恢复并进入下一轮循环。</p>
                 <p>这和简单的“锁钥模型”相比更接近真实情况：酶不是僵硬的孔洞，而是可以在结合时发生构象变化。正是这种结构选择性和催化能力，让酶传感器能在复杂样品中优先响应特定底物，例如葡萄糖氧化酶对葡萄糖的识别。</p>
@@ -707,7 +694,7 @@
           <article class="figure-card">
             <img src="assets/figures/fig-10-michaelis-menten.jpg" loading="lazy" alt="Michaelis-Menten equation">
             <div>
-              <h3>图 10-2：Michaelis-Menten 解释“低浓度线性、高浓度饱和”</h3>
+              <h3>图 9-2：Michaelis-Menten 解释“低浓度线性、高浓度饱和”</h3>
               <div class="figure-explain">
                 <p>这张图给出 Michaelis-Menten 方程，它描述酶反应速率如何随底物浓度变化。v0 是初始反应速率，Vmax 是酶充分饱和时的最大速率，KM 是使速率达到 Vmax 一半时的底物浓度。这个方程不是单纯数学形式，而是来自酶-底物复合物形成和分解的动力学平衡。</p>
                 <p>低浓度时，底物分子少，大部分酶位点空着，增加底物会明显增加反应速率，因此响应近似线性。高浓度时，酶位点大多被占据，反应速度受酶周转能力限制，再增加底物也不能显著提高速率，于是曲线进入饱和。</p>
@@ -719,7 +706,7 @@
           <article class="figure-card">
             <img src="assets/figures/fig-11-glucose-reactions.jpg" loading="lazy" alt="glucose oxidase and dehydrogenase reactions">
             <div>
-              <h3>图 11-1：两条葡萄糖酶反应路线</h3>
+              <h3>图 10-1：两条葡萄糖酶反应路线</h3>
               <div class="figure-explain">
                 <p>这张图把两种葡萄糖相关酶反应并排列出。葡萄糖氧化酶 GOx 使用氧气作为电子受体，把葡萄糖转化为 gluconolactone，同时生成过氧化氢 H2O2。葡萄糖脱氢酶 GDH 则使用 NAD+ 等辅因子，把葡萄糖转化为 gluconolactone，同时生成 NADH。</p>
                 <p>二者都利用酶的选择性识别葡萄糖，但后续读出路线不同。GOx 路线常通过测 H2O2 的氧化电流或氧气消耗来读出葡萄糖；GDH 路线则可通过辅因子或电子介体把电子传给电极。这就是为什么同样测血糖，传感器设计可以有不同代际和不同化学体系。</p>
@@ -731,7 +718,7 @@
           <article class="figure-card">
             <img src="assets/figures/fig-11-first-gen-glucose.jpg" loading="lazy" alt="first generation glucose biosensor">
             <div>
-              <h3>图 11-2：第一代葡萄糖传感器的信号来自 \(H_2O_2\)</h3>
+              <h3>图 10-2：第一代葡萄糖传感器的信号来自 \(H_2O_2\)</h3>
               <div class="figure-explain">
                 <p>这张图展示第一代葡萄糖生物传感器的核心链路。葡萄糖先被 GOx 催化氧化，氧气参与反应，产物包括 gluconolactone 和 H2O2。图中电子最终进入电极，说明传感器真正测到的是电化学反应产生的电流，而不是葡萄糖分子本身。</p>
                 <p>第一代方案的逻辑是把葡萄糖浓度转成 H2O2 生成速率，再把 H2O2 在铂电极上的氧化转成电流。只要扩散、酶活性和电极反应条件稳定，电流就能通过校准曲线反映葡萄糖浓度。这是生物识别和电化学换能结合的典型例子。</p>
@@ -743,7 +730,7 @@
           <article class="figure-card">
             <img src="assets/figures/fig-12-amperometric-cell.jpg" loading="lazy" alt="amperometric sensor cell">
             <div>
-              <h3>图 12-1：安培型传感器用电极反应产生电流</h3>
+              <h3>图 11-1：安培型传感器用电极反应产生电流</h3>
               <div class="figure-explain">
                 <p>这张图把安培型葡萄糖传感器拆成电化学池。左边是 Ag/AgCl 参考电极和 Pt 工作电极，底部外加约 350 mV 电位。右边的膜或酶层让 glucose 和 O2 进入，反应生成 H2O2 和 gluconic acid，其中 H2O2 扩散到 Pt 电极发生氧化。</p>
                 <p>安培型传感器的关键不是“施加了电压”，而是“测量由氧化还原反应产生的电流”。参考电极提供稳定的电位基准，工作电极上发生目标电化学反应，外电路中流过的电子形成电流。这个电流大小与 H2O2 到达电极的速率相关，也就间接与葡萄糖浓度相关。</p>
@@ -755,7 +742,7 @@
           <article class="figure-card">
             <img src="assets/figures/fig-12-electrode-reactions.jpg" loading="lazy" alt="electrode reactions of glucose sensor">
             <div>
-              <h3>图 12-2：把总反应拆成酶反应和电极反应</h3>
+              <h3>图 11-2：把总反应拆成酶反应和电极反应</h3>
               <div class="figure-explain">
                 <p>这张图把葡萄糖安培传感中的反应分成多个步骤。第一步是酶反应：葡萄糖和氧气在 GOx 催化下生成葡萄糖酸和 H2O2。第二步是工作电极反应：H2O2 在铂阳极被氧化，释放电子。后面的 Ag/AgCl 和辅助电极反应维持整个电化学回路的电荷平衡。</p>
                 <p>这样拆开后就能看清因果关系。选择性主要来自 GOx，因为它决定葡萄糖是否被转化；信号强度来自 H2O2 氧化，因为这个步骤产生可测电子流；参考和辅助电极保证电位稳定和电流闭合。如果只写一个总反应，就看不出这些功能分工。</p>
@@ -767,7 +754,7 @@
           <article class="figure-card">
             <img src="assets/figures/fig-13-em-spectrum.jpg" loading="lazy" alt="electromagnetic spectrum and molecular transitions">
             <div>
-              <h3>图 13-1：不同波段激发不同类型的物质响应</h3>
+              <h3>图 12-1：不同波段激发不同类型的物质响应</h3>
               <div class="figure-explain">
                 <p>这张图把电磁波谱和分子响应联系起来。左边高频短波长的 gamma ray、X-ray 能量很高，能作用于核或内层电子；UV 和可见光常对应电子跃迁；红外光对应分子振动；微波和无线电波对应转动、电子自旋或核自旋等更低能量过程。</p>
                 <p>它说明光谱方法不是随便选波长，而是根据你想观察的物理过程选择能量尺度。UV-vis 适合看分子电子吸收，FTIR 适合看化学键振动，荧光需要分子吸收光后再发射光，NMR 则在射频范围利用核自旋响应。</p>
@@ -779,7 +766,7 @@
           <article class="figure-card">
             <img src="assets/figures/fig-13-beer-setup.jpg" loading="lazy" alt="Beer-Lambert cuvette setup">
             <div>
-              <h3>图 13-2：比色皿里的 \(l\) 是光程，不是液体高度</h3>
+              <h3>图 12-2：比色皿里的 \(l\) 是光程，不是液体高度</h3>
               <div class="figure-explain">
                 <p>这张图把 Beer-Lambert Law 的几何含义画出来。光从左边进入比色皿，穿过样品后从右边出来。图中标出的 l 是光在样品中走过的距离，也叫光程，不是比色皿里液体的高度。</p>
                 <p>为什么光程重要？因为分子吸收光的机会随路径长度增加而增加。浓度 c 越高，单位体积内吸收分子越多；光程 l 越长，光遇到这些分子的机会越多。因此吸光度同时正比于 l 和 c。</p>
@@ -791,7 +778,7 @@
           <article class="figure-card">
             <img src="assets/figures/fig-13-uvvis.jpg" loading="lazy" alt="UV-vis optical path">
             <div>
-              <h3>图 13-3：UV-vis 的核心是选波长再测透过光</h3>
+              <h3>图 12-3：UV-vis 的核心是选波长再测透过光</h3>
               <div class="figure-explain">
                 <p>这张图展示 UV-vis 仪器的基本光路。光源发出宽波段光，入口狭缝限制光束，色散元件把不同波长分开，出口狭缝选择一个窄波长，随后光穿过样品，最后由 detector 记录透过强度。</p>
                 <p>这套结构的意义是让你在指定波长下测吸收。不同分子在不同波长吸收不同，选择目标物吸收强而背景吸收弱的波长可以提高灵敏度和选择性。样品池后面的 detector 不直接知道浓度，它只知道透过光强；浓度需要通过空白、标准曲线和 Beer-Lambert Law 得到。</p>
@@ -803,7 +790,7 @@
           <article class="figure-card">
             <img src="assets/figures/fig-13-fluorescence.jpg" loading="lazy" alt="fluorescence spectroscopy">
             <div>
-              <h3>图 13-4：荧光读的是发射光，不是透过光</h3>
+              <h3>图 12-4：荧光读的是发射光，不是透过光</h3>
               <div class="figure-explain">
                 <p>这张图显示同一样品的吸收、荧光和磷光峰。分子先吸收较短波长的光进入激发态，随后以较长波长发射光回到较低能级，这就是荧光。图中绿色荧光峰相对蓝色吸收峰向长波移动，这种差异常被称为 Stokes shift。</p>
                 <p>荧光传感和吸光度传感的读出逻辑不同。吸光度看的是入射光损失了多少，荧光看的是样品自己发出了多少光。因为背景可以通过波长和几何方向分开，荧光通常比吸收更灵敏，适合低浓度检测和生物成像。</p>
@@ -815,11 +802,35 @@
           <article class="figure-card">
             <img src="assets/figures/fig-13-ftir.jpg" loading="lazy" alt="FTIR stretch bending">
             <div>
-              <h3>图 13-5：FTIR 看的是分子振动方式</h3>
+              <h3>图 12-5：FTIR 看的是分子振动方式</h3>
               <div class="figure-explain">
                 <p>这张图用弹簧和小球表示分子振动。Stretch 是沿化学键方向伸长和缩短，bending 是键角改变。红外光的能量与这些振动能级差相匹配时，分子会吸收对应频率的红外光。</p>
                 <p>FTIR 的信息来自化学键，而不是简单的颜色或电子跃迁。不同官能团有特征振动频率，例如 C=O、O-H、N-H、C-H 等会出现在不同波数区域。因此 FTIR 常用于判断材料表面化学、聚合物组成、蛋白二级结构或传感膜是否修饰成功。</p>
                 <p>在传感器语境下，FTIR 可以作为检测方法，也可以作为材料表征工具。它的限制是水吸收强、复杂样品峰重叠、灵敏度相对荧光和电化学方法可能较低。理解 stretch 和 bending 后，就能明白 FTIR 谱峰为什么和化学键结构相关。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-13-olfactory-pathway.jpg" loading="lazy" alt="olfactory sensing pathway">
+            <div>
+              <h3>图 13-1：嗅觉系统把气味分子转换成神经信号</h3>
+              <div class="figure-explain">
+                <p>这张图用生物嗅觉系统解释气味传感的原型。空气中的 odorant molecules 进入鼻腔后，先接触鼻上皮中的 olfactory receptor cells。气味分子与受体结合后，受体细胞被激活并产生电信号，这些信号在 olfactory bulb 的 glomeruli 中汇聚，再被传到大脑更高级区域。</p>
+                <p>这不是一个“一个气味等于一个受体”的简单故事。真实嗅觉依赖组合编码：一个气味分子可能激活多个受体，一个受体也可能对多个气味分子有响应。大脑识别的是一组受体共同形成的响应模式，而不是某一个受体单独给出的 yes/no 结果。</p>
+                <p>把这张图放到传感器课程里，是为了引出电子鼻和复杂样品识别。气味样品通常是多分子混合物，很难靠一个完全特异的传感器解决；更常见的策略是设计一组交叉敏感的传感单元，让它们对不同气味产生不同指纹，再用模式识别方法判断样品类别。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-13-receptor-matrix.jpg" loading="lazy" alt="odorant receptor response matrix">
+            <div>
+              <h3>图 13-2：气味识别靠 receptor 阵列的响应指纹</h3>
+              <div class="figure-explain">
+                <p>这张矩阵把“组合编码”变成了可读的传感器图。横向列是不同 receptor，纵向行是不同 odorant，粉色方块表示某个气味分子能激活某个受体。你会看到很多行不是只有一个方块，而是多个 receptor 同时响应；很多列也不是只响应一个 odorant，而是对一组相关分子都有响应。</p>
+                <p>这正是气味传感和传感阵列的核心。单个受体的选择性不一定足以区分所有分子，但整行响应模式可以成为气味的 fingerprint。两个分子如果在单个受体上反应相似，仍然可能因为整个受体阵列上的图案不同而被区分。</p>
+                <p>在工程系统中，receptor 可以换成导电聚合物、金属氧化物、功能化纳米材料、光学探针或生物识别元件。读出不再只是“浓度是多少”，还包括“这个样品属于哪一类”“混合物模式是否异常”。因此这张图连接了复杂样品、阵列式传感和数据统计，是新版 PPT 相比旧版新增的重点。</p>
               </div>
             </div>
           </article>
@@ -933,21 +944,9 @@
           </article>
 
           <article class="figure-card">
-            <img src="assets/figures/fig-18-covid-strategies.jpg" loading="lazy" alt="Covid-19 diagnostics strategies">
-            <div>
-              <h3>图 18-2：Covid-19 检测分 RNA、抗原、抗体三条线</h3>
-              <div class="figure-explain">
-                <p>这张图把 SARS-CoV-2 病毒结构和三类诊断策略联系起来。病毒本身包含 RNA 遗传物质、脂质膜、核衣壳蛋白和刺突蛋白。不同检测方法抓住病毒生命周期或感染过程中的不同对象，因此它们回答的问题不同。</p>
-                <p>RNA 检测针对病毒遗传物质，通常通过 RT-PCR 或等温扩增放大信号，灵敏度高，适合判断样本中是否存在病毒核酸。抗原检测针对病毒蛋白，尤其核衣壳或刺突蛋白，常用于快速检测，说明样本中是否有较多病毒成分。抗体检测针对宿主免疫反应，说明人体是否产生过针对病毒的抗体。</p>
-                <p>这三类检测不能简单互相替代。感染早期可能 RNA 阳性但抗体阴性；康复后可能 RNA 阴性但抗体阳性；抗原检测快速但低载量时可能漏检。传感器设计和结果解释必须明确自己检测的是病毒本身、病毒遗传物质，还是人体免疫记忆。</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="figure-card">
             <img src="assets/figures/fig-18-pcr-probes.jpg" loading="lazy" alt="PCR fluorescent probes">
             <div>
-              <h3>图 18-3：PCR 探针把序列识别变成荧光变化</h3>
+              <h3>图 18-2：PCR 探针把序列识别变成荧光变化</h3>
               <div class="figure-explain">
                 <p>这张图展示 PCR 中几种荧光探针策略。TaqMan 探针同时带有荧光基团和淬灭基团，探针完整时荧光被淬灭；当它与目标序列杂交并在扩增过程中被聚合酶水解，荧光基团与淬灭基团分离，信号增强。</p>
                 <p>FRET 探针依赖两个荧光基团之间的距离。只有当探针正确杂交到目标序列上，供体和受体距离合适，能量转移才会发生。第三类部分双链或单染料杂交探针则利用杂交状态改变荧光环境。共同点是：序列识别事件被转换成可实时读出的光信号。</p>
@@ -975,7 +974,7 @@
               <div class="figure-explain">
                 <p>这张图展示 bonded strain gauge。应变片贴在结构表面，结构受拉伸时应变片也被拉长，导体长度增加、截面积减小，电阻通常增加；结构受压缩时相反，电阻减小。它测到的是应变，不是力本身。</p>
                 <p>为什么能用它测力？因为在已知结构和材料弹性关系的情况下，外力会导致特定位置产生应变，应变片测到电阻变化后，可以通过标定或力学模型反推出力、压力或弯矩。图里还说明应变片对横向力不敏感，方向性很重要。</p>
-                <p>实际应用中，应变片的电阻变化非常小，所以通常要接 Wheatstone bridge 放大成差分电压。温度也会改变电阻，因此常用半桥或全桥结构做温度补偿。如果题目问应变片为什么需要桥路，答案就是小信号和温度/共模干扰。</p>
+                <p>实际应用中，应变片的电阻变化非常小，读出电路必须能分辨微小电阻变化，并尽量补偿温度带来的漂移。新版 PPT 没有展开桥路公式，所以这里抓住主因果即可：机械拉伸或压缩改变导体几何尺寸，几何尺寸改变电阻，电阻变化再被电路读成电信号。</p>
               </div>
             </div>
           </article>
@@ -988,30 +987,6 @@
                 <p>这张图列出几种电容传感场景：接近检测、液位检测和平行板材料分析。它们看起来不同，但底层公式都是 C 约等于 epsilon A / d。只要被测对象改变有效面积 A、板间距离 d 或介电常数 epsilon，电容就会变化。</p>
                 <p>接近传感中，手指或物体靠近电极，相当于改变电场分布和耦合电容。液位传感中，空气被液体替代，介电常数改变，电容随液位上升而变。材料分析中，把不同材料放入平行板之间，可以通过电容变化推断介电性质。</p>
                 <p>电容传感的优点是结构简单、功耗低、可做柔性和微型器件；缺点是容易受寄生电容、湿度、人体接近、导线布置和屏蔽条件影响。答题时不要只背“电容传感器”，要指出具体是哪一个变量改变了电容。</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="figure-card">
-            <img src="assets/figures/fig-19-inductive.jpg" loading="lazy" alt="inductive sensor">
-            <div>
-              <h3>图 19-4：电感传感靠磁场和线圈耦合</h3>
-              <div class="figure-explain">
-                <p>这张图展示电感传感的基本电磁逻辑。线圈中电流变化会产生变化的磁场，变化的磁场又会在线圈中感生一个反向电压。这就是电感阻碍电流变化的来源。电感大小取决于线圈几何、匝数、磁芯和周围材料。</p>
-                <p>在传感器中，被测对象常常通过改变磁场路径或线圈耦合来改变电感。例如金属物体靠近会改变磁场分布，磁芯位置移动会改变磁导率，线圈间距离变化会改变互感。读出电路再把电感变化转换成电压、频率或相位变化。</p>
-                <p>电感传感适合非接触测量和恶劣环境，但它对外部磁场、附近金属和电磁干扰敏感。与电容传感相比，电感传感更偏向金属目标和磁性结构；与 Hall 传感相比，它不一定需要静态磁场，而是常依赖线圈和交流激励。</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="figure-card">
-            <img src="assets/figures/fig-19-wheatstone.jpg" loading="lazy" alt="Wheatstone bridge">
-            <div>
-              <h3>图 19-5：Wheatstone bridge 把小电阻变化放大成差分电压</h3>
-              <div class="figure-explain">
-                <p>这张图展示 Wheatstone bridge。四个电阻组成菱形桥路，电源加在一对对角，输出电压从另一对对角取出。当两边分压相等时，中间输出为零或接近零，桥路处于平衡状态。</p>
-                <p>它特别适合应变片这类小电阻变化。单个应变片的电阻变化可能只有千分之一甚至更小，直接测很容易被电源波动和噪声淹没。桥路把一个臂或多个臂的电阻变化转换成差分电压，并能抵消一部分共模干扰。</p>
-                <p>图中公式表达的是两边分压之差。只要其中一个电阻因应变、温度或其他变量改变，两个分压比就不再相等，输出电压出现变化。半桥和全桥设计还能提高灵敏度并补偿温度，这也是应变测量中桥路几乎必不可少的原因。</p>
               </div>
             </div>
           </article>
@@ -1290,8 +1265,8 @@
       </section>
 
       <section id="biomarker" class="section">
-        <h2>3. 生物标志物与浓度直觉</h2>
-        <p class="lead">生物标志物是能被测量、并指示正常生物过程、病理过程或治疗响应的特征。传感课程关心的不只是“能不能检测”，还要知道标志物在哪个尺度、什么浓度、是否有干扰。</p>
+        <h2>3. 生物标志物：先明确“测到的特征代表什么”</h2>
+        <p class="lead">新版 PPT 在这一页强调 biomarker 的定义和类型。生物标志物是能被测量、并指示正常生物过程、病理过程、暴露响应或治疗响应的特征。传感课程关心的不只是“能不能检测”，还要说明被测特征对应的是分子、组织、影像还是生理功能。</p>
 
         <div class="grid three">
           <div class="card"><h3>Molecular</h3><p>分子标志物，如血糖、蛋白、核酸、代谢物。传感器常直接识别分子结构或反应产物。</p></div>
@@ -1299,15 +1274,9 @@
           <div class="card"><h3>Physiologic</h3><p>生理标志物，如血压、心率、体温。常与压力、位移、光学或电生理传感器相关。</p></div>
         </div>
 
-        <h3>3.1 一个分子在细菌体积里是什么浓度</h3>
-        <p>PPT 用这个问题建立数量级直觉：细菌体积约 \(1\ \mu m^3=1\ fL=10^{-15}\ L\)。如果一个这样的体积里只有 1 个分子，摩尔浓度为：</p>
-        <div class="math">\[
-          c=\frac{1\ \text{molecule}}{1\ fL}\times
-          \frac{1\ \text{mol}}{6\times10^{23}\ \text{molecules}}\times
-          \frac{1\ fL}{10^{-15}\ L}
-          \approx 1.6\times10^{-9}\ M=1.6\ nM
-        \]</div>
-        <p>因此经验规则是：<strong>一个细菌体积中的一个分子约等于 nM 量级</strong>。这能帮助你判断检测限是否足够。例如某传感器 LOD 为 100 nM，它对单细胞内单分子事件通常不够敏感；如果 LOD 到 pM 或 fM，才有机会观察稀有分子。</p>
+        <h3>3.1 为什么分类很重要</h3>
+        <p>同样叫 biomarker，检测链路可能完全不同。Molecular biomarker 往往需要化学或生物识别元件，例如酶、抗体、aptamer 或核酸探针；radiographic biomarker 依赖成像和图像定量；physiologic biomarker 常由压力、位移、光学或电生理传感器获得。先判断 biomarker 类型，才能继续选择合适的 transducer、校准方式和临床解释方式。</p>
+        <p>答题时不要只写“biomarker 是疾病标志物”。更完整的说法是：它必须可测量，并且这个可测特征要能指示某种生物状态或干预响应。血糖、肿瘤大小、血压分别落在不同类型中，所以后续课程才会同时出现电化学、光学、免疫、核酸和物理传感器。</p>
       </section>
 
       <section id="electrochem" class="section">
@@ -1362,8 +1331,8 @@
       </section>
 
       <section id="spectroscopy" class="section">
-        <h2>5. 分子光谱与近红外荧光</h2>
-        <p class="lead">光谱传感的共同思想是：分子和光相互作用会改变光的强度、波长、相位或时间特性。不同光谱方法对应不同能级或分子运动。</p>
+        <h2>5. 分子光谱、气味传感与近红外荧光</h2>
+        <p class="lead">新版 PPT 在光谱总览后加入了气味/嗅觉受体图。光谱传感的共同思想是分子和光相互作用会改变光的强度、波长、相位或时间特性；气味传感则强调复杂分子混合物如何通过一组非完全特异的受体形成可识别模式。</p>
 
         <div class="table-wrap">
           <table>
@@ -1383,7 +1352,11 @@
           <div><strong>常见错误：</strong>把 \(I\) 和 \(I_0\) 颠倒。吸光度定义为 \(A=\log_{10}(I_0/I)\)。样品吸收越强，透过光 \(I\) 越小，\(A\) 越大。</div>
         </div>
 
-        <h3>5.2 为什么 650-950 nm 是组织光学窗口</h3>
+        <h3>5.2 气味传感：单个受体不够，关键是响应模式</h3>
+        <p>新版第 13 页左侧用嗅觉系统说明气味识别的生物原型：odorant 分子进入鼻腔后，与 olfactory receptor cells 上的受体结合，受体细胞产生电信号，信号在 glomeruli 中汇聚，再传到更高级脑区。这里的重点不是某一个受体只识别某一种气味，而是许多受体对许多 odorants 形成组合响应。</p>
+        <p>右侧的 odorant-receptor 矩阵可以看作传感器阵列：行是不同气味分子，列是不同 receptor，粉色格子表示某个受体对某个 odorant 有响应。一个 odorant 往往激活多个 receptor，一个 receptor 也可能响应多个 odorants。最终可区分的是整行响应图案，而不是单个格子。这就是电子鼻、气味传感和复杂样品模式识别的核心思路：用阵列产生指纹，再用统计或机器学习方法分类。</p>
+
+        <h3>5.3 为什么 650-950 nm 是组织光学窗口</h3>
         <p>PPT 的关键结论是：可见光尤其短波段被 hemoglobin 强吸收；当波长超过 650 nm，血红蛋白吸收显著降低；但超过 950 nm 后，水吸收明显增加。因此 650-950 nm 之间吸收较小，光能在组织中传播更深，适合近红外荧光成像和体内检测。</p>
         <div class="table-wrap">
           <table>
@@ -1434,7 +1407,7 @@
       </section>
 
       <section id="nucleic" class="section">
-        <h2>7. 核酸检测：Aptamer、PCR 与 Covid-19 检测策略</h2>
+        <h2>7. 核酸检测：Aptamer 与 PCR 荧光探针</h2>
         <p class="lead">核酸检测把“序列互补”和“扩增”作为核心放大机制。PPT 同时把 aptamer 放在这里，因为 aptamer 本身是可折叠的核酸识别分子，能像抗体一样结合目标。</p>
 
         <div class="grid two">
@@ -1448,24 +1421,15 @@
           </div>
         </div>
 
-        <h3>7.1 Covid-19 三类检测回答的问题不同</h3>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>检测对象</th><th>检测材料</th><th>代表方法</th><th>回答的问题</th><th>主要限制</th></tr></thead>
-            <tbody>
-              <tr><td>病毒 RNA</td><td>遗传物质</td><td>RT-PCR、等温扩增</td><td>样品中是否有病毒核酸。</td><td>采样、提取、污染控制和扩增抑制。</td></tr>
-              <tr><td>完整病毒/抗原</td><td>核衣壳蛋白、刺突蛋白等</td><td>抗原快检、免疫层析</td><td>是否存在较多病毒蛋白。</td><td>灵敏度通常低于核酸扩增。</td></tr>
-              <tr><td>抗体</td><td>宿主免疫反应</td><td>血清学检测</td><td>是否曾感染或产生免疫应答。</td><td>不能直接等同当前感染；有时间窗口。</td></tr>
-            </tbody>
-          </table>
-        </div>
+        <h3>7.1 这页的共同逻辑：识别事件必须被转成可读信号</h3>
+        <p>Aptamer 的识别来自折叠后的三维结构，PCR probe 的识别来自序列互补和扩增过程中的荧光变化。二者都不是“看见分子本身”，而是把结合、杂交、水解或构象变化转成光学、电化学或其他可读信号。新版 PPT 不再展开病毒诊断路线图后，这一节的重点就更集中：核酸既可以作为被检测对象，也可以作为识别元件和信号转换元件。</p>
       </section>
 
       <section id="physical" class="section">
         <h2>8. 物理传感器与 MEMS：把力、位移、压力、磁场转成电信号</h2>
-        <p class="lead">物理传感器部分的学习重点是“输入变量改变了哪个电学量”。只要能说清电阻、电容、电感、电压、频率或相位如何随输入变化，就抓住了主线。</p>
+        <p class="lead">新版 PPT 的物理传感器复习页聚焦电位器、应变片、电容传感，后续再接压电、量热、光纤、Hall 和 MEMS。学习重点是“输入变量改变了哪个可读物理量”。只要能说清电阻、电容、电压、频率、相位或磁场如何随输入变化，就抓住了主线。</p>
 
-        <h3>8.1 电阻式：电位器、应变片与 Wheatstone bridge</h3>
+        <h3>8.1 电阻式：电位器与应变片</h3>
         <div class="grid two">
           <div class="card">
             <h3>电位器位移传感器</h3>
@@ -1476,23 +1440,13 @@
             <p>拉伸使导体长度增加、截面积减小，电阻通常增大；压缩时电阻减小。应变片对轴向应变敏感，对横向力可能不敏感，因此安装方向很关键。</p>
           </div>
         </div>
-        <p>Wheatstone bridge 用于把很小的电阻变化变成差分电压：</p>
-        <div class="math">\[
-          V_{TH}=V\left(\frac{R_1}{R_1+R_3}-\frac{R_2}{R_2+R_4}\right)
-        \]</div>
-        <p>桥路平衡时输出为零；某一臂电阻因应变变化，桥路失衡，输出电压就能反映应变大小。</p>
+        <p>新版复习页没有展开桥路公式，因此这里按 PPT 主图掌握到“位移改变电阻分压，应变改变导体电阻”即可。实际工程中小电阻变化常需要差分读出和温度补偿，但答这份 PPT 的核心应落在输入-电阻-电压/电信号的因果链上。</p>
 
-        <h3>8.2 电容式与电感式</h3>
-        <div class="grid two">
-          <div class="card">
-            <h3>电容传感</h3>
-            <div class="math">\[C\approx \varepsilon_0\varepsilon_r\frac{ab}{d}\]</div>
-            <p>压力可改变板间距 \(d\)，液位可改变介电常数 \(\varepsilon_r\)，触摸可引入手指电容，人体穿戴传感可利用身体与电极间耦合电容。</p>
-          </div>
-          <div class="card">
-            <h3>电感传感</h3>
-            <p>线圈电流变化产生磁场，磁场变化又产生感应电压。位移、金属接近、磁芯位置变化都可改变电感或耦合。它适合非接触测量，但对电磁干扰和环境金属敏感。</p>
-          </div>
+        <h3>8.2 电容式：距离、液位和介电性质</h3>
+        <div class="card">
+          <h3>电容传感</h3>
+          <div class="math">\[C\approx \varepsilon_0\varepsilon_r\frac{ab}{d}\]</div>
+          <p>压力或触摸可以改变有效板间距 \(d\) 和电场分布，液位可以改变介电常数 \(\varepsilon_r\)，材料分析可以把待测材料放入平行板之间，通过电容变化推断介电性质。新版第 19 页只保留电容传感的三类示例，所以答题时重点说明到底是面积、间距还是介电常数发生了变化。</p>
         </div>
 
         <h3>8.3 压电传感器</h3>
@@ -1593,23 +1547,27 @@
           <div>control line 证明样品流动、标记试剂释放和反应体系基本有效。若 control line 不出现，即使 test line 出现，也应判为无效测试。</div>
         </details>
         <details class="quiz">
-          <summary>题 11：RNA 检测、抗原检测、抗体检测分别说明什么？</summary>
-          <div>RNA 检测说明样品中存在病毒遗传物质；抗原检测说明存在病毒蛋白或较完整病毒颗粒；抗体检测说明宿主产生过免疫反应，不能直接等同当前感染。</div>
+          <summary>题 11：PCR 荧光探针为什么能提高检测特异性？</summary>
+          <div>PCR 扩增负责把目标序列数量放大，荧光探针负责确认扩增产物是否包含目标序列。TaqMan 探针只有在正确杂交并被聚合酶水解后才释放荧光；FRET 探针则要求探针与目标序列形成合适空间距离。这样可以减少非特异扩增或引物二聚体带来的误读。</div>
         </details>
         <details class="quiz">
-          <summary>题 12：电容式压力传感器中压力增大导致间距变小，电容如何变化？</summary>
+          <summary>题 12：为什么气味传感常用阵列而不是单个传感器？</summary>
+          <div>气味样品通常是多分子混合物，单个受体或单个传感材料很难对所有 odorant 完全特异。阵列中每个单元对不同分子有交叉敏感性，多个单元共同形成响应指纹。分类时看的不是某一个通道，而是整组响应模式。</div>
+        </details>
+        <details class="quiz">
+          <summary>题 13：电容式压力传感器中压力增大导致间距变小，电容如何变化？</summary>
           <div>由 \(C=\varepsilon A/d\)，若 \(A\) 和 \(\varepsilon\) 不变，\(d\) 减小会使 \(C\) 增大。</div>
         </details>
         <details class="quiz">
-          <summary>题 13：压电传感器为什么适合动态压力或振动？</summary>
+          <summary>题 14：压电传感器为什么适合动态压力或振动？</summary>
           <div>压电材料在应力变化时产生电荷/电压，动态载荷会持续产生可测信号；静态载荷下电荷可能泄漏，读数易漂移，因此压电传感器尤其适合快速变化、脉动和振动测量。</div>
         </details>
         <details class="quiz">
-          <summary>题 14：Hall sensor 的输入和输出分别是什么？</summary>
+          <summary>题 15：Hall sensor 的输入和输出分别是什么？</summary>
           <div>输入是垂直于电流方向的磁场，输出是横向 Hall voltage。磁场使载流子受洛伦兹力偏转，在横向形成电势差。</div>
         </details>
         <details class="quiz">
-          <summary>题 15：MEMS 的三类主要 transducers 是什么？</summary>
+          <summary>题 16：MEMS 的三类主要 transducers 是什么？</summary>
           <div>PPT 列出三类主要 transducers：capacitive、piezoelectric、thermal；另外还可包括 microfluidic。MEMS 常把微结构、传感器和执行器集成在微尺度芯片上。</div>
         </details>
       </section>
@@ -1623,19 +1581,19 @@
             <label class="check-item"><input id="c2" data-check type="checkbox">我能区分 accuracy、precision、sensitivity、specificity、LOD、LOQ、SNR。</label>
             <label class="check-item"><input id="c3" data-check type="checkbox">我能根据混淆矩阵计算 sensitivity 和 specificity。</label>
             <label class="check-item"><input id="c4" data-check type="checkbox">我能解释一阶时间常数和二阶响应中的 rise time、settling time、overshoot。</label>
-            <label class="check-item"><input id="c5" data-check type="checkbox">我能说明一个细菌体积中一个分子约为 nM 量级。</label>
+            <label class="check-item"><input id="c5" data-check type="checkbox">我能区分 molecular、histologic、radiographic、physiologic biomarker。</label>
             <label class="check-item"><input id="c6" data-check type="checkbox">我能解释 Michaelis-Menten 方程和葡萄糖安培型传感器。</label>
             <label class="check-item"><input id="c7" data-check type="checkbox">我能用 Beer-Lambert Law 做浓度计算，并说明 NIR 组织窗口。</label>
             <label class="check-item"><input id="c8" data-check type="checkbox">我能比较 SPR、QCM-D、ELISA 和 lateral flow assay。</label>
-            <label class="check-item"><input id="c9" data-check type="checkbox">我能区分 RNA、抗原、抗体三类 Covid-19 检测。</label>
-            <label class="check-item"><input id="c10" data-check type="checkbox">我能解释电阻、电容、电感、压电、光纤、霍尔、MEMS 传感原理。</label>
+            <label class="check-item"><input id="c9" data-check type="checkbox">我能解释 aptamer 折叠识别和 PCR 荧光探针的信号转换。</label>
+            <label class="check-item"><input id="c10" data-check type="checkbox">我能解释电阻、电容、压电、量热、光纤、霍尔、MEMS 传感原理。</label>
             <label class="check-item"><input id="c11" data-check type="checkbox">我能按风险解释医疗器械 Class I、II、III。</label>
           </div>
         </div>
       </section>
 
       <footer class="foot">
-        <p>本讲义基于当前目录的课程 PDF 内容重写，并借鉴 <a href="https://medicalmmz.wormforce.net/">medicalmmz.wormforce.net</a> 的学习站组织方式；参考仓库：<a href="https://github.com/7b7b7b/medicalmmz">github.com/7b7b7b/medicalmmz</a>。页面内容为本地学习讲义，未复制原站讲义正文。</p>
+        <p>本讲义基于当前目录的 <code>short review(3).pdf</code> 内容重写，并借鉴 <a href="https://medicalmmz.wormforce.net/">medicalmmz.wormforce.net</a> 的学习站组织方式；参考仓库：<a href="https://github.com/7b7b7b/medicalmmz">github.com/7b7b7b/medicalmmz</a>。页面内容为本地学习讲义，未复制原站讲义正文。</p>
       </footer>
     </main>
   </div>

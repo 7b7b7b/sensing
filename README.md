@@ -1,6 +1,6 @@
 # Intelligent Sensing Technology Review
 
-Static review notes for the SUSTech Intelligent Sensing Technology short review PPT.
+Static review notes for the SUSTech Intelligent Sensing Technology `short review(3).pdf` PPT.
 
 The site is published through GitHub Pages at:
 
@@ -9,5 +9,5 @@ https://sensing.wormforce.net/
 ## Files
 
 - `index.html`: standalone lecture-note page with formulas, examples, quiz items, and a progress checklist.
-- `assets/figures/`: cropped figures from the review PPT with figure-by-figure explanations in `index.html`.
+- `assets/figures/`: cropped figures from `short review(3).pdf` with figure-by-figure explanations in `index.html`.
 - `CNAME`: custom domain configuration for GitHub Pages.
