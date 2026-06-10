@@ -3,37 +3,42 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Intelligent Sensing Technology 考前提炼与模拟题</title>
+  <title>智能传感技术复习讲义 | Short review 扩展版</title>
   <script>
     window.MathJax = {
-      tex: { inlineMath: [["\(", "\)"], ["$", "$"]], displayMath: [["\[", "\]"], ["$$", "$$"]] },
+      tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]], displayMath: [["\\[", "\\]"], ["$$", "$$"]] },
       svg: { fontCache: "global" }
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
   <style>
     :root {
-      --bg: #f6f8f7;
-      --paper: #fffefb;
+      --paper: #fffdf8;
       --ink: #17201f;
-      --muted: #5f6b68;
-      --line: #d7dedb;
-      --soft: #eef4f1;
+      --muted: #5d6967;
+      --line: #d8dfdc;
+      --soft: #f2f6f3;
       --teal: #006a6a;
-      --blue: #315f9d;
-      --amber: #9a5b00;
-      --green: #2d6d45;
-      --red: #a13a30;
-      --shadow: 0 10px 24px rgba(23, 32, 31, 0.07);
+      --teal-soft: #e5f4f1;
+      --blue: #2f5f9e;
+      --blue-soft: #e9f0ff;
+      --amber: #a56100;
+      --amber-soft: #fff1d9;
+      --green: #2d6f43;
+      --green-soft: #eaf5ec;
+      --red: #a33a30;
+      --red-soft: #ffe9e6;
+      --shadow: 0 10px 26px rgba(23, 32, 31, 0.08);
       --radius: 8px;
     }
+
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background: var(--bg);
+      background: #f8faf7;
       color: var(--ink);
-      font: 17px/1.78 "Inter", "Segoe UI", "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      font: 16px/1.72 "Inter", "Segoe UI", "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
       letter-spacing: 0;
       -webkit-user-select: none;
       -moz-user-select: none;
@@ -45,7 +50,7 @@
     a:hover { text-decoration: underline; }
     .page {
       display: grid;
-      grid-template-columns: 296px minmax(0, 1fr);
+      grid-template-columns: 300px minmax(0, 1fr);
       min-height: 100vh;
     }
     .sidebar {
@@ -53,1694 +58,1626 @@
       top: 0;
       height: 100vh;
       overflow-y: auto;
-      padding: 24px 16px;
+      padding: 22px 16px;
       border-right: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.93);
     }
     .brand {
       display: grid;
       grid-template-columns: 44px minmax(0, 1fr);
       gap: 12px;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
+      color: var(--ink);
+      text-decoration: none;
     }
     .brand-mark {
       display: grid;
       width: 44px;
       height: 44px;
       place-items: center;
-      border-radius: var(--radius);
+      border-radius: 8px;
       background: var(--teal);
       color: #fff;
       font-weight: 900;
     }
-    .brand-title { display: block; font-weight: 900; line-height: 1.25; }
+    .brand-title { display: block; font-weight: 900; line-height: 1.2; }
     .brand-subtitle { display: block; color: var(--muted); font-size: 12px; }
-    .toc { display: grid; gap: 3px; }
-    .toc a {
-      display: block;
-      border-radius: var(--radius);
-      color: var(--ink);
-      line-height: 1.35;
-      overflow-wrap: anywhere;
-    }
-    .toc a:hover { background: var(--soft); text-decoration: none; }
-    .toc-l1 { padding: 9px 10px; font-weight: 900; }
-    .toc-l2 { padding: 8px 10px 8px 18px; font-size: 14px; font-weight: 800; }
-    .toc-l3 { padding: 6px 10px 6px 30px; font-size: 13px; color: var(--muted); }
-    main { min-width: 0; }
-    .hero {
-      border-bottom: 1px solid var(--line);
-      background: linear-gradient(135deg, #fffefb 0%, #eef4f1 52%, #edf2ff 100%);
-    }
-    .hero-inner {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 44px 30px 36px;
-    }
-    .eyebrow {
-      margin: 0 0 10px;
-      color: var(--teal);
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: 0;
-      text-transform: uppercase;
-    }
-    h1 {
-      margin: 0;
-      max-width: 920px;
-      font-size: clamp(30px, 4vw, 52px);
-      line-height: 1.12;
-      letter-spacing: 0;
-    }
-    .intro {
-      max-width: 900px;
-      margin: 16px 0 0;
-      color: #34403d;
-      font-size: 18px;
-    }
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      max-width: 920px;
-      margin-top: 24px;
-    }
-    .stat {
-      min-height: 82px;
-      padding: 14px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.72);
-    }
-    .stat strong { display: block; font-size: 26px; line-height: 1.1; }
-    .stat span { display: block; margin-top: 5px; color: var(--muted); font-size: 13px; }
-    .content {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 34px 30px 72px;
-    }
-    article {
-      padding: 34px 38px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--paper);
-      box-shadow: var(--shadow);
-    }
-    article > h1 { display: none; }
-    h2 {
-      margin: 42px 0 18px;
-      padding-top: 10px;
-      border-top: 3px solid var(--teal);
-      font-size: 28px;
-      line-height: 1.28;
-      letter-spacing: 0;
-    }
-    article > h2:first-of-type { margin-top: 0; }
-    h3 {
-      margin: 28px 0 12px;
-      padding: 12px 14px;
-      border: 1px solid var(--line);
-      border-left: 5px solid var(--blue);
-      border-radius: var(--radius);
-      background: #f8fbff;
-      font-size: 20px;
-      line-height: 1.35;
-      letter-spacing: 0;
-    }
-    p { margin: 0 0 15px; }
-    ul, ol { padding-left: 1.45em; margin: 0 0 18px; }
-    li { margin: 6px 0; }
-    strong { font-weight: 900; }
-    code {
-      padding: 2px 5px;
-      border-radius: 5px;
-      background: #eef4f1;
-      color: #123937;
-      font-family: "Cascadia Mono", "Consolas", monospace;
-      font-size: 0.92em;
-    }
-    .MathJax, mjx-container { font-size: 110% !important; }
-    .quick-answer {
-      padding: 14px 16px;
-      border: 1px solid #e3c991;
-      border-left: 5px solid var(--amber);
-      border-radius: var(--radius);
-      background: #fff8e8;
-      color: #3d2b10;
-      font-weight: 800;
-    }
-    .answer-guide {
-      display: grid;
-      gap: 12px;
-      margin: 18px 0 28px;
-    }
-    .answer-card {
-      padding: 16px 18px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: #fff;
-    }
-    .answer-card-header {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .answer-index {
-      display: inline-grid;
-      min-width: 44px;
-      min-height: 32px;
-      place-items: center;
-      border-radius: var(--radius);
-      background: var(--teal);
-      color: #fff;
-      font-weight: 900;
-    }
-    .answer-value {
-      display: inline-block;
-      padding: 5px 10px;
-      border-radius: var(--radius);
-      background: #e8f3ff;
-      color: #173d68;
-      font-weight: 900;
-    }
-    .answer-label {
-      margin: 10px 0 4px;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 900;
-    }
-    .answer-original {
-      margin: 0;
-      white-space: pre-line;
-    }
-    .answer-explanation {
-      margin: 0;
-      color: #2b3634;
-    }
-    .bilingual-row {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 14px;
-      align-items: stretch;
-      width: 100%;
-    }
-    .bilingual-heading {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 14px;
-      align-items: stretch;
-    }
-    .zh-zone,
-    .en-zone {
-      display: block;
-      min-width: 0;
-      padding: 12px 14px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: #fff;
-      white-space: pre-line;
-    }
-    .zh-zone::before,
-    .en-zone::before {
-      display: block;
-      margin-bottom: 6px;
+    .nav-label {
+      margin: 18px 0 8px;
       color: var(--muted);
       font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 38px;
+      padding: 8px 9px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.25;
+      text-decoration: none;
+    }
+    .nav-link:hover { border-color: rgba(0, 106, 106, 0.25); background: var(--teal-soft); text-decoration: none; }
+    .nav-number {
+      display: grid;
+      flex: 0 0 26px;
+      height: 26px;
+      place-items: center;
+      border-radius: 7px;
+      background: var(--soft);
+      color: var(--teal);
+      font-size: 12px;
       font-weight: 900;
-      line-height: 1.2;
     }
-    .zh-zone::before { content: "中文"; }
-    .en-zone::before { content: "English"; }
-    .zh-zone p,
-    .en-zone p {
-      margin-bottom: 0;
-    }
-    .en-zone {
-      background: #f8fbff;
-      color: #304542;
-    }
-    .en-line {
-      display: block;
-      margin-top: 6px;
-      color: #52625f;
-      font-size: 0.95em;
-      line-height: 1.55;
-      white-space: pre-line;
-    }
-    .en-title {
-      display: block;
-      margin-top: 5px;
-      color: #52625f;
-      font-size: 0.86em;
-      font-weight: 700;
-      line-height: 1.45;
-    }
-    .en-options {
-      display: block;
-      margin-top: 8px;
-      padding-top: 8px;
-      border-top: 1px dashed #cbd6d2;
-      color: #52625f;
-      font-size: 0.94em;
-      line-height: 1.6;
-      white-space: pre-line;
-    }
-    .english-question-section {
-      margin: 22px 0 34px;
-      padding: 20px;
-      border: 1px solid #cfdbe6;
-      border-left: 5px solid var(--blue);
+    .side-note {
+      margin-top: 20px;
+      padding: 12px;
+      border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: #f8fbff;
+      background: #fbfcfa;
+      color: var(--muted);
+      font-size: 13px;
     }
-    .english-question-section h3 {
-      margin-top: 0;
-      background: #fff;
+    main {
+      width: min(1160px, 100%);
+      justify-self: center;
+      padding: 28px clamp(18px, 4vw, 54px) 60px;
     }
-    .english-question-section p {
-      color: #40514e;
-    }
-    .english-question-section li {
-      white-space: pre-line;
-    }
-    .english-question-section strong {
-      display: block;
-      margin-bottom: 6px;
-    }
-    .practice-panel {
-      margin: 18px 0 24px;
-      padding: 16px;
-      border: 1px solid #bdd4d2;
-      border-left: 5px solid var(--teal);
-      border-radius: var(--radius);
-      background: #f0f8f6;
-    }
-    .practice-actions {
+    .mobile-nav { display: none; margin-bottom: 18px; }
+    .mobile-nav select { width: 100%; padding: 10px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+    .top-strip {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 13px;
     }
-    .practice-button {
-      min-height: 40px;
-      padding: 9px 14px;
-      border: 1px solid #0c716e;
-      border-radius: var(--radius);
-      background: var(--teal);
-      color: #fff;
-      font: inherit;
-      font-weight: 900;
-      cursor: pointer;
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+      gap: 24px;
+      align-items: stretch;
+      margin-bottom: 28px;
+      padding: clamp(22px, 3.2vw, 38px);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(135deg, #ffffff 0%, #f3fbf8 58%, #fff7ea 100%);
+      box-shadow: var(--shadow);
     }
-    .practice-button.secondary {
-      background: #fff;
-      color: var(--teal);
-    }
-    .practice-button:hover {
-      filter: brightness(0.96);
-    }
-    .practice-result {
-      min-height: 28px;
-      margin-top: 12px;
-      color: #243331;
-      white-space: pre-line;
-    }
-    .choice-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 12px;
-    }
-    .choice-pill {
+    .eyebrow { color: var(--teal); font-size: 13px; font-weight: 900; text-transform: uppercase; }
+    h1, h2, h3, h4 { letter-spacing: 0; line-height: 1.25; }
+    h1 { margin: 8px 0 12px; font-size: clamp(32px, 4.1vw, 54px); }
+    h2 { margin: 0 0 14px; font-size: clamp(24px, 2.8vw, 34px); }
+    h3 { margin: 20px 0 8px; font-size: 21px; }
+    h4 { margin: 18px 0 8px; font-size: 18px; }
+    .lead { max-width: 900px; color: #40504f; font-size: 17px; }
+    .hero p { max-width: 780px; color: #40504f; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .tag {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      min-height: 36px;
-      padding: 7px 11px;
-      border: 1px solid #c8d6d2;
-      border-radius: var(--radius);
+      min-height: 26px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--teal-soft);
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .tag.blue { background: var(--blue-soft); color: var(--blue); }
+    .tag.amber { background: var(--amber-soft); color: var(--amber); }
+    .tag.green { background: var(--green-soft); color: var(--green); }
+    .visual {
+      display: grid;
+      align-content: center;
+      gap: 10px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.68);
+    }
+    .diagram { display: block; width: 100%; height: auto; }
+    .caption { color: var(--muted); font-size: 13px; line-height: 1.5; }
+    .section { margin: 36px 0; scroll-margin-top: 24px; }
+    .grid { display: grid; gap: 14px; }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .card, .worked, .quiz, .callout {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: 0 8px 20px rgba(23, 32, 31, 0.05);
+    }
+    .card { padding: 18px; }
+    .card h3, .card h4 { margin-top: 0; }
+    .callout {
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      margin: 16px 0;
+      padding: 14px;
       background: #fff;
-      color: #263432;
-      font-weight: 800;
+    }
+    .callout .mark {
+      display: grid;
+      width: 36px;
+      height: 36px;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--teal);
+      color: #fff;
+      font-weight: 900;
+    }
+    .callout.warn { background: var(--amber-soft); border-color: #f0d09c; }
+    .callout.warn .mark { background: var(--amber); }
+    .callout.red { background: var(--red-soft); border-color: #f3c2bd; }
+    .callout.red .mark { background: var(--red); }
+    .math {
+      overflow-x: auto;
+      margin: 14px 0;
+      padding: 14px 16px;
+      border-left: 4px solid var(--teal);
+      border-radius: 8px;
+      background: #f7fbf9;
+    }
+    .table-wrap { overflow-x: auto; margin: 14px 0; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+    table { width: 100%; border-collapse: collapse; min-width: 720px; }
+    th, td { padding: 11px 12px; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+    th { background: var(--soft); font-weight: 900; }
+    tr:last-child td { border-bottom: 0; }
+    code {
+      padding: 0.12em 0.35em;
+      border-radius: 6px;
+      background: #edf1ef;
+      font-family: "Cascadia Mono", "Consolas", monospace;
+      font-size: 0.95em;
+    }
+    .worked { margin: 18px 0; overflow: hidden; }
+    .worked-head {
+      display: flex;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .worked-head h3 { margin: 0; font-size: 19px; }
+    .worked-body { padding: 16px; }
+    .answer-steps { margin: 12px 0; padding-left: 22px; }
+    .answer-steps li { margin: 8px 0; }
+    .quiz { margin: 12px 0; padding: 0; overflow: hidden; }
+    .quiz summary {
       cursor: pointer;
-      user-select: none;
+      padding: 13px 16px;
+      background: #fff;
+      font-weight: 900;
     }
-    .choice-pill input {
-      width: 16px;
-      height: 16px;
-      margin: 0;
-      accent-color: var(--teal);
+    .quiz div { padding: 0 16px 16px; color: #40504f; }
+    .formula-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
     }
-    .practice-correct {
-      border-left: 5px solid var(--green);
-      background: #f4fbf5;
+    .formula-item {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
     }
-    .practice-incorrect {
-      border-left: 5px solid var(--red);
-      background: #fff6f5;
+    .formula-item strong { display: block; margin-bottom: 8px; }
+    .figure-gallery {
+      display: grid;
+      gap: 16px;
     }
-    .practice-unanswered {
-      border-left: 5px solid var(--amber);
-      background: #fffaf0;
+    .figure-card {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.92fr) minmax(0, 1.08fr);
+      gap: 16px;
+      align-items: start;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 8px 20px rgba(23, 32, 31, 0.05);
     }
-    .question-feedback {
-      margin-top: 9px;
-      color: #35423f;
-      font-weight: 800;
+    .figure-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .figure-card h3 {
+      margin-top: 0;
+    }
+    .figure-card ul {
+      margin: 8px 0 0;
+      padding-left: 20px;
+    }
+    .figure-card li {
+      margin: 5px 0;
+    }
+    .figure-explain {
+      color: #2e3a38;
+    }
+    .figure-explain p {
+      margin: 0 0 12px;
+    }
+    .figure-explain p:last-child {
+      margin-bottom: 0;
+    }
+    .checklist { display: grid; gap: 9px; margin-top: 14px; }
+    .check-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .check-item input { margin-top: 6px; }
+    .progress-bar {
+      height: 10px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e5ebe8;
+    }
+    .progress-bar span {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, var(--teal), var(--blue));
+      transition: width 0.2s ease;
+    }
+    .foot {
+      margin-top: 42px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
     }
     @media (max-width: 980px) {
       .page { display: block; }
-      .sidebar { position: relative; height: auto; max-height: none; border-right: 0; border-bottom: 1px solid var(--line); }
-      .toc { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .toc-l3 { display: none; }
-      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      article { padding: 26px 22px; }
-      .bilingual-row,
-      .bilingual-heading {
-        grid-template-columns: 1fr;
-      }
+      .sidebar { display: none; }
+      main { padding: 18px 16px 48px; }
+      .mobile-nav { display: block; }
+      .hero, .grid.two, .grid.three, .formula-list { grid-template-columns: 1fr; }
+      .figure-card { grid-template-columns: 1fr; }
+      table { min-width: 680px; }
     }
-    @media (max-width: 620px) {
-      body { font-size: 16px; }
-      .hero-inner, .content { padding-left: 16px; padding-right: 16px; }
-      .toc { grid-template-columns: 1fr; }
-      .stats { grid-template-columns: 1fr; }
-      h2 { font-size: 24px; }
-      h3 { font-size: 18px; }
+    .page-switch {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 1000;
+      display: inline-flex;
+      align-items: center;
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 1px solid rgba(0, 106, 106, 0.28);
+      border-radius: 8px;
+      background: #ffffff;
+      color: var(--teal);
+      box-shadow: var(--shadow);
+      font-weight: 900;
+      text-decoration: none;
     }
+    .page-switch:hover { background: var(--teal-soft); text-decoration: none; }
     @media print {
-      body::before {
-        content: "本页面已禁用打印。";
-        display: block;
-        padding: 40px;
-        font: 20px/1.6 "Microsoft YaHei", sans-serif;
+      * {
+        visibility: hidden !important;
+        box-shadow: none !important;
       }
-      .page { display: none !important; }
+      html, body {
+        margin: 0 !important;
+        background: #fff !important;
+      }
+      body::before {
+        content: "Printing is disabled for this page.";
+        display: block;
+        visibility: visible !important;
+        padding: 40px;
+        color: #000;
+        font: 18px/1.5 Arial, sans-serif;
+      }
     }
   </style>
 </head>
 <body>
+  <a class="page-switch" href="exam.html">Exam Drill</a>
   <div class="page">
     <aside class="sidebar">
-      <div class="brand">
-        <div class="brand-mark">IS</div>
-        <div>
-          <span class="brand-title">智能传感考前提炼</span>
-          <span class="brand-subtitle">从老师讲解提炼的题库版</span>
-        </div>
+      <a class="brand" href="#top">
+        <span class="brand-mark">IS</span>
+        <span>
+          <span class="brand-title">智能传感技术复习讲义</span>
+          <span class="brand-subtitle">Short review 扩展学习版</span>
+        </span>
+      </a>
+      <p class="nav-label">讲义目录</p>
+      <a class="nav-link" href="#map"><span class="nav-number">0</span>课程地图</a>
+      <a class="nav-link" href="#formula"><span class="nav-number">F</span>公式速查</a>
+      <a class="nav-link" href="#figures"><span class="nav-number">图</span>逐图精讲</a>
+      <a class="nav-link" href="#transfer"><span class="nav-number">1</span>传递函数与校准</a>
+      <a class="nav-link" href="#characteristics"><span class="nav-number">2</span>传感器特性</a>
+      <a class="nav-link" href="#biomarker"><span class="nav-number">3</span>生物标志物</a>
+      <a class="nav-link" href="#electrochem"><span class="nav-number">4</span>酶与电化学传感</a>
+      <a class="nav-link" href="#spectroscopy"><span class="nav-number">5</span>光谱、气味与 NIR</a>
+      <a class="nav-link" href="#immuno"><span class="nav-number">6</span>免疫检测与纳米材料</a>
+      <a class="nav-link" href="#nucleic"><span class="nav-number">7</span>核酸检测</a>
+      <a class="nav-link" href="#physical"><span class="nav-number">8</span>物理传感器与 MEMS</a>
+      <a class="nav-link" href="#device"><span class="nav-number">9</span>医疗器械分类</a>
+      <a class="nav-link" href="#bank"><span class="nav-number">Q</span>综合题库</a>
+      <a class="nav-link" href="#check"><span class="nav-number">✓</span>掌握度清单</a>
+      <div class="side-note">
+        <strong>使用方法</strong><br>
+        先看每章开头的“这页在解决什么问题”，再看公式、表格和例题。能把公式的输入、输出、单位和限制条件说清楚，才算真正掌握。
       </div>
-      <nav class="toc" aria-label="目录">
-        <a class="toc-l1" href="#section-1">Intelligent Sensing Technology 考前提炼与模拟题</a>
-<a class="toc-l2" href="#section-2">1. 考试形式与复习策略</a>
-<a class="toc-l2" href="#section-3">2. 课程主线提炼</a>
-<a class="toc-l3" href="#section-4">2.1 传感器的总框架</a>
-<a class="toc-l3" href="#section-5">2.2 静态特性</a>
-<a class="toc-l3" href="#section-6">2.3 医学检测中的 sensitivity 和 specificity</a>
-<a class="toc-l3" href="#section-7">2.4 动态特性</a>
-<a class="toc-l3" href="#section-8">2.5 Biomarker</a>
-<a class="toc-l3" href="#section-9">2.6 酶传感与小分子检测</a>
-<a class="toc-l3" href="#section-10">2.7 光学检测</a>
-<a class="toc-l3" href="#section-11">2.8 气味传感与 VOC</a>
-<a class="toc-l3" href="#section-12">2.9 抗体、ELISA、SPR、QCM-D 和 lateral flow</a>
-<a class="toc-l3" href="#section-13">2.10 Aptamer、PCR、FRET 和 NGS</a>
-<a class="toc-l3" href="#section-14">2.11 物理传感器</a>
-<a class="toc-l3" href="#section-15">2.12 医疗器械转化</a>
-<a class="toc-l2" href="#section-16">3. 判断题模拟题</a>
-<a class="toc-l3" href="#section-17">判断题答案</a>
-<a class="toc-l2" href="#section-18">4. 多选题模拟题</a>
-<a class="toc-l3" href="#section-19">多选题答案</a>
-<a class="toc-l2" href="#section-20">5. 小计算与定量推理题</a>
-<a class="toc-l3" href="#section-21">题 1：Beer-Lambert Law</a>
-<a class="toc-l3" href="#section-22">题 2：Beer-Lambert Law 方向判断</a>
-<a class="toc-l3" href="#section-23">题 3：LOD/LOQ</a>
-<a class="toc-l3" href="#section-24">题 4：LOD 改善</a>
-<a class="toc-l3" href="#section-25">题 5：Sensitivity / Specificity</a>
-<a class="toc-l3" href="#section-26">题 6：假阴性数量</a>
-<a class="toc-l3" href="#section-27">题 7：Michaelis-Menten 半最大速率</a>
-<a class="toc-l3" href="#section-28">题 8：Michaelis-Menten 区域判断</a>
-<a class="toc-l3" href="#section-29">题 9：一阶时间常数</a>
-<a class="toc-l3" href="#section-30">题 10：温度计灵敏度</a>
-<a class="toc-l3" href="#section-31">题 11：电容方向判断</a>
-<a class="toc-l3" href="#section-32">题 12：电容介电常数判断</a>
-<a class="toc-l3" href="#section-33">题 13：抗体亲和力</a>
-<a class="toc-l3" href="#section-34">题 14：Hall sensor 输入输出</a>
-<a class="toc-l3" href="#section-35">题 15：qPCR 荧光信号</a>
-<a class="toc-l2" href="#section-36">6. 问答题模拟题</a>
-<a class="toc-l3" href="#section-37">题 1：解释传递函数在传感器中的意义。</a>
-<a class="toc-l3" href="#section-38">题 2：区分 accuracy 和 precision。</a>
-<a class="toc-l3" href="#section-39">题 3：解释 LOD 和 LOQ 的区别。</a>
-<a class="toc-l3" href="#section-40">题 4：为什么 sensitivity 和 specificity 不等同于阳性预测值？</a>
-<a class="toc-l3" href="#section-41">题 5：用水银温度计说明灵敏度和响应速度的权衡。</a>
-<a class="toc-l3" href="#section-42">题 6：什么是 biomarker？举三类例子。</a>
-<a class="toc-l3" href="#section-43">题 7：解释 Michaelis-Menten 方程对酶传感器的意义。</a>
-<a class="toc-l3" href="#section-44">题 8：解释第一代葡萄糖传感器的工作链路。</a>
-<a class="toc-l3" href="#section-45">题 9：比较 potentiometric、amperometric、conductometric。</a>
-<a class="toc-l3" href="#section-46">题 10：解释 Beer-Lambert Law 的变量和限制。</a>
-<a class="toc-l3" href="#section-47">题 11：为什么近红外适合组织检测？</a>
-<a class="toc-l3" href="#section-48">题 12：解释荧光检测为什么常比吸收检测灵敏。</a>
-<a class="toc-l3" href="#section-49">题 13：解释气味传感为什么常用阵列。</a>
-<a class="toc-l3" href="#section-50">题 14：抗体为什么是蛋白检测的重要工具？</a>
-<a class="toc-l3" href="#section-51">题 15：解释 \(K_D\) 的意义。</a>
-<a class="toc-l3" href="#section-52">题 16：解释 sandwich ELISA 的流程。</a>
-<a class="toc-l3" href="#section-53">题 17：解释 lateral flow assay 中 C 线和 T 线。</a>
-<a class="toc-l3" href="#section-54">题 18：aptamer 和 antibody 有什么相似和不同？</a>
-<a class="toc-l3" href="#section-55">题 19：qPCR 荧光探针为什么能定量？</a>
-<a class="toc-l3" href="#section-56">题 20：应变片如何把力学变化转成电信号？</a>
-<a class="toc-l3" href="#section-57">题 21：电容传感器可测哪些量？为什么？</a>
-<a class="toc-l3" href="#section-58">题 22：压电传感器为什么适合动态信号？</a>
-<a class="toc-l3" href="#section-59">题 23：光纤传感有哪些读出方式？</a>
-<a class="toc-l3" href="#section-60">题 24：Hall sensor 如何用于生物检测？</a>
-<a class="toc-l3" href="#section-61">题 25：MEMS 的意义是什么？</a>
-<a class="toc-l3" href="#section-62">题 26：医疗器械 Class I/II/III 的区别。</a>
-<a class="toc-l3" href="#section-63">题 27：为什么医疗器械转化不能只看技术先进性？</a>
-<a class="toc-l3" href="#section-64">题 28：foreign body reaction 为什么重要？</a>
-<a class="toc-l3" href="#section-65">题 29：如果让你介绍一种传感器，答题结构怎么写？</a>
-<a class="toc-l3" href="#section-66">题 30：为什么说这门课是一个工具箱？</a>
-<a class="toc-l2" href="#section-67">7. 考前最应该会背的简答模板</a>
-<a class="toc-l3" href="#section-68">模板 1：解释某个传感器</a>
-<a class="toc-l3" href="#section-69">模板 2：解释某个检测方法</a>
-<a class="toc-l3" href="#section-70">模板 3：比较两个概念</a>
-<a class="toc-l3" href="#section-71">模板 4：解释一个性能指标</a>
-<a class="toc-l2" href="#section-72">8. 最后复习清单</a>
-      </nav>
     </aside>
-    <main>
+
+    <main id="top">
+      <div class="mobile-nav">
+        <select onchange="if (this.value) location.hash=this.value">
+          <option value="#map">0. 课程地图</option>
+          <option value="#formula">公式速查</option>
+          <option value="#figures">逐图精讲</option>
+          <option value="#transfer">1. 传递函数与校准</option>
+          <option value="#characteristics">2. 传感器特性</option>
+          <option value="#biomarker">3. 生物标志物</option>
+          <option value="#electrochem">4. 酶与电化学传感</option>
+          <option value="#spectroscopy">5. 光谱、气味与 NIR</option>
+          <option value="#immuno">6. 免疫检测与纳米材料</option>
+          <option value="#nucleic">7. 核酸检测</option>
+          <option value="#physical">8. 物理传感器与 MEMS</option>
+          <option value="#device">9. 医疗器械分类</option>
+          <option value="#bank">综合题库</option>
+        </select>
+      </div>
+
+      <div class="top-strip">
+        <span>来源：当前目录 PDF <code>short review(3).pdf</code>，按 medicalmmz 类讲义结构重写。</span>
+      </div>
+
       <section class="hero">
-        <div class="hero-inner">
-          <p class="eyebrow">Exam Drill</p>
-          <h1>Intelligent Sensing Technology 考前提炼与模拟题</h1>
-          <p class="intro">本文档根据 1(1).md 里的考前讲解转写整理。原文是口头说明，转写里有不少错字，本版只保留考试相关信息、课程主线和可操作的复习重点。</p>
-          <div class="stats" aria-label="题量概览">
-            <div class="stat"><strong>48</strong><span>判断题</span></div>
-            <div class="stat"><strong>30</strong><span>多选题</span></div>
-            <div class="stat"><strong>15</strong><span>小计算与定量推理</span></div>
-            <div class="stat"><strong>30</strong><span>问答题</span></div>
+        <div>
+          <div class="eyebrow">Intelligent Sensing Technology</div>
+          <h1>智能传感技术复习讲义：概念、公式、例题与题库</h1>
+          <p>这份讲义把 <code>short review(3).pdf</code> 中 26 页复习内容扩展成可独立学习的版本。主线是：被测对象产生刺激，传感器把刺激转成信号，系统用校准和统计方法把信号解释成可靠测量，随后进入生物标志物、酶与电化学检测、光谱和气味传感、免疫与核酸检测、物理传感器、MEMS 和医疗器械转化。</p>
+          <div class="tags">
+            <span class="tag">按页重组</span>
+            <span class="tag blue">公式解释</span>
+            <span class="tag amber">例题模板</span>
+            <span class="tag green">题库自测</span>
+          </div>
+        </div>
+        <div class="visual">
+          <svg class="diagram" viewBox="0 0 760 430" role="img" aria-label="智能传感系统总框架">
+            <defs>
+              <marker id="arr" markerWidth="11" markerHeight="7" refX="10" refY="3.5" orient="auto"><path d="M0,0 L11,3.5 L0,7 Z" fill="#006a6a"/></marker>
+            </defs>
+            <rect width="760" height="430" fill="#fbfcfa"/>
+            <g fill="#fff" stroke="#d8dfdc" stroke-width="2">
+              <rect x="44" y="72" width="145" height="74" rx="8"/>
+              <rect x="258" y="72" width="145" height="74" rx="8"/>
+              <rect x="472" y="72" width="145" height="74" rx="8"/>
+              <rect x="205" y="230" width="150" height="74" rx="8"/>
+              <rect x="410" y="230" width="150" height="74" rx="8"/>
+              <rect x="300" y="346" width="170" height="52" rx="8"/>
+            </g>
+            <g stroke="#006a6a" stroke-width="4" marker-end="url(#arr)" fill="none">
+              <path d="M189 109 H258"/>
+              <path d="M403 109 H472"/>
+              <path d="M545 146 C545 190 512 215 486 230"/>
+              <path d="M116 146 C130 190 190 215 240 230"/>
+              <path d="M355 267 H410"/>
+              <path d="M280 304 C300 330 330 344 360 346"/>
+              <path d="M485 304 C465 330 430 344 400 346"/>
+            </g>
+            <text x="116" y="101" text-anchor="middle" font-size="20" font-weight="800">Measurand</text>
+            <text x="116" y="128" text-anchor="middle" fill="#5d6967" font-size="14">浓度、压力、位移、磁场</text>
+            <text x="330" y="101" text-anchor="middle" font-size="20" font-weight="800">Sensor</text>
+            <text x="330" y="128" text-anchor="middle" fill="#5d6967" font-size="14">识别 + 转导</text>
+            <text x="545" y="101" text-anchor="middle" font-size="20" font-weight="800">Signal</text>
+            <text x="545" y="128" text-anchor="middle" fill="#5d6967" font-size="14">电流、电压、光强、频率</text>
+            <text x="280" y="260" text-anchor="middle" font-size="20" font-weight="800">Calibration</text>
+            <text x="280" y="287" text-anchor="middle" fill="#5d6967" font-size="14">S = f(X)</text>
+            <text x="485" y="260" text-anchor="middle" font-size="20" font-weight="800">Statistics</text>
+            <text x="485" y="287" text-anchor="middle" fill="#5d6967" font-size="14">LOD、SNR、误差</text>
+            <text x="385" y="380" text-anchor="middle" font-size="20" font-weight="800">可信测量与应用</text>
+          </svg>
+          <div class="caption">课程中的每一种传感器都可以放进这条链路：先问“测什么”，再问“用什么物理或化学效应转成信号”，最后问“信号怎样变成可信结论”。</div>
+        </div>
+      </section>
+
+      <section id="map" class="section">
+        <h2>0. 课程地图：PPT 每页对应的学习任务</h2>
+        <p class="lead">PPT 是复习提纲，很多页只给关键词和图。本讲义把它们展开成“你要会解释什么、会算什么、容易错什么”。页码对应 PDF 页码。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>PDF 页</th><th>主题</th><th>学习任务</th><th>考题常见问法</th></tr></thead>
+            <tbody>
+              <tr><td>3</td><td>Transfer function</td><td>理解 \(S=f(X)\)，会解释线性、对数、指数、多项式响应。</td><td>给校准曲线或 Beer-Lambert Law，判断输入、输出、灵敏度。</td></tr>
+              <tr><td>4-7</td><td>传感器静态/动态特性</td><td>掌握 accuracy、precision、sensitivity、specificity、LOD、LOQ、SNR、response time 等。</td><td>比较两个传感器优劣；根据混淆矩阵计算灵敏度和特异性；解释超调。</td></tr>
+              <tr><td>8</td><td>Biomarkers</td><td>能把生物标志物分成 molecular、histologic、radiographic、physiologic，并说明每类对应什么检测对象。</td><td>血糖、肿瘤大小、血压分别属于哪类 biomarker？</td></tr>
+              <tr><td>9-11</td><td>酶传感与安培型葡萄糖传感</td><td>掌握 induced fit、Michaelis-Menten、potentiometric/amperometric/conductometric、GOx 反应链。</td><td>解释第一代葡萄糖传感器如何把葡萄糖浓度转成电流。</td></tr>
+              <tr><td>12-14</td><td>分子光谱、气味传感与 NIR</td><td>理解 UV-vis、荧光、FTIR 的物理对象；会解释嗅觉受体阵列如何形成气味模式；掌握 NIR 组织光学窗口。</td><td>为什么近红外适合组织成像？气味受体矩阵为什么像传感器阵列？</td></tr>
+              <tr><td>15-17</td><td>免疫检测、ELISA、侧向层析</td><td>掌握 \(K_D\)、SPR、QCM-D、ELISA 类型和 lateral flow 结构。</td><td>比较 sandwich ELISA 与 competitive ELISA；解释 test line/control line。</td></tr>
+              <tr><td>18</td><td>核酸检测</td><td>理解 aptamer 的结构识别，以及 TaqMan、FRET 等 PCR 荧光探针如何把序列识别转成光信号。</td><td>Aptamer 和普通互补核酸探针有什么不同？PCR 探针为什么能提高特异性？</td></tr>
+              <tr><td>19-24</td><td>物理传感器与 MEMS</td><td>掌握电阻、电容、压电、量热、光纤、霍尔、MEMS 的输入输出关系。</td><td>给结构图，判断传感原理、信号类型和优缺点。</td></tr>
+              <tr><td>25</td><td>医疗器械分类</td><td>理解 FDA Class I/II/III 按风险与监管强度分类。</td><td>给设备例子，判断风险级别和监管要求。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="formula" class="section">
+        <h2>公式速查：先记“变量意义”，再记等号</h2>
+        <div class="formula-list">
+          <div class="formula-item"><strong>传递函数</strong>\[S=f(X)\]<p>输入 \(X\) 是被测刺激，输出 \(S\) 是传感器信号。校准的目标是反过来由 \(S\) 估计 \(X\)。</p></div>
+          <div class="formula-item"><strong>Beer-Lambert Law</strong>\[A=\log_{10}\frac{I_0}{I}=\varepsilon l c\]<p>\(A\) 为吸光度，\(l\) 为光程，\(c\) 为浓度，\(\varepsilon\) 为摩尔吸光系数。</p></div>
+          <div class="formula-item"><strong>混淆矩阵</strong>\[\text{sensitivity}=\frac{TP}{TP+FN},\quad \text{specificity}=\frac{TN}{TN+FP}\]<p>前者看患病者中检出多少，后者看健康者中排除多少。</p></div>
+          <div class="formula-item"><strong>常用 LOD/LOQ 估计</strong>\[LOD\approx \frac{3\sigma_b}{m},\quad LOQ\approx \frac{10\sigma_b}{m}\]<p>\(\sigma_b\) 是空白噪声标准差，\(m\) 是校准曲线斜率。PPT 给了概念图，这里补常用计算式。</p></div>
+          <div class="formula-item"><strong>一阶温度计示例</strong>\[k=\frac{K_{ex}V_b}{A_c},\quad \tau=\frac{\rho C V_b}{UA_b}\]<p>大 bulb volume 提高灵敏度，但增大时间常数；接触面积可改善响应速度。</p></div>
+          <div class="formula-item"><strong>二阶响应指标</strong>\[t_r,\quad t_s,\quad \alpha,\quad \psi=\frac{\alpha-\alpha_1}{\alpha}\times 100\%\]<p>分别描述上升时间、稳定时间、超调和相邻峰值衰减。</p></div>
+          <div class="formula-item"><strong>Michaelis-Menten</strong>\[v_0=\frac{V_{\max}[S]}{K_M+[S]}\]<p>\([S]\ll K_M\) 时近似一阶；\([S]\gg K_M\) 时趋于饱和。</p></div>
+          <div class="formula-item"><strong>抗体亲和力</strong>\[K_D=\frac{[A][B]}{[AB]}=\frac{k_{off}}{k_{on}}\]<p>\(K_D\) 越小，结合越强；它的单位是浓度。</p></div>
+          <div class="formula-item"><strong>电容传感</strong>\[C\approx \varepsilon_0\varepsilon_r\frac{ab}{d}\]<p>面积和介电常数增大，电容增大；板间距增大，电容减小。</p></div>
+        </div>
+      </section>
+
+      <section id="figures" class="section">
+        <h2>逐图精讲：把 PPT 里的图拆开看</h2>
+        <p class="lead">这一节是对前面讲义的补强。PPT 是精简版，很多“真正要懂的东西”藏在图里：坐标轴、箭头、反应物、检测线、电极、梁结构和公式变量。下面按 PDF 页码把核心图裁出来逐个解释。</p>
+        <div class="figure-gallery">
+          <article class="figure-card">
+            <img src="assets/figures/fig-03-signal-chain.jpg" loading="lazy" alt="传感链路：measurand 到 sensor 到 display">
+            <div>
+              <h3>图 3-1：传感链路不是“传感器等于答案”</h3>
+              <div class="figure-explain">
+                <p>这张图是整门课最底层的框架。左边的 measurand 不是一个仪器读数，而是真实世界里你想知道的对象，例如血糖浓度、血压、位移、温度、磁场或某个蛋白的存在。它本身往往不能直接进入计算机，所以必须先表现为一个可作用在传感器上的物理或化学变量，也就是图中标成 X 的 physical measurement variable。</p>
+                <p>中间的 sensor 做的事是换能：它把 X 转成电流、电压、光强、频率、颜色、相位这类 signal variable S。右边的 display 或后端算法再把 S 转成最终的 measurement M。理解这条链路之后，后面所有例子都能套进来：酶传感里 X 是葡萄糖浓度，S 是电极电流；Beer-Lambert 里 X 是浓度，S 是吸光度；Hall 传感里 X 是磁场，S 是 Hall 电压。</p>
+                <p>这张图也提醒你，传感器输出不是天然等于真实值。真实值到显示值中间经过识别、换能、放大、滤波、校准和显示，每一步都可能带来误差、漂移、噪声或响应延迟。所以答题时不要只写一个材料或一个公式，而要说明输入是什么、换能机制是什么、输出是什么、怎样校准以及可能的干扰来自哪里。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-03-beer-lambert.jpg" loading="lazy" alt="Beer-Lambert Law">
+            <div>
+              <h3>图 3-2：Beer-Lambert Law 是一个标准传递函数</h3>
+              <div class="figure-explain">
+                <p>这张图用 Beer-Lambert Law 说明什么叫 transfer function。光通过样品前的强度是 I0，通过样品后的强度是 I，样品吸收越强，I 越小。把 I0 和 I 的比值取 log10，就得到吸光度 A。公式 A = log10(I0/I) = epsilon l c 说明，在固定波长、固定光程 l 的条件下，吸光度 A 与浓度 c 成正比。</p>
+                <p>从传感器角度看，浓度 c 是输入，吸光度 A 是输出，epsilon l 就是这个光学传感过程的斜率。这个斜率越大，同样的浓度变化会产生更大的吸光度变化，仪器越容易分辨。它和校准曲线里的 sensitivity 是同一个思想，只是这里的物理来源是分子吸收光。</p>
+                <p>使用这个公式时要注意条件。样品必须相对均一，不能有强散射；浓度不能高到让透射光过低；波长要选在目标物吸收明显而干扰物吸收较小的位置。如果题目让你用 Beer-Lambert Law 算浓度，先确认 I0/I 的方向没有写反，再确认光程单位是 cm，最后再讨论线性范围。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-04-dynamic-response.jpg" loading="lazy" alt="动态响应 transient steady state">
+            <div>
+              <h3>图 4-1：动态响应由暂态进入稳态</h3>
+              <div class="figure-explain">
+                <p>这张图讲的是传感器不是只看最终读数，还要看它追随变化的速度。横轴是时间，纵轴是输出 c(t)。当输入发生阶跃变化后，输出曲线不会立刻跳到最终稳态值，而是从初始值逐渐上升，先经历 transient state，再进入 steady state。</p>
+                <p>暂态阶段反映传感器内部的惯性、扩散、热容量、反应速度或电路滤波。比如水银温度计需要热量传入球泡，酶传感器需要底物扩散到酶层并发生反应，压力传感器的膜片也可能需要机械响应时间。稳态阶段才是最终读数接近真实输入的时候。</p>
+                <p>因此同一个传感器可能稳态很准，但动态很慢。若你用它测一个快速变化的生理信号，它可能会把峰值压低、把时间点拖后，甚至错过事件。动态特性题通常不是问最终值，而是问响应时间、上升时间、稳定时间以及是否能跟上输入变化。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-04-response-decomposition.jpg" loading="lazy" alt="c(t)=ctr(t)+css(t)">
+            <div>
+              <h3>图 4-2：响应可以分成暂态项和稳态项</h3>
+              <div class="figure-explain">
+                <p>这张小公式图把动态响应写成 c(t) = ctr(t) + css(t)。这里 css(t) 是稳态响应，代表系统最后应该到达的那部分；ctr(t) 是暂态响应，代表一开始由于初始条件、惯性或储能元件引起的额外变化。</p>
+                <p>理解这个分解可以避免把动态题当成静态题做。很多系统的暂态项会随时间衰减，例如指数衰减或振荡衰减；稳态项则决定最终平台值。你看到图 4-1 那条逐渐贴近虚线的曲线，本质上就是暂态项越来越小，稳态项越来越占主导。</p>
+                <p>如果题目问 response time 或 settling time，它问的是暂态项什么时候小到可以忽略，而不是稳态值本身是多少。实际应用中，这个问题很重要：血压脉搏、呼吸、步态和神经信号都在变化，传感器的暂态行为会直接决定你看到的波形是否真实。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-05-calibration.jpg" loading="lazy" alt="校准曲线">
+            <div>
+              <h3>图 5-1：校准曲线把物理输入变成信号输出</h3>
+              <div class="figure-explain">
+                <p>这张图展示校准曲线。横轴是 physical input X，也就是已知的标准输入；纵轴是 signal output Y，也就是传感器实际给出的输出。图中的圆点来自多个标准样本，直线是用这些点拟合出来的关系。</p>
+                <p>校准的意义是把抽象的传感器输出变成可解释的量。没有校准时，某个电流值或光强值只是一个仪器信号；有了校准曲线后，才能把它换算成浓度、压力、温度或位移。直线斜率代表灵敏度，截距代表背景或零点偏置，点围绕直线的分散程度反映噪声和重复性。</p>
+                <p>实际答题时要记住，校准曲线只在它覆盖的范围内可靠。未知样本如果比最高标准点还高，就不能简单把直线无限延伸；如果样本基质和标准品不同，也可能出现基质效应。严谨的传感器报告通常要说明校准范围、线性范围、R 方、LOD 和重复性。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-05-precision-accuracy.jpg" loading="lazy" alt="precision and accuracy">
+            <div>
+              <h3>图 5-2：精密度和准确度是两件事</h3>
+              <div class="figure-explain">
+                <p>靶心图用很直观的方式区分 precision 和 accuracy。accuracy 关注平均结果离真值有多近，靶心就是理想真值。precision 关注重复测量之间有多接近，也就是点群是否集中。左边的点群很集中但整体偏离靶心，说明仪器重复性好但有系统偏差；右边点群更分散，说明随机误差较大。</p>
+                <p>这个区别在传感器实验里非常常见。比如一个电化学传感器每次都稳定地比真实浓度高 10%，它的 precision 可以很好，但 accuracy 不好；通过校准可能修正这个偏差。反过来，如果平均值接近真实值，但每次测量上下乱跳，说明噪声或操作波动大，单次读数不可靠。</p>
+                <p>所以评价传感器不能只给一个漂亮的平均值，也不能只说重复测量标准差小。完整评价应同时报告偏差和离散度，并说明误差来源是系统性的还是随机性的。系统误差通常靠校准、空白扣除和对照实验修正；随机误差则要靠提高 SNR、重复测量和控制实验条件。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-05-lod-loq.jpg" loading="lazy" alt="noise LOD LOQ">
+            <div>
+              <h3>图 5-3：LOD 是“看得见”，LOQ 是“量得准”</h3>
+              <div class="figure-explain">
+                <p>这张图把噪声、LOD 和 LOQ 放在同一条信号曲线上。绿色线是 baseline，表示没有目标物时的背景水平；蓝色曲线在背景附近上下波动，这些波动就是 noise。小峰 Peak A 高过噪声一些，因此可以说目标可能存在，这对应 LOD；大峰 Peak B 高得多，足以做可靠定量，这对应 LOQ。</p>
+                <p>LOD 的含义不是最低能报出一个精确浓度，而是最低能从背景噪声中看出“有信号”。LOQ 更严格，它要求信号高到足以让定量误差可以接受。常见经验是 LOD 约为 3 倍空白噪声除以校准斜率，LOQ 约为 10 倍空白噪声除以校准斜率，但具体标准要看实验领域。</p>
+                <p>这张图还说明为什么降低噪声和提高斜率都很重要。如果基线噪声很大，真实小峰会被淹没；如果校准斜率太低，浓度变化引起的信号变化太小，也难以检出。报告低于 LOQ 的数值时最好写“检出但不可可靠定量”，而不是给出看似精确的小数。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-05-confusion-matrix.jpg" loading="lazy" alt="sensitivity specificity confusion matrix">
+            <div>
+              <h3>图 5-4：灵敏度和特异性的分母不同</h3>
+              <div class="figure-explain">
+                <p>这张图是医学检测里最基本的四格表。列方向是真实状态：有病或无病；行方向是测试结果：阳性或阴性。真正有病且测阳性是 TP，真正无病但测阳性是 FP，真正有病却测阴性是 FN，真正无病且测阴性是 TN。</p>
+                <p>灵敏度 sensitivity 只在真正有病的人里计算，问的是这些病人有多少被检测出来，所以分母是 TP + FN。特异性 specificity 只在真正无病的人里计算，问的是这些健康人有多少被正确排除，所以分母是 TN + FP。它们不是同一个东西，也不能用同一个分母。</p>
+                <p>这张图和传感器性能直接相关。降低检测阈值通常会提高 sensitivity，因为更容易报阳性，但也可能增加 FP，降低 specificity；提高阈值则相反。因此一个诊断传感器的阈值选择其实是在假阴性和假阳性之间做权衡。筛查场景常怕漏诊，偏重 sensitivity；确诊场景常怕误诊，偏重 specificity。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-05-sensitivity-curve.jpg" loading="lazy" alt="sensitivity saturation limit of linearity">
+            <div>
+              <h3>图 5-5：斜率是灵敏度，平台是饱和</h3>
+              <div class="figure-explain">
+                <p>这张图把灵敏度、线性范围和饱和放在一起。横轴是 concentration，纵轴是 signal。曲线在低浓度时上升明显，说明输入变化能引起可测输出；到高浓度时逐渐变平，说明系统接近饱和，再增加浓度也难以产生更大信号。</p>
+                <p>斜率就是灵敏度。低浓度区斜率越大，传感器越容易分辨微小浓度变化。箭头标出的 LOL 是 limit of linearity，意思是超过这个范围后，用一条直线描述响应已经不合适。很多生物传感器因为识别位点有限、酶活性有限或电极反应有限，都会出现这种饱和行为。</p>
+                <p>这张图的实用价值在于提醒你：传感器不是越高浓度越好测。在线性区，信号和浓度之间有稳定比例关系，适合定量；在饱和区，不同浓度可能给出很接近的信号，误差会被放大。设计实验时应稀释样品或调整传感器范围，让未知样本落在线性或可靠校准区间。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-06-thermometer-equations.jpg" loading="lazy" alt="mercury thermometer equations">
+            <div>
+              <h3>图 6-1：水银温度计的灵敏度和响应速度相互牵制</h3>
+              <div class="figure-explain">
+                <p>这张图用水银温度计解释一阶系统中的两个关键量：灵敏度 k 和时间常数 tau。温度变化会让球泡里的水银体积膨胀，体积膨胀被细管转换成液柱高度变化。公式 k = Kex Vb / Ac 说明球泡体积 Vb 越大、细管截面积 Ac 越小，同样温度变化产生的位移越大。</p>
+                <p>但是图中第二个公式 tau = rho C Vb / (U Ab) 告诉你，球泡体积 Vb 同时也增加热容量，使温度计吸热或放热更慢，响应时间变长。U 是换热系数，Ab 是与外界接触的面积，它们越大，热交换越快，时间常数越小。</p>
+                <p>这就是工程设计里的典型权衡：提高灵敏度常常会牺牲速度。一个很大的球泡可能读数变化明显，但等它稳定需要更久；一个很小的球泡响应快，但液柱位移小、读数分辨率差。理解这张图后，遇到任何一阶传感器，都可以从“储能大小”和“交换通道大小”两个角度分析响应速度。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-06-thermometer-geometry.jpg" loading="lazy" alt="mercury thermometer geometry">
+            <div>
+              <h3>图 6-2：几何量决定温度计读数和动态</h3>
+              <div class="figure-explain">
+                <p>这张图把水银温度计的几何结构画出来，帮助理解上一张公式里的参数。球泡和细管相连，球泡所在环境温度从 Ti(t) 变化，最终趋向 Tf。液柱高度变化用 xo 表示。细管越细，同样体积膨胀造成的高度变化越大，所以灵敏度提高。</p>
+                <p>球泡与环境的接触面积和球泡体积共同决定动态响应。热量必须先穿过球泡壁进入水银，水银整体温度改变后液柱才会上升。这个过程不是瞬间完成的，因此温度计在温度突然变化时会有滞后，曲线通常近似一阶指数响应。</p>
+                <p>如果题目让你比较两个温度计，一个细管更细、球泡更大，另一个球泡更小、接触面积更大，你就不能只说哪个更好。前者可能更灵敏但更慢，后者可能响应更快但读数位移小。这种“灵敏度-时间常数”权衡是传感器设计的核心思想。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-07-second-order-step.jpg" loading="lazy" alt="second order system step response">
+            <div>
+              <h3>图 7-1：二阶系统用曲线读出四个时间域指标</h3>
+              <div class="figure-explain">
+                <p>这张图描述二阶系统对单位阶跃输入的响应。理想最终值是 1，但曲线第一次上升时超过了 1，这一段超出的高度叫 overshoot alpha。随后曲线向下再向上振荡，峰值逐渐衰减，最后进入稳态附近的误差带。</p>
+                <p>图中的 tr 是 rise time，通常定义为输出从稳态值 10% 上升到 90% 所需时间。ts 是 response time 或 settling time，表示输出进入并保持在指定误差带内的时间。右侧的 ±Delta% 误差带告诉你，稳定并不是完全等于最终值，而是误差小到工程上可以接受。</p>
+                <p>为什么传感器课要讲这张图？因为真实传感器、机械结构和读出电路都可能有惯性和弹性，快速响应时可能出现超调和振荡。一个响应很快但超调很大的压力传感器，可能会把一次脉搏峰值夸大；一个阻尼过强的系统虽然没有超调，却可能太慢。判断动态性能要同时看速度、超调和稳定性。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-08-biomarker-definition.jpg" loading="lazy" alt="biomarker definition and examples">
+            <div>
+              <h3>图 8-1：Biomarker 不只等于“血液里的分子”</h3>
+              <div class="figure-explain">
+                <p>这张图给出 biomarker 的宽定义：它是可测量的特征，用来指示正常生物过程、病理过程，或者机体对暴露和治疗干预的反应。它不是只指血液里的一个蛋白，也不只指基因突变。只要某个特征能被可靠测量并与生物状态有关，就可能是 biomarker。</p>
+                <p>图中把 biomarker 分成 molecular、histologic、radiographic 和 physiologic。血糖属于 molecular biomarker，因为它是一个可测分子浓度；肿瘤大小属于 radiographic biomarker，因为它可由影像测量；血压属于 physiologic biomarker，因为它反映生理功能状态。</p>
+                <p>这张图把课程后面的内容串起来。电化学血糖传感器测 molecular biomarker，血压和位移传感器测 physiologic biomarker，光学或影像方法可能测 radiographic biomarker。理解这个分类后，你就能解释为什么同一门传感课同时讲酶、抗体、核酸、压力、光纤和 MEMS。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-10-induced-fit.jpg" loading="lazy" alt="enzyme induced fit model">
+            <div>
+              <h3>图 9-1：酶识别不是硬钥匙模型，而是诱导契合</h3>
+              <div class="figure-explain">
+                <p>这张图用 induced-fit 模型解释酶为什么能作为识别元件。底物先接近酶的 active site，结合后酶的形状会发生轻微调整，使底物以更适合反应的构型被固定。随后形成 enzyme-products complex，产物离开，酶恢复并进入下一轮循环。</p>
+                <p>这和简单的“锁钥模型”相比更接近真实情况：酶不是僵硬的孔洞，而是可以在结合时发生构象变化。正是这种结构选择性和催化能力，让酶传感器能在复杂样品中优先响应特定底物，例如葡萄糖氧化酶对葡萄糖的识别。</p>
+                <p>但这也说明酶传感器会受环境影响。温度、pH、离子强度、抑制剂和底物类似物都会影响酶构象和活性。如果酶失活，传感器即使电极完好也会失去响应；如果样品中有竞争底物或抑制剂，信号也可能偏低或偏高。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-10-michaelis-menten.jpg" loading="lazy" alt="Michaelis-Menten equation">
+            <div>
+              <h3>图 9-2：Michaelis-Menten 解释“低浓度线性、高浓度饱和”</h3>
+              <div class="figure-explain">
+                <p>这张图给出 Michaelis-Menten 方程，它描述酶反应速率如何随底物浓度变化。v0 是初始反应速率，Vmax 是酶充分饱和时的最大速率，KM 是使速率达到 Vmax 一半时的底物浓度。这个方程不是单纯数学形式，而是来自酶-底物复合物形成和分解的动力学平衡。</p>
+                <p>低浓度时，底物分子少，大部分酶位点空着，增加底物会明显增加反应速率，因此响应近似线性。高浓度时，酶位点大多被占据，反应速度受酶周转能力限制，再增加底物也不能显著提高速率，于是曲线进入饱和。</p>
+                <p>这与传感器定量直接相关。酶传感器最好在低浓度线性区工作，因为电流或产物生成速率能稳定反映底物浓度。如果样品浓度太高进入饱和区，多个不同浓度会给出相似信号，必须稀释样品或采用合适的校准模型。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-11-glucose-reactions.jpg" loading="lazy" alt="glucose oxidase and dehydrogenase reactions">
+            <div>
+              <h3>图 10-1：两条葡萄糖酶反应路线</h3>
+              <div class="figure-explain">
+                <p>这张图把两种葡萄糖相关酶反应并排列出。葡萄糖氧化酶 GOx 使用氧气作为电子受体，把葡萄糖转化为 gluconolactone，同时生成过氧化氢 H2O2。葡萄糖脱氢酶 GDH 则使用 NAD+ 等辅因子，把葡萄糖转化为 gluconolactone，同时生成 NADH。</p>
+                <p>二者都利用酶的选择性识别葡萄糖，但后续读出路线不同。GOx 路线常通过测 H2O2 的氧化电流或氧气消耗来读出葡萄糖；GDH 路线则可通过辅因子或电子介体把电子传给电极。这就是为什么同样测血糖，传感器设计可以有不同代际和不同化学体系。</p>
+                <p>这张图也能帮助你理解干扰来源。GOx 依赖氧气，因此低氧环境会影响响应；H2O2 的电氧化需要较高电位，可能受到其他可氧化分子干扰。GDH 系统减少了对氧气的依赖，但又引入辅因子、介体和酶选择性的问题。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-11-first-gen-glucose.jpg" loading="lazy" alt="first generation glucose biosensor">
+            <div>
+              <h3>图 10-2：第一代葡萄糖传感器的信号来自 \(H_2O_2\)</h3>
+              <div class="figure-explain">
+                <p>这张图展示第一代葡萄糖生物传感器的核心链路。葡萄糖先被 GOx 催化氧化，氧气参与反应，产物包括 gluconolactone 和 H2O2。图中电子最终进入电极，说明传感器真正测到的是电化学反应产生的电流，而不是葡萄糖分子本身。</p>
+                <p>第一代方案的逻辑是把葡萄糖浓度转成 H2O2 生成速率，再把 H2O2 在铂电极上的氧化转成电流。只要扩散、酶活性和电极反应条件稳定，电流就能通过校准曲线反映葡萄糖浓度。这是生物识别和电化学换能结合的典型例子。</p>
+                <p>但是图里也暗含局限。氧气既是反应物，也是体液中可能变化的物质；H2O2 氧化通常需要较高电位，这会让抗坏血酸、尿酸等干扰物也可能被氧化；酶层厚度和扩散限制还会影响响应时间。因此血糖传感器发展出介体、膜选择性和第三代直接电子转移等改进方案。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-12-amperometric-cell.jpg" loading="lazy" alt="amperometric sensor cell">
+            <div>
+              <h3>图 11-1：安培型传感器用电极反应产生电流</h3>
+              <div class="figure-explain">
+                <p>这张图把安培型葡萄糖传感器拆成电化学池。左边是 Ag/AgCl 参考电极和 Pt 工作电极，底部外加约 350 mV 电位。右边的膜或酶层让 glucose 和 O2 进入，反应生成 H2O2 和 gluconic acid，其中 H2O2 扩散到 Pt 电极发生氧化。</p>
+                <p>安培型传感器的关键不是“施加了电压”，而是“测量由氧化还原反应产生的电流”。参考电极提供稳定的电位基准，工作电极上发生目标电化学反应，外电路中流过的电子形成电流。这个电流大小与 H2O2 到达电极的速率相关，也就间接与葡萄糖浓度相关。</p>
+                <p>如果题目让你解释这个图，最好按三层说：酶层提供选择性，电极提供换能，外加电位决定反应能否高效发生。任何一层出问题都会影响读数，例如酶失活、膜污染、电极表面钝化、参考电极漂移或样品中干扰物氧化。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-12-electrode-reactions.jpg" loading="lazy" alt="electrode reactions of glucose sensor">
+            <div>
+              <h3>图 11-2：把总反应拆成酶反应和电极反应</h3>
+              <div class="figure-explain">
+                <p>这张图把葡萄糖安培传感中的反应分成多个步骤。第一步是酶反应：葡萄糖和氧气在 GOx 催化下生成葡萄糖酸和 H2O2。第二步是工作电极反应：H2O2 在铂阳极被氧化，释放电子。后面的 Ag/AgCl 和辅助电极反应维持整个电化学回路的电荷平衡。</p>
+                <p>这样拆开后就能看清因果关系。选择性主要来自 GOx，因为它决定葡萄糖是否被转化；信号强度来自 H2O2 氧化，因为这个步骤产生可测电子流；参考和辅助电极保证电位稳定和电流闭合。如果只写一个总反应，就看不出这些功能分工。</p>
+                <p>考试常会问为什么某些物质干扰安培型葡萄糖传感。答案就在这张图里：只要样品中某种物质能在类似电位下被工作电极氧化或还原，它就可能产生额外电流；如果它影响氧气浓度或酶活性，也会改变 H2O2 生成速率。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-13-em-spectrum.jpg" loading="lazy" alt="electromagnetic spectrum and molecular transitions">
+            <div>
+              <h3>图 12-1：不同波段激发不同类型的物质响应</h3>
+              <div class="figure-explain">
+                <p>这张图把电磁波谱和分子响应联系起来。左边高频短波长的 gamma ray、X-ray 能量很高，能作用于核或内层电子；UV 和可见光常对应电子跃迁；红外光对应分子振动；微波和无线电波对应转动、电子自旋或核自旋等更低能量过程。</p>
+                <p>它说明光谱方法不是随便选波长，而是根据你想观察的物理过程选择能量尺度。UV-vis 适合看分子电子吸收，FTIR 适合看化学键振动，荧光需要分子吸收光后再发射光，NMR 则在射频范围利用核自旋响应。</p>
+                <p>在传感器设计中，波段选择还要考虑样品环境。比如生物组织中血红蛋白和水会强烈吸收某些波长，所以即使某个分子在某波长有响应，也不代表体内检测可行。光谱传感的核心是目标响应、背景吸收、散射和仪器读出之间的平衡。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-13-beer-setup.jpg" loading="lazy" alt="Beer-Lambert cuvette setup">
+            <div>
+              <h3>图 12-2：比色皿里的 \(l\) 是光程，不是液体高度</h3>
+              <div class="figure-explain">
+                <p>这张图把 Beer-Lambert Law 的几何含义画出来。光从左边进入比色皿，穿过样品后从右边出来。图中标出的 l 是光在样品中走过的距离，也叫光程，不是比色皿里液体的高度。</p>
+                <p>为什么光程重要？因为分子吸收光的机会随路径长度增加而增加。浓度 c 越高，单位体积内吸收分子越多；光程 l 越长，光遇到这些分子的机会越多。因此吸光度同时正比于 l 和 c。</p>
+                <p>很多计算题会默认 1 cm 比色皿，但如果题目给的是 0.5 cm 或微流控通道中的短光程，就必须代入实际 l。微型传感器为了小体积牺牲光程时，吸光度可能变小，需要更灵敏的探测器或更强吸收的探针来补偿。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-13-uvvis.jpg" loading="lazy" alt="UV-vis optical path">
+            <div>
+              <h3>图 12-3：UV-vis 的核心是选波长再测透过光</h3>
+              <div class="figure-explain">
+                <p>这张图展示 UV-vis 仪器的基本光路。光源发出宽波段光，入口狭缝限制光束，色散元件把不同波长分开，出口狭缝选择一个窄波长，随后光穿过样品，最后由 detector 记录透过强度。</p>
+                <p>这套结构的意义是让你在指定波长下测吸收。不同分子在不同波长吸收不同，选择目标物吸收强而背景吸收弱的波长可以提高灵敏度和选择性。样品池后面的 detector 不直接知道浓度，它只知道透过光强；浓度需要通过空白、标准曲线和 Beer-Lambert Law 得到。</p>
+                <p>如果题目问 UV-vis 的局限，可以从这张图推出来。样品浑浊会散射光，导致 detector 接收到的光减少，看起来像吸收增加；单色器带宽太宽会混入其他波长；样品本身颜色或基质吸收会形成背景。因此 UV-vis 定量必须做空白校正和波长选择。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-13-fluorescence.jpg" loading="lazy" alt="fluorescence spectroscopy">
+            <div>
+              <h3>图 12-4：荧光读的是发射光，不是透过光</h3>
+              <div class="figure-explain">
+                <p>这张图显示同一样品的吸收、荧光和磷光峰。分子先吸收较短波长的光进入激发态，随后以较长波长发射光回到较低能级，这就是荧光。图中绿色荧光峰相对蓝色吸收峰向长波移动，这种差异常被称为 Stokes shift。</p>
+                <p>荧光传感和吸光度传感的读出逻辑不同。吸光度看的是入射光损失了多少，荧光看的是样品自己发出了多少光。因为背景可以通过波长和几何方向分开，荧光通常比吸收更灵敏，适合低浓度检测和生物成像。</p>
+                <p>不过荧光也有自己的问题。探针可能光漂白，样品可能有自发荧光，高浓度时可能发生自淬灭或内滤效应，环境 pH 和极性也会改变发光强度。因此荧光信号增强或减弱并不总能直接等同浓度变化，必须结合对照和校准。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-13-ftir.jpg" loading="lazy" alt="FTIR stretch bending">
+            <div>
+              <h3>图 12-5：FTIR 看的是分子振动方式</h3>
+              <div class="figure-explain">
+                <p>这张图用弹簧和小球表示分子振动。Stretch 是沿化学键方向伸长和缩短，bending 是键角改变。红外光的能量与这些振动能级差相匹配时，分子会吸收对应频率的红外光。</p>
+                <p>FTIR 的信息来自化学键，而不是简单的颜色或电子跃迁。不同官能团有特征振动频率，例如 C=O、O-H、N-H、C-H 等会出现在不同波数区域。因此 FTIR 常用于判断材料表面化学、聚合物组成、蛋白二级结构或传感膜是否修饰成功。</p>
+                <p>在传感器语境下，FTIR 可以作为检测方法，也可以作为材料表征工具。它的限制是水吸收强、复杂样品峰重叠、灵敏度相对荧光和电化学方法可能较低。理解 stretch 和 bending 后，就能明白 FTIR 谱峰为什么和化学键结构相关。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-13-olfactory-pathway.jpg" loading="lazy" alt="olfactory sensing pathway">
+            <div>
+              <h3>图 13-1：嗅觉系统把气味分子转换成神经信号</h3>
+              <div class="figure-explain">
+                <p>这张图用生物嗅觉系统解释气味传感的原型。空气中的 odorant molecules 进入鼻腔后，先接触鼻上皮中的 olfactory receptor cells。气味分子与受体结合后，受体细胞被激活并产生电信号，这些信号在 olfactory bulb 的 glomeruli 中汇聚，再被传到大脑更高级区域。</p>
+                <p>这不是一个“一个气味等于一个受体”的简单故事。真实嗅觉依赖组合编码：一个气味分子可能激活多个受体，一个受体也可能对多个气味分子有响应。大脑识别的是一组受体共同形成的响应模式，而不是某一个受体单独给出的 yes/no 结果。</p>
+                <p>把这张图放到传感器课程里，是为了引出电子鼻和复杂样品识别。气味样品通常是多分子混合物，很难靠一个完全特异的传感器解决；更常见的策略是设计一组交叉敏感的传感单元，让它们对不同气味产生不同指纹，再用模式识别方法判断样品类别。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-13-receptor-matrix.jpg" loading="lazy" alt="odorant receptor response matrix">
+            <div>
+              <h3>图 13-2：气味识别靠 receptor 阵列的响应指纹</h3>
+              <div class="figure-explain">
+                <p>这张矩阵把“组合编码”变成了可读的传感器图。横向列是不同 receptor，纵向行是不同 odorant，粉色方块表示某个气味分子能激活某个受体。你会看到很多行不是只有一个方块，而是多个 receptor 同时响应；很多列也不是只响应一个 odorant，而是对一组相关分子都有响应。</p>
+                <p>这正是气味传感和传感阵列的核心。单个受体的选择性不一定足以区分所有分子，但整行响应模式可以成为气味的 fingerprint。两个分子如果在单个受体上反应相似，仍然可能因为整个受体阵列上的图案不同而被区分。</p>
+                <p>在工程系统中，receptor 可以换成导电聚合物、金属氧化物、功能化纳米材料、光学探针或生物识别元件。读出不再只是“浓度是多少”，还包括“这个样品属于哪一类”“混合物模式是否异常”。因此这张图连接了复杂样品、阵列式传感和数据统计，是新版 PPT 相比旧版新增的重点。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-14-nir-window.jpg" loading="lazy" alt="near infrared optical window">
+            <div>
+              <h3>图 14-1：NIR 窗口来自血红蛋白和水吸收的夹缝</h3>
+              <div class="figure-explain">
+                <p>这张图解释为什么近红外光适合组织检测。可见光区域血红蛋白吸收很强，所以光很难深入组织。波长超过约 650 nm 后，氧合和脱氧血红蛋白的吸收明显下降；但当波长继续增大到约 950 nm 以上，水吸收又开始增强。</p>
+                <p>因此 650 到 950 nm 之间形成一个相对低吸收窗口，常称为 NIR-I 生物组织窗口。这个窗口不是因为光本身“更强”，而是因为组织里主要吸收体在这个范围吸收较低，光损失少一些。图中还标出 NIR-II，更长波长可减少散射，但水吸收、探针选择和探测器成本也要考虑。</p>
+                <p>这张图把光学传感和生物应用联系起来。体外比色可以选吸收最强的波长，但体内成像必须兼顾组织穿透、背景荧光、散射和安全性。看到近红外荧光题时，答案应从血红蛋白吸收下降、水吸收上升和组织窗口这三个因果环节展开。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-14-penetration-depth.jpg" loading="lazy" alt="wavelength and penetration depth">
+            <div>
+              <h3>图 14-2：波长越长，组织穿透通常越深</h3>
+              <div class="figure-explain">
+                <p>这张柱状图从另一个角度说明波长对组织穿透的影响。550 nm 的相对穿透深度最低，630 nm 增加，700 和 800 nm 更高。这与组织中吸收和散射随波长变化有关：短波更容易被散射和血红蛋白吸收，长波在近红外窗口里损失较小。</p>
+                <p>但这张图不能理解成波长越长永远越好。超过某些范围后，水吸收会增强；同时，长波长光学分辨率通常会降低，探针和探测器选择也更受限制。传感器设计永远是在穿透深度、分辨率、背景、毒性和仪器成本之间折中。</p>
+                <p>如果题目问为什么 800 nm 比 550 nm 更适合组织荧光检测，可以用这张图回答：800 nm 相对穿透深度更高，意味着更多激发光能到达深部，更多发射光能逃出组织，因此深部信号更容易被探测。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-15-antibody-kinetics.jpg" loading="lazy" alt="antibody kinetics and KD">
+            <div>
+              <h3>图 15-1：抗体检测的核心量是结合与解离</h3>
+              <div class="figure-explain">
+                <p>这张图把抗体结构和结合动力学放在一起。抗体通过可变区识别抗原，形成抗原-抗体复合物 AB。结合不是一次性事件，而是动态平衡：A 和 B 以 kon[A][B] 的速率结合成 AB，AB 又以 koff[AB] 的速率解离回 A 和 B。</p>
+                <p>平衡时结合速率等于解离速率，于是得到 KD = [A][B]/[AB] = koff/kon。KD 的单位是浓度，数值越小，表示在较低浓度下也能形成较多复合物，亲和力越强。这个量比“能不能结合”更有信息，因为几乎所有弱相互作用在足够高浓度下都可能有一些结合。</p>
+                <p>在免疫传感器中，亲和力只是一个维度。过弱的结合会导致灵敏度低，过强的结合可能让再生困难；非特异吸附会带来假阳性；样品基质会影响抗体结构和结合位点。因此评价抗体传感器时应同时看 KD、特异性、背景、动力学和表面固定化方式。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-15-spr.jpg" loading="lazy" alt="SPR sensing principle">
+            <div>
+              <h3>图 15-2：SPR 用折射率变化读出表面结合</h3>
+              <div class="figure-explain">
+                <p>这张图展示 SPR 的基本结构。偏振光通过棱镜照到金膜，在特定角度会激发表面等离子体共振。金膜表面固定有识别分子，样品从流道中流过；当目标分子结合到表面时，金膜附近的折射率发生变化，共振角或反射强度也随之改变。</p>
+                <p>下方的 sensorgram 是 SPR 的关键输出。样品注入后信号上升，表示目标正在结合；上升变慢并接近平台，表示结合接近平衡；换成缓冲液后信号下降，表示复合物解离。通过这些曲线可以估计 kon、koff 和 KD。</p>
+                <p>SPR 的优势是无标记、实时和可做动力学分析。它不需要给抗原接荧光或酶标记，所以更接近天然结合过程。限制是它对表面固定化、折射率变化和非特异吸附很敏感；如果样品中有大量蛋白粘到金膜上，信号也会上升，但那不一定是特异结合。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-15-qcmd.jpg" loading="lazy" alt="QCM-D frequency and dissipation">
+            <div>
+              <h3>图 15-3：QCM-D 同时看质量加载和层的软硬</h3>
+              <div class="figure-explain">
+                <p>这张图展示 QCM-D 如何用石英晶体的振动来感知表面变化。石英晶体在交流电场下以稳定频率振荡，表面吸附分子后等效质量增加，振荡频率通常下降。图中 Δf 的变化就是频率响应。</p>
+                <p>QCM-D 还同时测耗散 ΔD。耗散反映振动能量损失，如果吸附层很软、含水多或具有黏弹性，它会消耗更多能量，ΔD 会明显变化。因此 QCM-D 不只是称质量，还能区分刚性薄层和柔软黏弹层，这对蛋白吸附、细胞粘附和多层膜组装特别有用。</p>
+                <p>把它和 SPR 比较可以更清楚：SPR 主要读表面折射率变化，QCM-D 主要读质量加载和黏弹性质。两者都能实时监测表面结合，但回答的问题不完全一样。一个实验中同时用 SPR 和 QCM-D，常能把“有多少东西结合”和“结合层是什么物理状态”分开。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-16-elisa-types.jpg" loading="lazy" alt="ELISA types">
+            <div>
+              <h3>图 16-1：三种 ELISA 流程的差别在“谁固定、谁竞争、谁带酶”</h3>
+              <div class="figure-explain">
+                <p>这张图把 indirect、sandwich 和 competitive ELISA 的流程画成三行。ELISA 的共同逻辑是：先让目标或识别分子固定在孔板表面，再通过抗原-抗体结合形成特异复合物，最后用酶标记和底物反应产生颜色。每一步 wash 的意义是洗掉未结合分子，降低背景。</p>
+                <p>Indirect ELISA 中孔板先包被抗原，样品中的特异抗体结合上去，再用酶标二抗识别样品抗体，所以它常用于测抗体。Sandwich ELISA 中孔板固定捕获抗体，目标抗原被捕获后再由检测抗体识别，两个抗体像三明治一样夹住目标，因此特异性高，适合蛋白抗原定量。</p>
+                <p>Competitive ELISA 的逻辑不同。样品中的目标和标记目标或抗体竞争有限结合位点，因此样品目标越多，最终颜色信号可能越低。这种反向关系很容易考。它适合小分子或只有一个表位的目标，因为小分子无法同时被两个抗体夹住。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-17-lfa-results.jpg" loading="lazy" alt="lateral flow results">
+            <div>
+              <h3>图 17-1：侧向层析先看 C 线，再看 T 线</h3>
+              <div class="figure-explain">
+                <p>这张图是侧向层析试纸的结果判读。C 线是 control line，T 线是 test line。只有 C 线出现而 T 线不出现，说明测试有效但目标阴性；C 线和 T 线都出现，说明测试有效且目标阳性；如果 C 线没有出现，无论 T 线有没有，都不能相信结果。</p>
+                <p>C 线的作用是证明样品液体成功流过试纸、标记试剂被释放、毛细流动正常，并且试纸没有明显失效。它不是目标检测线，而是整个流程的内部质量控制。如果没有 C 线，你无法知道是样品没有目标，还是液体根本没流过去、试剂坏了或操作失败。</p>
+                <p>这张图也提醒你，快速检测的读数不是一个简单颜色判断，而是一个有流程控制的传感系统。实际使用中，T 线很浅可能代表低浓度目标、读数时间不合适或背景问题；但只要 C 线缺失，就必须判为 invalid，而不是勉强解释。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-17-lfa-architecture.jpg" loading="lazy" alt="lateral flow assay architecture">
+            <div>
+              <h3>图 17-2：侧向层析是“流动 + 捕获 + 显色”的集成系统</h3>
+              <div class="figure-explain">
+                <p>这张图把侧向层析的内部结构拆开。样品先滴到 sample pad，随后通过毛细作用进入 conjugate pad。这里预先放有带标签的抗体或其他识别分子，标签可以是金纳米颗粒、乳胶颗粒或荧光团。样品中的目标与这些标记物结合后继续沿硝酸纤维素膜移动。</p>
+                <p>在 test line 位置，固定的捕获分子会抓住目标-标记复合物，标签聚集后形成可见线条；在 control line 位置，固定分子会抓住多余标记物或控制复合物，证明流动和试剂有效。最后 wicking pad 像吸水纸一样持续拉动液体，维持毛细流。</p>
+                <p>这张图正好体现 PPT 提到的纳米材料双重角色。金颗粒或荧光颗粒一方面连接识别分子，参与生物识别；另一方面提供颜色或荧光信号，是 transducer。侧向层析的优点是便宜、快速、无需复杂仪器；局限是定量能力和灵敏度通常不如实验室方法。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-18-aptamer.jpg" loading="lazy" alt="aptamer folding and binding">
+            <div>
+              <h3>图 18-1：Aptamer 靠折叠后的三维结构识别目标</h3>
+              <div class="figure-explain">
+                <p>这张图展示 aptamer 的识别机制。左边的 aptamer 先是单链 DNA 或 RNA，随后折叠成特定二级和三级结构，再与目标分子结合形成 target-aptamer complex。这里的识别不只是简单的碱基互补，而是折叠后的空间形状、氢键、静电和疏水相互作用共同决定的。</p>
+                <p>因此 aptamer 在功能上有点像抗体：它能选择性识别蛋白、小分子、离子甚至细胞表面结构。但它又是核酸，具有化学合成方便、批间差异小、容易接荧光/电化学标签、可通过 SELEX 筛选等优点。</p>
+                <p>这张图也暗示 aptamer 的脆弱点。因为识别依赖折叠结构，所以温度、盐浓度、pH、核酸酶和样品基质都可能改变构象。设计 aptamer 传感器时，常把结合导致的构象变化转成荧光变化、电流变化或纳米结构聚集变化。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-18-pcr-probes.jpg" loading="lazy" alt="PCR fluorescent probes">
+            <div>
+              <h3>图 18-2：PCR 探针把序列识别变成荧光变化</h3>
+              <div class="figure-explain">
+                <p>这张图展示 PCR 中几种荧光探针策略。TaqMan 探针同时带有荧光基团和淬灭基团，探针完整时荧光被淬灭；当它与目标序列杂交并在扩增过程中被聚合酶水解，荧光基团与淬灭基团分离，信号增强。</p>
+                <p>FRET 探针依赖两个荧光基团之间的距离。只有当探针正确杂交到目标序列上，供体和受体距离合适，能量转移才会发生。第三类部分双链或单染料杂交探针则利用杂交状态改变荧光环境。共同点是：序列识别事件被转换成可实时读出的光信号。</p>
+                <p>这张图能帮助你理解 PCR 传感不是只靠“扩增变多”。扩增提供数量放大，探针提供特异读出。没有特异探针时，非特异扩增或引物二聚体也可能产生信号；有探针后，只有含目标序列的扩增产物更容易产生正确荧光变化。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-19-potentiometer.jpg" loading="lazy" alt="potentiometer displacement sensor">
+            <div>
+              <h3>图 19-1：电位器位移传感器把位置变成分压</h3>
+              <div class="figure-explain">
+                <p>这张图展示电位器式位移传感器。它的基本结构是一段电阻材料和一个可移动触点。触点位置改变时，被接入电路的电阻长度改变，电阻值随位移变化。若给整段电阻加电压，触点处输出电压就是一个分压结果。</p>
+                <p>如果电阻材料均匀，位移和电阻近似成线性关系，输出电压也可以近似线性反映位移。这就是最直观的位移到电信号转换：机械位置改变电阻，电阻改变电压。图中给出的 resistance sensitivity 和 voltage sensitivity 反映几何尺寸、电阻率和输入电流对输出变化的影响。</p>
+                <p>它的优点是结构简单、信号大、容易理解；缺点是滑动触点有机械接触，容易磨损、产生摩擦、接触噪声和寿命问题。因此它适合一些低成本、低频或教学场景，不适合所有高可靠、微小位移或长期植入应用。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-19-strain-gauge.jpg" loading="lazy" alt="strain gauge">
+            <div>
+              <h3>图 19-2：应变片用电阻变化读机械变形</h3>
+              <div class="figure-explain">
+                <p>这张图展示 bonded strain gauge。应变片贴在结构表面，结构受拉伸时应变片也被拉长，导体长度增加、截面积减小，电阻通常增加；结构受压缩时相反，电阻减小。它测到的是应变，不是力本身。</p>
+                <p>为什么能用它测力？因为在已知结构和材料弹性关系的情况下，外力会导致特定位置产生应变，应变片测到电阻变化后，可以通过标定或力学模型反推出力、压力或弯矩。图里还说明应变片对横向力不敏感，方向性很重要。</p>
+                <p>实际应用中，应变片的电阻变化非常小，读出电路必须能分辨微小电阻变化，并尽量补偿温度带来的漂移。新版 PPT 没有展开桥路公式，所以这里抓住主因果即可：机械拉伸或压缩改变导体几何尺寸，几何尺寸改变电阻，电阻变化再被电路读成电信号。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-19-capacitive.jpg" loading="lazy" alt="capacitive sensor examples">
+            <div>
+              <h3>图 19-3：电容传感可以测距离、液位和材料</h3>
+              <div class="figure-explain">
+                <p>这张图列出几种电容传感场景：接近检测、液位检测和平行板材料分析。它们看起来不同，但底层公式都是 C 约等于 epsilon A / d。只要被测对象改变有效面积 A、板间距离 d 或介电常数 epsilon，电容就会变化。</p>
+                <p>接近传感中，手指或物体靠近电极，相当于改变电场分布和耦合电容。液位传感中，空气被液体替代，介电常数改变，电容随液位上升而变。材料分析中，把不同材料放入平行板之间，可以通过电容变化推断介电性质。</p>
+                <p>电容传感的优点是结构简单、功耗低、可做柔性和微型器件；缺点是容易受寄生电容、湿度、人体接近、导线布置和屏蔽条件影响。答题时不要只背“电容传感器”，要指出具体是哪一个变量改变了电容。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-20-capacitive-apps.jpg" loading="lazy" alt="capacitive applications">
+            <div>
+              <h3>图 20-1：一页图串起四类电容应用</h3>
+              <div class="figure-explain">
+                <p>这一页把电容传感的多个应用放在一起。左上是电容压力传感器：压力使膜片变形，极板间距 d 改变，电容随之变化。中上是液位传感器：液体高度变化改变两个电容 C1 和 C2 的比例，其中一个还可用于介电常数补偿。</p>
+                <p>右上是触摸传感。手指靠近电极时，会引入手指电容 CF，并改变原有传感电容 CS。下方的人体和穿戴式图形说明，身体与电极之间也可以形成电容耦合，因此胸腹运动、贴合程度、姿态和压力都可能通过电容变化读出。</p>
+                <p>这些应用的共同公式是 C 约等于 epsilon0 epsilonr ab / d。考试给出任何电容传感图，都可以先问：被测量改变了面积、间距还是介电常数？然后判断电容是增大还是减小。实际系统还必须处理寄生电容、温度、湿度和电极屏蔽问题。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-21-piezo-material.jpg" loading="lazy" alt="piezoelectric material">
+            <div>
+              <h3>图 21-1：压电效应和逆压电效应是一对</h3>
+              <div class="figure-explain">
+                <p>这张图解释压电效应和逆压电效应。某些材料在受到机械应力时，内部正负电荷中心发生相对位移，表面出现电荷或电场，这就是直接压电效应。反过来，如果对材料施加电压，材料会发生形变或振动，这就是逆压电效应。</p>
+                <p>图中列出石英晶体、蔗糖、DNA、丝和肌腱等例子，说明压电性并不限于传统陶瓷材料。交流电压会使晶体周期性形变，所以压电材料也常用于超声换能器、谐振器和执行器。</p>
+                <p>在传感器课程中，直接压电效应用来把压力、振动、冲击和声波转成电信号。它的优势是响应快、对动态变化灵敏；局限是静态电荷会泄漏，所以长期静态压力测量通常不是它最擅长的场景。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-21-piezo-transducer.jpg" loading="lazy" alt="piezoelectric pressure transducer">
+            <div>
+              <h3>图 21-2：压电换能器用电极收集应力产生的电压</h3>
+              <div class="figure-explain">
+                <p>这张图把压电压力换能器画成一个夹在电极之间的压电块。外力从上方作用，材料产生极化和电荷分离，两侧电极收集电荷，外电路看到输出电压 E0。材料厚度、面积和力的方向都会影响输出。</p>
+                <p>这个结构说明压电传感器本质上不是电阻或电容变化，而是机械能直接转成电荷或电压。力越大、变化越快，输出信号通常越明显。电极的作用是把材料内部的电荷变化引出到测量电路。</p>
+                <p>实际使用时，压电传感器常需要高输入阻抗电荷放大器，因为产生的电荷量有限，容易被电路泄漏消耗。它非常适合测冲击、振动、脉动压力和声学信号；若题目强调高静压背景下的小动态变化，这正是压电压力传感器的典型优势。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-21-piezo-pressure.jpg" loading="lazy" alt="piezoelectric pressure output">
+            <div>
+              <h3>图 21-3：动态压力曲线会转成交流样输出</h3>
+              <div class="figure-explain">
+                <p>这张图把压力随时间变化和压电输出联系起来。左边压力 P 在高静态背景上叠加微小波动，右边输出电压 Vout 随这些波动产生正负变化。箭头表示机械压力变化被转换成电信号波形。</p>
+                <p>压电传感器对变化特别敏感，是因为应力变化会不断重新分布电荷。对脉搏、振动、机械冲击、超声或快速压力波来说，这种动态电荷输出很有用。即使背景静压很高，只要有小的动态扰动，压电元件也可以给出清晰波形。</p>
+                <p>如果压力是长期恒定的，压电输出会因电荷泄漏和放大器漂移逐渐衰减，不能简单保持一个恒定电压。因此它和电容式或电阻式压力传感器的适用场景不同。判断题中看到 dynamic、pulsation、small pressure changes at high static pressure，就应该想到压电方案。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-22-colorimetric.jpg" loading="lazy" alt="colorimetric sensors enzyme reference">
+            <div>
+              <h3>图 22-1：比色传感常需要 reference 通道</h3>
+              <div class="figure-explain">
+                <p>这张图展示带 reference 的比色传感思路。一个区域含有酶或识别反应，另一个区域作为参考。样品或环境变化可能同时影响光源、基底、温度和背景颜色，单独看一个区域容易把这些非特异因素误认为目标信号。</p>
+                <p>设置 reference 的意义是做差分或比值校正。目标反应只应显著改变 enzyme 区域，而光照变化、拍照角度变化或样品本身颜色可能同时影响两个区域。比较 enzyme 和 reference，就能削弱共同干扰，突出目标引起的特异变化。</p>
+                <p>这和电桥思想很像：不是直接相信一个绝对值，而是通过对照结构抵消背景。很多纸基传感、手机比色检测和可穿戴光学贴片都会使用参考通道。答题时如果看到 reference，不要忽略它，它通常是提高可靠性的关键设计。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-22-fiber-modes.jpg" loading="lazy" alt="optical fiber modulation modes">
+            <div>
+              <h3>图 22-2：光纤传感的三种读出：强度、波长、相位</h3>
+              <div class="figure-explain">
+                <p>这张图总结光纤传感的三种调制方式。强度调制中，被测量改变光的损耗或耦合效率，例如压力让光纤弯曲，输出光强降低。它简单直观，但光源波动、连接损耗和弯折都可能影响读数。</p>
+                <p>波长调制中，被测量改变反射或透射的中心波长，典型例子是光纤 Bragg 光栅。应变或温度改变光栅周期和有效折射率，使反射波长移动。因为读的是波长位置而不是光强大小，所以它对光源强度波动更鲁棒，也适合多点复用。</p>
+                <p>相位调制中，被测量改变光程差，干涉仪把相位变化转换成强度或条纹变化。它的灵敏度很高，但系统搭建和解调更复杂。看到光纤题时，应先判断图中变化的是光强、波长还是相位，再讨论优缺点和应用场景。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-23-hall-basic.jpg" loading="lazy" alt="Hall effect basic principle">
+            <div>
+              <h3>图 23-1：Hall sensor 把磁场变成横向电压</h3>
+              <div class="figure-explain">
+                <p>这张图展示 Hall effect 的基本原理。电流沿半导体片流动时，如果有垂直方向的磁场，运动载流子会受到洛伦兹力向一侧偏转。载流子积累在一边后，横向形成电势差，这个电压就是 Hall voltage VH。</p>
+                <p>Hall 传感器的输入是磁场，输出是横向电压。电流越大、磁场越强，Hall 电压通常越明显；材料载流子浓度和类型会影响灵敏度和极性。图中 p-type semiconductor 说明载流子类型也会影响电压方向。</p>
+                <p>它可以直接测磁场，也可以间接测位移、角度、电流或生物结合事件。例如把磁铁放在可移动结构上，结构位移会改变 Hall 传感器处的磁场；把磁纳米颗粒接到生物目标上，目标结合会带来局部磁信号。这就是 Hall sensor 从物理量走向生物检测的桥梁。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-23-hall-bioarray.jpg" loading="lazy" alt="Hall biosensor with magnetic nanoparticles">
+            <div>
+              <h3>图 23-2：磁纳米颗粒让 Hall 阵列能做生物检测</h3>
+              <div class="figure-explain">
+                <p>这张图展示把 Hall 传感器用于生物检测的思路。表面先固定识别分子，目标结合后再引入 magnetic nanoparticles。磁纳米颗粒相当于标签，本身带来局部磁场，底下的 Hall-effect device array 可以检测这些磁场变化。</p>
+                <p>这里的生物特异性来自抗体、核酸探针或其他识别层；Hall 芯片只负责把磁标签的存在转换成电信号。换句话说，Hall sensor 并不认识蛋白或病毒，它认识的是磁场。生物事件必须先被磁纳米颗粒标记，才能被 Hall 阵列读出。</p>
+                <p>这种设计的优点是磁背景通常较低，样品本身不像荧光那样容易自发发光；缺点是需要可靠的磁标签、洗涤和表面化学。它是课程中“纳米材料 + 生物识别 + 物理传感器”结合的典型例子。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-23-hall-dna.jpg" loading="lazy" alt="Hall DNA hybridization">
+            <div>
+              <h3>图 23-3：DNA 杂交可作为 Hall 检测前端识别事件</h3>
+              <div class="figure-explain">
+                <p>这张图画的是 DNA 杂交识别。probe DNA 固定在表面，样品中的 complementary target DNA 如果序列互补，就会与 probe 杂交形成双链结构。这个过程提供了核酸检测的序列选择性。</p>
+                <p>单纯 DNA 杂交本身不一定产生强电信号，所以实际传感器常要把它连接到转导机制上。可以用荧光探针、酶标记、纳米颗粒、场效应晶体管，也可以像上一张图那样用磁颗粒和 Hall 阵列读出。</p>
+                <p>这张图的上下文是：核酸检测不只 PCR 一种方式。PCR 用扩增提高灵敏度；表面杂交传感器则把互补配对直接放在芯片表面。两者都依赖碱基配对，但信号放大和读出方式不同。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-23-hall-wearable.jpg" loading="lazy" alt="wearable Hall sensor">
+            <div>
+              <h3>图 23-4：可穿戴 Hall 传感把形变转成磁场变化</h3>
+              <div class="figure-explain">
+                <p>这张图展示 Hall sensor 在可穿戴结构中的应用。手部夹板或柔性结构发生弯曲时，内部磁铁和 Hall 传感器的相对位置改变，传感器处的磁场强度和方向也随之变化。芯片读到的是磁场变化，但我们真正关心的是手部运动或关节状态。</p>
+                <p>这说明很多传感器是间接测量。目标量是运动、形变或压力，但中间通过磁铁把机械变化转换成磁场变化，再由 Hall 传感器转换成电压。这样的结构可以避免直接机械接触磨损，也能把传感元件封装在柔性材料中。</p>
+                <p>设计时必须考虑磁铁位置、弹性体刚度、传感器线性范围和外部磁场干扰。如果磁铁太近可能饱和，太远信号太弱；如果弹性体迟滞大，读数会出现路径依赖。这些都是从图中结构可以推出来的工程问题。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-24-mems-beams.jpg" loading="lazy" alt="MEMS fixed and mobile beams">
+            <div>
+              <h3>图 24-1：MEMS 加速度计靠微梁和活动质量块工作</h3>
+              <div class="figure-explain">
+                <p>这张显微图展示 MEMS 加速度计中的固定梁和活动梁，尺度只有约 10 微米。MEMS 器件把机械结构做在芯片上，活动质量块在加速度作用下发生微小位移，周围的梁结构提供弹性支撑。</p>
+                <p>加速度本身不是电信号。器件需要把质量块位移转成可读量，常用方式是电容变化：固定电极和活动电极之间距离变化，差分电容随加速度改变。也可以用压电、压阻或热方式读出，具体取决于结构设计。</p>
+                <p>这张图说明 MEMS 的核心不是“很小”这么简单，而是把机械结构、传感读出和微加工集成在一起。小尺寸带来低功耗、可批量制造和便携性，也带来封装、温漂、噪声、机械冲击和微加工公差等问题。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-24-mems-transducers.jpg" loading="lazy" alt="MEMS transducers">
+            <div>
+              <h3>图 24-2：MEMS 是传感器和执行器的平台，不是一种单一原理</h3>
+              <div class="figure-explain">
+                <p>这张图给出 MEMS 的定义和主要换能类型。MEMS 是微尺度器件平台，可以用于 sense、transport 或 produce a change，也就是既可以做传感器，也可以做执行器。外部机械、电或化学刺激进入微结构后，被转换成可测信号或产生响应。</p>
+                <p>图中列出三类主要 transducers：capacitive、piezoelectric 和 thermal，另外还有 microfluidic。电容式常见于加速度计和压力传感；压电式适合振动、超声和动态压力；热式可用于流量、气体或微执行；微流控则把液体处理和检测集成到芯片上。</p>
+                <p>所以 MEMS 不是某一种单一传感原理，而是一类制造和集成平台。答题时如果看到 MEMS，应继续说明它具体用什么换能机制。说“这是 MEMS，所以能测加速度”还不够，应该说明活动质量块如何位移、位移如何变成电容或其他信号。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="figure-card">
+            <img src="assets/figures/fig-25-fda-classes.jpg" loading="lazy" alt="FDA medical device classes">
+            <div>
+              <h3>图 25-1：医疗器械分类按风险和监管强度划分</h3>
+              <div class="figure-explain">
+                <p>这张图把医疗器械按 FDA 风格分成三类。分类依据不是技术是否先进，而是设备风险和保证安全有效所需的监管控制强度。Class I 是低风险设备，主要依靠 general controls，例如牙线、医用剪刀和牙科注射器。</p>
+                <p>Class II 是中等风险设备，除了 general controls 还需要 special controls，例如性能标准、特殊标签、上市后监测或特定测试。PPT 给的例子包括电动轮椅、MRI 和临床水银温度计。它们不一定都植入人体，但如果性能不达标，会带来明确风险。</p>
+                <p>Class III 是高风险设备，通常维持生命、植入人体或失效可能导致严重伤害，因此需要 premarket approval。体外除颤器和人工心脏瓣膜属于这一类。把这页放在课程末尾，是为了提醒你：传感器从实验室走向医疗应用时，不只是灵敏度和论文指标，还必须面对风险、验证、监管和临床安全。</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="transfer" class="section">
+        <h2>1. 传递函数与校准：传感器到底在“翻译”什么</h2>
+        <p class="lead">传感器不是直接给你“真实世界答案”，它先给出一个信号。传递函数描述真实刺激 \(X\) 与输出信号 \(S\) 的关系，校准则是用已知标准样本把这个关系估出来。</p>
+
+        <div class="grid two">
+          <div class="card">
+            <h3>1.1 从被测量到显示值</h3>
+            <p>典型链路是：measurand 产生 physical measurement variable \(X\)，传感器输出 signal variable \(S\)，显示或算法给出 measurement \(M\)。考试时如果让你“说明传感器工作过程”，不要只说材料名，要按这条链路说明输入、换能机制、输出和校准。</p>
+            <div class="math">\[X \xrightarrow{\text{sensor}} S \xrightarrow{\text{calibration/display}} M\]</div>
+          </div>
+          <div class="card">
+            <h3>1.2 为什么不是所有响应都线性</h3>
+            <p>线性响应 \(S=a+bX\) 最容易用，因为斜率就是灵敏度。但很多传感器受反应动力学、扩散、吸附位点饱和、电子学放大范围限制，会出现对数、指数、多项式或饱和响应。看到非线性响应时，先问：能否在小范围内线性近似？是否需要取对数或用标准曲线插值？</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <div class="mark">法</div>
+          <div><strong>校准题模板：</strong>先写 \(S=f(X)\)，说明 \(X\) 和 \(S\) 的单位；再用标准点拟合参数；最后把未知样品的 \(S\) 代回求 \(X\)。如果样品超出校准范围，不能外推当作可靠结果。</div>
+        </div>
+
+        <article class="worked">
+          <div class="worked-head"><h3>例题 1：Beer-Lambert Law 作为传递函数</h3><span class="tag blue">定量</span></div>
+          <div class="worked-body">
+            <p><strong>题目：</strong>某物质在固定波长下 \(\varepsilon=2.0\times10^4\ \mathrm{L\,mol^{-1}\,cm^{-1}}\)，比色皿光程 \(l=1.0\ \mathrm{cm}\)。测得 \(I_0/I=10\)。求浓度。</p>
+            <ol class="answer-steps">
+              <li>先把信号写成吸光度：\(A=\log_{10}(I_0/I)=\log_{10}10=1\)。</li>
+              <li>把 Beer-Lambert Law 看作传递函数：\(A=\varepsilon l c\)。</li>
+              <li>代入：\(c=A/(\varepsilon l)=1/(2.0\times10^4\times1.0)=5.0\times10^{-5}\ \mathrm{M}\)。</li>
+            </ol>
+            <p><strong>解释：</strong>这里输入 \(X\) 是浓度 \(c\)，输出 \(S\) 是吸光度 \(A\)。斜率 \(\varepsilon l\) 越大，同样浓度变化引起的吸光度变化越大，灵敏度越高。</p>
+          </div>
+        </article>
+      </section>
+
+      <section id="characteristics" class="section">
+        <h2>2. 传感器特性：如何判断一个测量“好不好”</h2>
+        <p class="lead">传感器特性分静态和动态。静态特性回答“稳态值准不准、噪声大不大、能测多低、多宽”；动态特性回答“输入改变后多久跟上、是否超调、是否振荡”。</p>
+
+        <h3>2.1 静态指标总表</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>指标</th><th>一句话定义</th><th>直觉</th><th>常见错误</th></tr></thead>
+            <tbody>
+              <tr><td>Accuracy</td><td>测量均值接近真值的程度。</td><td>靶心图中点群中心离靶心近。</td><td>把 accuracy 与 precision 混用。</td></tr>
+              <tr><td>Precision</td><td>重复测量彼此接近的程度。</td><td>点群聚得紧。</td><td>精密但不准确是可能的。</td></tr>
+              <tr><td>Sensitivity</td><td>输出随输入变化的斜率。</td><td>校准曲线越陡，单位输入变化越容易被看到。</td><td>把 sensitivity 与 specificity 混淆。</td></tr>
+              <tr><td>Specificity</td><td>识别目标而不响应非目标的能力。</td><td>健康者被判阴性的比例高。</td><td>只看阳性样本，不看假阳性。</td></tr>
+              <tr><td>Linearity</td><td>输出与输入是否近似直线关系。</td><td>线性范围内可用一个斜率描述。</td><td>把饱和区也拿来线性拟合。</td></tr>
+              <tr><td>Hysteresis</td><td>输入上升和下降路径得到不同输出。</td><td>加载/卸载曲线不重合。</td><td>只做单方向校准。</td></tr>
+              <tr><td>LOD</td><td>能可靠“看见”的最低量。</td><td>信号刚超过噪声。</td><td>把 LOD 当成可准确定量的最低点。</td></tr>
+              <tr><td>LOQ</td><td>能可靠“定量”的最低量。</td><td>通常高于 LOD。</td><td>报告低于 LOQ 的精确数值。</td></tr>
+              <tr><td>SNR</td><td>信号相对噪声强度。</td><td>越大越容易识别真实峰。</td><td>只看峰高，不看基线噪声。</td></tr>
+              <tr><td>Repeatability</td><td>同条件重复结果一致性。</td><td>同人同仪器同环境。</td><td>与 reproducibility 混用。</td></tr>
+              <tr><td>Reproducibility</td><td>不同条件下结果一致性。</td><td>不同人、不同仪器、不同实验室。</td><td>只在一个实验室验证就说可复现。</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>2.2 灵敏度与特异性：用混淆矩阵别混</h3>
+        <div class="math">\[
+          \text{sensitivity}=\frac{TP}{TP+FN},\quad
+          \text{specificity}=\frac{TN}{TN+FP},\quad
+          \text{PPV}=\frac{TP}{TP+FP},\quad
+          \text{NPV}=\frac{TN}{TN+FN}
+        \]</div>
+        <p>PPT 中列出 TP、FP、FN、TN。重点是分母不同：sensitivity 的分母是所有真正有病者，specificity 的分母是所有真正无病者。阳性预测值 PPV 和阴性预测值 NPV 虽不在 PPT 主图中，但常和前两者一起出现，受患病率影响很大。</p>
+
+        <article class="worked">
+          <div class="worked-head"><h3>例题 2：从混淆矩阵计算指标</h3><span class="tag">诊断统计</span></div>
+          <div class="worked-body">
+            <p><strong>题目：</strong>100 名患病者中检测阳性 92 人，100 名无病者中检测阳性 8 人。求 sensitivity 和 specificity。</p>
+            <ol class="answer-steps">
+              <li>患病且阳性：\(TP=92\)。患病但阴性：\(FN=8\)。</li>
+              <li>无病但阳性：\(FP=8\)。无病且阴性：\(TN=92\)。</li>
+              <li>\(\text{sensitivity}=92/(92+8)=92\%\)。</li>
+              <li>\(\text{specificity}=92/(92+8)=92\%\)。</li>
+            </ol>
+            <p><strong>易错点：</strong>如果题目把总人数、患病人数、阳性人数混在一起给，先画四格表再算，不要直接拿阳性总数当分母。</p>
+          </div>
+        </article>
+
+        <h3>2.3 噪声、LOD、LOQ 与 SNR</h3>
+        <p>LOD 和 LOQ 的核心不是“有没有信号”，而是信号相对噪声是否足够可靠。PPT 图中 Peak A 到达 LOD，只能说明存在可检出信号；Peak B 到达 LOQ，才适合给出可信浓度数值。常见经验是 LOD 约为空白均值加 3 倍噪声标准差，LOQ 约为空白均值加 10 倍噪声标准差；若把信号换成浓度，则除以校准曲线斜率。</p>
+        <article class="worked">
+          <div class="worked-head"><h3>例题 3：用噪声和斜率估算 LOD/LOQ</h3><span class="tag amber">常用补充</span></div>
+          <div class="worked-body">
+            <p><strong>题目：</strong>空白噪声标准差 \(\sigma_b=0.015\ \mathrm{A.U.}\)，校准曲线斜率 \(m=0.30\ \mathrm{A.U./nM}\)。估计 LOD 和 LOQ。</p>
+            <ol class="answer-steps">
+              <li>\(LOD\approx 3\sigma_b/m=3\times0.015/0.30=0.15\ \mathrm{nM}\)。</li>
+              <li>\(LOQ\approx 10\sigma_b/m=10\times0.015/0.30=0.50\ \mathrm{nM}\)。</li>
+            </ol>
+            <p><strong>解释：</strong>增大斜率或降低噪声都会降低 LOD/LOQ。单纯放大信号如果同时放大噪声，不一定改善 LOD。</p>
+          </div>
+        </article>
+
+        <h3>2.4 动态特性：一阶系统与二阶系统</h3>
+        <div class="grid two">
+          <div class="card">
+            <h3>一阶系统：水银温度计</h3>
+            <p>PPT 用水银温度计说明 sensitivity \(k\) 与 time constant \(\tau\) 的权衡。更大的 bulb volume \(V_b\) 提高位移灵敏度，但也让系统热容量变大，响应变慢；更大的接触面积 \(A_b\) 和换热系数 \(U\) 有助于降低 \(\tau\)。</p>
+            <div class="math">\[k=\frac{K_{ex}V_b}{A_c},\qquad \tau=\frac{\rho C V_b}{UA_b}\]</div>
+          </div>
+          <div class="card">
+            <h3>二阶系统：阶跃响应</h3>
+            <p>二阶响应常见振荡。rise time 是从 10% 到 90% 的时间；response time 或 settling time 是进入并保持在误差带内的时间；overshoot 是最大峰值超过稳态值的量；attenuation 描述相邻峰值衰减。</p>
+            <div class="math">\[\psi=\frac{\alpha-\alpha_1}{\alpha}\times100\%\]</div>
+          </div>
+        </div>
+        <div class="callout warn">
+          <div class="mark">辨</div>
+          <div><strong>静态 vs 动态：</strong>如果题目问“稳态时读数是否接近真实值”，这是静态准确性；如果题目问“突然输入后多久到达稳定读数”，这是动态响应。一个传感器可以稳态很准但响应很慢。</div>
+        </div>
+      </section>
+
+      <section id="biomarker" class="section">
+        <h2>3. 生物标志物：先明确“测到的特征代表什么”</h2>
+        <p class="lead">新版 PPT 在这一页强调 biomarker 的定义和类型。生物标志物是能被测量、并指示正常生物过程、病理过程、暴露响应或治疗响应的特征。传感课程关心的不只是“能不能检测”，还要说明被测特征对应的是分子、组织、影像还是生理功能。</p>
+
+        <div class="grid three">
+          <div class="card"><h3>Molecular</h3><p>分子标志物，如血糖、蛋白、核酸、代谢物。传感器常直接识别分子结构或反应产物。</p></div>
+          <div class="card"><h3>Histologic / Radiographic</h3><p>组织学或影像学标志物，如肿瘤组织形态、肿瘤大小。它们常通过图像或病理流程获得。</p></div>
+          <div class="card"><h3>Physiologic</h3><p>生理标志物，如血压、心率、体温。常与压力、位移、光学或电生理传感器相关。</p></div>
+        </div>
+
+        <h3>3.1 为什么分类很重要</h3>
+        <p>同样叫 biomarker，检测链路可能完全不同。Molecular biomarker 往往需要化学或生物识别元件，例如酶、抗体、aptamer 或核酸探针；radiographic biomarker 依赖成像和图像定量；physiologic biomarker 常由压力、位移、光学或电生理传感器获得。先判断 biomarker 类型，才能继续选择合适的 transducer、校准方式和临床解释方式。</p>
+        <p>答题时不要只写“biomarker 是疾病标志物”。更完整的说法是：它必须可测量，并且这个可测特征要能指示某种生物状态或干预响应。血糖、肿瘤大小、血压分别落在不同类型中，所以后续课程才会同时出现电化学、光学、免疫、核酸和物理传感器。</p>
+      </section>
+
+      <section id="electrochem" class="section">
+        <h2>4. 酶传感与电化学：从血糖检测到安培型传感器</h2>
+        <p class="lead">酶传感的基本想法是：酶把目标底物转成产物，产物或反应过程引起可测电信号。血糖传感器是最经典例子。</p>
+
+        <h3>4.1 Michaelis-Menten 方程的物理含义</h3>
+        <div class="math">\[v_0=\frac{V_{\max}[S]}{K_M+[S]}\]</div>
+        <p>\(v_0\) 是初始反应速率，\([S]\) 是底物浓度，\(V_{\max}\) 是酶位点全部被充分利用时的最大速率，\(K_M\) 是速率达到 \(V_{\max}/2\) 时的底物浓度。它告诉你：低浓度时速率随浓度近似线性，高浓度时酶位点接近饱和，继续增加浓度也不能显著增加速率。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>浓度范围</th><th>近似</th><th>传感意义</th></tr></thead>
+            <tbody>
+              <tr><td>\([S]\ll K_M\)</td><td>\(v_0\approx (V_{\max}/K_M)[S]\)</td><td>适合定量，响应近似线性。</td></tr>
+              <tr><td>\([S]=K_M\)</td><td>\(v_0=V_{\max}/2\)</td><td>\(K_M\) 可视为酶对底物亲和/工作范围的尺度。</td></tr>
+              <tr><td>\([S]\gg K_M\)</td><td>\(v_0\approx V_{\max}\)</td><td>系统饱和，高浓度区分能力下降。</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>4.2 三类电化学读出</h3>
+        <div class="grid three">
+          <div class="card"><h3>Potentiometric</h3><p>测电压。典型问题是某种离子活度改变电极电位，例如 pH 电极、离子选择电极。</p></div>
+          <div class="card"><h3>Amperometric</h3><p>测电流。目标反应在电极上氧化还原，电流与反应速率和物质通量相关。葡萄糖传感器重点属于这一类。</p></div>
+          <div class="card"><h3>Conductometric</h3><p>测电导。反应改变溶液中离子浓度或迁移能力，从而改变电导。</p></div>
+        </div>
+
+        <h3>4.3 第一代葡萄糖生物传感器</h3>
+        <p>PPT 中给出的核心反应链是：</p>
+        <div class="math">\[
+          \text{glucose}+O_2 \xrightarrow{GO_x} \text{gluconolactone}+H_2O_2
+        \]</div>
+        <p>生成的 \(H_2O_2\) 在 Pt 工作电极上被氧化：</p>
+        <div class="math">\[
+          H_2O_2 \xrightarrow{\text{Pt anode}} O_2+2H^+ +2e^-
+        \]</div>
+        <p>电极收集电子形成电流，电流大小与 \(H_2O_2\) 产生速率相关，也就与葡萄糖浓度相关。第一代传感器的弱点也来自这里：它依赖氧气，并且高电位氧化 \(H_2O_2\) 时可能受到其他可氧化物质干扰。</p>
+
+        <article class="worked">
+          <div class="worked-head"><h3>例题 4：判断葡萄糖传感器的输入、转导和输出</h3><span class="tag">答题模板</span></div>
+          <div class="worked-body">
+            <p><strong>题目：</strong>简述第一代 GOx 葡萄糖传感器如何测量血糖。</p>
+            <ol class="answer-steps">
+              <li><strong>识别层：</strong>葡萄糖氧化酶 GOx 对葡萄糖有选择性，催化葡萄糖与 \(O_2\) 反应。</li>
+              <li><strong>化学转化：</strong>葡萄糖被氧化生成 gluconolactone，同时产生 \(H_2O_2\)。</li>
+              <li><strong>电化学转导：</strong>\(H_2O_2\) 在 Pt 电极上氧化产生电子，形成可测电流。</li>
+              <li><strong>校准定量：</strong>用已知葡萄糖浓度建立电流-浓度曲线，再由未知样品电流反推浓度。</li>
+              <li><strong>限制：</strong>氧气供应、酶活性、扩散、干扰物和电极污染都会影响结果。</li>
+            </ol>
+          </div>
+        </article>
+      </section>
+
+      <section id="spectroscopy" class="section">
+        <h2>5. 分子光谱、气味传感与近红外荧光</h2>
+        <p class="lead">新版 PPT 在光谱总览后加入了气味/嗅觉受体图。光谱传感的共同思想是分子和光相互作用会改变光的强度、波长、相位或时间特性；气味传感则强调复杂分子混合物如何通过一组非完全特异的受体形成可识别模式。</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>方法</th><th>主要测什么</th><th>典型输出</th><th>适合回答的问题</th></tr></thead>
+            <tbody>
+              <tr><td>UV-vis</td><td>电子跃迁导致的吸收</td><td>吸光度 \(A\)</td><td>样品在某波长吸收多少，浓度是多少。</td></tr>
+              <tr><td>Fluorescence</td><td>吸收后发射光</td><td>荧光强度、发射波长</td><td>目标是否存在、荧光探针是否被激活。</td></tr>
+              <tr><td>FTIR</td><td>分子振动，包括伸缩和弯曲</td><td>红外吸收峰</td><td>有哪些官能团或化学键。</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>5.1 Beer-Lambert Law 的使用边界</h3>
+        <p>Beer-Lambert Law 把浓度与吸光度联系起来，但它不是无限适用。高浓度时分子间相互作用、散射、杂散光、仪器动态范围都可能破坏线性。因此定量时必须有标准曲线，并说明样品落在线性范围内。</p>
+        <div class="callout warn">
+          <div class="mark">错</div>
+          <div><strong>常见错误：</strong>把 \(I\) 和 \(I_0\) 颠倒。吸光度定义为 \(A=\log_{10}(I_0/I)\)。样品吸收越强，透过光 \(I\) 越小，\(A\) 越大。</div>
+        </div>
+
+        <h3>5.2 气味传感：单个受体不够，关键是响应模式</h3>
+        <p>新版第 13 页左侧用嗅觉系统说明气味识别的生物原型：odorant 分子进入鼻腔后，与 olfactory receptor cells 上的受体结合，受体细胞产生电信号，信号在 glomeruli 中汇聚，再传到更高级脑区。这里的重点不是某一个受体只识别某一种气味，而是许多受体对许多 odorants 形成组合响应。</p>
+        <p>右侧的 odorant-receptor 矩阵可以看作传感器阵列：行是不同气味分子，列是不同 receptor，粉色格子表示某个受体对某个 odorant 有响应。一个 odorant 往往激活多个 receptor，一个 receptor 也可能响应多个 odorants。最终可区分的是整行响应图案，而不是单个格子。这就是电子鼻、气味传感和复杂样品模式识别的核心思路：用阵列产生指纹，再用统计或机器学习方法分类。</p>
+
+        <h3>5.3 为什么 650-950 nm 是组织光学窗口</h3>
+        <p>PPT 的关键结论是：可见光尤其短波段被 hemoglobin 强吸收；当波长超过 650 nm，血红蛋白吸收显著降低；但超过 950 nm 后，水吸收明显增加。因此 650-950 nm 之间吸收较小，光能在组织中传播更深，适合近红外荧光成像和体内检测。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>波段</th><th>主要限制</th><th>传感意义</th></tr></thead>
+            <tbody>
+              <tr><td>&lt; 650 nm</td><td>血红蛋白吸收强，散射也明显。</td><td>穿透浅，更适合表面或透明样品。</td></tr>
+              <tr><td>650-950 nm</td><td>吸收相对较低。</td><td>组织光学窗口，适合深部荧光检测。</td></tr>
+              <tr><td>&gt; 950 nm</td><td>水吸收增强。</td><td>穿透受到水吸收限制，热效应需考虑。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="immuno" class="section">
+        <h2>6. 免疫检测、ELISA 与纳米材料</h2>
+        <p class="lead">抗体传感的核心是分子识别：抗体与抗原特异结合，结合事件通过光、电、质量、折射率或颜色变化读出。</p>
+
+        <h3>6.1 抗体结合与 \(K_D\)</h3>
+        <p>把抗体和抗原分别记为 \(A\) 和 \(B\)，复合物为 \(AB\)。结合速率与 \([A][B]\) 成正比，解离速率与 \([AB]\) 成正比。平衡时：</p>
+        <div class="math">\[
+          k_{on}[A][B]=k_{off}[AB],\qquad
+          K_D=\frac{[A][B]}{[AB]}=\frac{k_{off}}{k_{on}}
+        \]</div>
+        <p>\(K_D\) 越小，说明在较低浓度下也能形成较多复合物，亲和力更高。考试中如果问“哪个抗体更好”，不能只看是否结合，还要看 \(K_D\)、交叉反应、稳定性和检测背景。</p>
+
+        <h3>6.2 SPR 与 QCM-D</h3>
+        <div class="grid two">
+          <div class="card"><h3>SPR</h3><p>Surface plasmon resonance 通过表面折射率变化检测结合事件。抗原抗体结合改变金膜附近折射率，使共振角或响应信号变化。优点是可实时、无标记监测结合和解离。</p></div>
+          <div class="card"><h3>QCM-D</h3><p>Quartz crystal microbalance with dissipation 通过石英晶体频率变化和耗散变化反映表面质量加载与层的黏弹性。频率下降通常意味着表面吸附质量增加；耗散变化帮助判断层是刚性还是软/含水。</p></div>
+        </div>
+
+        <h3>6.3 ELISA 五种类型</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>类型</th><th>基本流程</th><th>适合对象</th><th>结果解释</th></tr></thead>
+            <tbody>
+              <tr><td>Direct ELISA</td><td>抗原固定，酶标一抗直接结合。</td><td>流程短、目标明确。</td><td>颜色越深通常目标越多。</td></tr>
+              <tr><td>Indirect ELISA</td><td>抗原固定，一抗结合，再加酶标二抗。</td><td>检测抗体或提高信号。</td><td>二抗提供放大，但增加非特异风险。</td></tr>
+              <tr><td>Sandwich ELISA</td><td>捕获抗体固定，夹住抗原，再用检测抗体读出。</td><td>蛋白、抗原定量，特异性高。</td><td>需要抗原有两个可被识别的表位。</td></tr>
+              <tr><td>Competitive ELISA</td><td>样品目标与标记目标竞争结合位点。</td><td>小分子或单表位目标。</td><td>样品越多，常见读出信号反而越低。</td></tr>
+              <tr><td>Multiplex ELISA</td><td>同时检测多个目标。</td><td>细胞因子、多标志物面板。</td><td>需要防止交叉反应和信号串扰。</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>6.4 Lateral flow assay：为什么一条线阳性、一条线有效</h3>
+        <p>侧向层析试纸由 sample pad、conjugate pad、nitrocellulose membrane、wicking pad 等组成。样品沿毛细作用流动，带着标记抗体或纳米颗粒移动。test line 上固定的识别分子捕获目标复合物，显示阳性；control line 捕获流过的标记物，证明液体流动和试剂有效。若 control line 不出现，无论 test line 如何，都应判为无效。</p>
+      </section>
+
+      <section id="nucleic" class="section">
+        <h2>7. 核酸检测：Aptamer 与 PCR 荧光探针</h2>
+        <p class="lead">核酸检测把“序列互补”和“扩增”作为核心放大机制。PPT 同时把 aptamer 放在这里，因为 aptamer 本身是可折叠的核酸识别分子，能像抗体一样结合目标。</p>
+
+        <div class="grid two">
+          <div class="card">
+            <h3>Aptamer</h3>
+            <p>Aptamer 是筛选得到的短 DNA/RNA 序列。它不是靠 Watson-Crick 配对识别另一条核酸，而是折叠成三维结构后与蛋白、小分子或细胞表面目标结合。优点是可化学合成、易修饰、批间差异小；限制是结构受离子强度、温度和样品基质影响。</p>
+          </div>
+          <div class="card">
+            <h3>PCR probe</h3>
+            <p>TaqMan 探针使用双标记荧光水解探针，扩增时探针被聚合酶水解，荧光与淬灭基团分离，信号上升。FRET 杂交探针依赖供体和受体距离变化。共同点是把序列特异性转换成荧光信号。</p>
+          </div>
+        </div>
+
+        <h3>7.1 这页的共同逻辑：识别事件必须被转成可读信号</h3>
+        <p>Aptamer 的识别来自折叠后的三维结构，PCR probe 的识别来自序列互补和扩增过程中的荧光变化。二者都不是“看见分子本身”，而是把结合、杂交、水解或构象变化转成光学、电化学或其他可读信号。新版 PPT 不再展开病毒诊断路线图后，这一节的重点就更集中：核酸既可以作为被检测对象，也可以作为识别元件和信号转换元件。</p>
+      </section>
+
+      <section id="physical" class="section">
+        <h2>8. 物理传感器与 MEMS：把力、位移、压力、磁场转成电信号</h2>
+        <p class="lead">新版 PPT 的物理传感器复习页聚焦电位器、应变片、电容传感，后续再接压电、量热、光纤、Hall 和 MEMS。学习重点是“输入变量改变了哪个可读物理量”。只要能说清电阻、电容、电压、频率、相位或磁场如何随输入变化，就抓住了主线。</p>
+
+        <h3>8.1 电阻式：电位器与应变片</h3>
+        <div class="grid two">
+          <div class="card">
+            <h3>电位器位移传感器</h3>
+            <p>滑动触点位置改变有效电阻，输出电压按分压关系变化。优点是直观、成本低；缺点是机械接触带来磨损、摩擦和寿命问题。</p>
+          </div>
+          <div class="card">
+            <h3>应变片</h3>
+            <p>拉伸使导体长度增加、截面积减小，电阻通常增大；压缩时电阻减小。应变片对轴向应变敏感，对横向力可能不敏感，因此安装方向很关键。</p>
+          </div>
+        </div>
+        <p>新版复习页没有展开桥路公式，因此这里按 PPT 主图掌握到“位移改变电阻分压，应变改变导体电阻”即可。实际工程中小电阻变化常需要差分读出和温度补偿，但答这份 PPT 的核心应落在输入-电阻-电压/电信号的因果链上。</p>
+
+        <h3>8.2 电容式：距离、液位和介电性质</h3>
+        <div class="card">
+          <h3>电容传感</h3>
+          <div class="math">\[C\approx \varepsilon_0\varepsilon_r\frac{ab}{d}\]</div>
+          <p>压力或触摸可以改变有效板间距 \(d\) 和电场分布，液位可以改变介电常数 \(\varepsilon_r\)，材料分析可以把待测材料放入平行板之间，通过电容变化推断介电性质。新版第 19 页只保留电容传感的三类示例，所以答题时重点说明到底是面积、间距还是介电常数发生了变化。</p>
+        </div>
+
+        <h3>8.3 压电传感器</h3>
+        <p>压电材料在机械应力下产生电荷/电压；反过来，施加电场也会让材料形变，这叫逆压电效应。PPT 中举例包括 quartz crystals、sucrose、DNA、silk、tendon。压电压力传感器特别适合动态、快速或微小压力变化，因为变化越快越容易产生明显电荷输出；但纯静态长期压力测量会受到电荷泄漏和漂移限制。</p>
+        <div class="callout">
+          <div class="mark">答</div>
+          <div><strong>压电题答法：</strong>先说“机械应力导致极化/电荷分离”，再说“电极收集电荷形成电压”，最后指出适合动态压力、振动和脉动测量。</div>
+        </div>
+
+        <h3>8.4 光纤、Hall 与 MEMS</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>类型</th><th>输入改变什么</th><th>输出读什么</th><th>典型优点</th></tr></thead>
+            <tbody>
+              <tr><td>Intensity-modulated fiber</td><td>弯曲、压力或吸收改变光强。</td><td>输出光强。</td><td>结构简单，远距离传输。</td></tr>
+              <tr><td>Wavelength-modulated fiber</td><td>应变/温度改变光栅周期或折射率。</td><td>反射/透射波长。</td><td>抗强度波动，适合多点复用。</td></tr>
+              <tr><td>Phase-modulated fiber</td><td>光程差变化。</td><td>干涉相位。</td><td>高灵敏度。</td></tr>
+              <tr><td>Hall sensor</td><td>磁场使载流子受洛伦兹力偏转。</td><td>横向 Hall voltage。</td><td>可测磁场、位置、磁珠标记。</td></tr>
+              <tr><td>MEMS</td><td>微梁、质量块、薄膜受力或加速度变化。</td><td>电容、压电、热或微流控信号。</td><td>小型化、批量制造、可集成。</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <article class="worked">
+          <div class="worked-head"><h3>例题 5：电容压力传感器方向判断</h3><span class="tag blue">物理直觉</span></div>
+          <div class="worked-body">
+            <p><strong>题目：</strong>平行板电容压力传感器中，压力使两极板距离 \(d\) 减小。输出电容如何变化？</p>
+            <ol class="answer-steps">
+              <li>写核心公式：\(C=\varepsilon A/d\)。</li>
+              <li>压力增大导致 \(d\) 减小，\(\varepsilon\) 和 \(A\) 近似不变。</li>
+              <li>因此 \(C\) 增大。若电路把电容转成电压或频率，还需看后端读出电路方向。</li>
+            </ol>
+          </div>
+        </article>
+      </section>
+
+      <section id="device" class="section">
+        <h2>9. 医疗器械分类：从传感器走向应用</h2>
+        <p class="lead">最后一页把课程引到转化与监管。医疗器械分类不是按技术先进程度，而是按风险和所需监管控制强度。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>类别</th><th>风险</th><th>监管控制</th><th>PPT 例子</th><th>判断思路</th></tr></thead>
+            <tbody>
+              <tr><td>Class I</td><td>低</td><td>General controls</td><td>牙线、医用剪刀、牙科注射器</td><td>失效通常不会造成严重伤害，结构和用途相对简单。</td></tr>
+              <tr><td>Class II</td><td>中</td><td>General controls + special controls</td><td>电动轮椅、MRI、临床水银温度计</td><td>需要性能标准、特殊标识或上市后控制来保证安全有效。</td></tr>
+              <tr><td>Class III</td><td>高</td><td>General controls + premarket approval</td><td>体外除颤器、人工心脏瓣膜</td><td>维持生命、植入人体或失效可能造成严重伤害。</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout">
+          <div class="mark">记</div>
+          <div><strong>一句话记忆：</strong>Class I 是低风险通用控制；Class II 是中等风险，需要特殊控制；Class III 是高风险，通常需要上市前批准。</div>
+        </div>
+      </section>
+
+      <section id="bank" class="section">
+        <h2>10. 综合题库：按答案思路训练</h2>
+        <p class="lead">下面的题不追求覆盖所有细枝末节，而是训练 PPT 最可能考的概念链路。建议先自己回答，再展开参考答案。</p>
+
+        <details class="quiz">
+          <summary>题 1：什么是 transfer function？为什么校准曲线很重要？</summary>
+          <div>Transfer function 描述输入刺激 \(X\) 与输出信号 \(S\) 的关系，即 \(S=f(X)\)。校准曲线用已知标准样品确定 \(f\) 的形式和参数，使未知样品的信号可以反推浓度、压力或其他被测量。没有校准，信号只是电流、电压或光强，不能直接等同真实量。</div>
+        </details>
+        <details class="quiz">
+          <summary>题 2：accuracy 和 precision 的区别是什么？</summary>
+          <div>Accuracy 关注测量均值离真值多近；precision 关注重复测量彼此多接近。一个系统可以 precision 高但 accuracy 低，例如所有点都聚在一起但偏离靶心；也可以 accuracy 较好但 precision 低，例如点分散但均值接近真值。</div>
+        </details>
+        <details class="quiz">
+          <summary>题 3：LOD 和 LOQ 有什么区别？</summary>
+          <div>LOD 是最低可检出量，说明信号能从噪声中被看见；LOQ 是最低可定量量，说明信号足够高，可以给出可信数值。LOQ 通常高于 LOD。报告低于 LOQ 的精确定量值是不严谨的。</div>
+        </details>
+        <details class="quiz">
+          <summary>题 4：为什么水银温度计的灵敏度和响应速度存在权衡？</summary>
+          <div>更大的 bulb volume \(V_b\) 会让温度变化引起更大的液柱位移，因此提高灵敏度；但它也增加热容量，使时间常数 \(\tau=\rho C V_b/(UA_b)\) 增大，响应变慢。增大接触面积 \(A_b\) 或换热系数 \(U\) 可以缩短时间常数。</div>
+        </details>
+        <details class="quiz">
+          <summary>题 5：Michaelis-Menten 方程中 \(K_M\) 的意义是什么？</summary>
+          <div>\(K_M\) 是反应速率达到 \(V_{\max}/2\) 时的底物浓度。它给出酶传感器从线性区走向饱和区的浓度尺度。低于 \(K_M\) 很多时，速率近似与浓度成正比；高于 \(K_M\) 很多时，速率接近 \(V_{\max}\)。</div>
+        </details>
+        <details class="quiz">
+          <summary>题 6：第一代葡萄糖传感器为什么属于 amperometric sensor？</summary>
+          <div>因为它最终测量的是电极上的氧化还原电流。GOx 催化葡萄糖生成 \(H_2O_2\)，\(H_2O_2\) 在 Pt 电极上氧化产生电子，电流与反应速率相关。通过校准可由电流反推葡萄糖浓度。</div>
+        </details>
+        <details class="quiz">
+          <summary>题 7：为什么近红外 650-950 nm 适合组织检测？</summary>
+          <div>在 650 nm 以下，血红蛋白吸收较强；在 950 nm 以上，水吸收明显增强。650-950 nm 区间吸收相对较低，光可以在组织中传播更深，因此称为组织光学窗口。</div>
+        </details>
+        <details class="quiz">
+          <summary>题 8：\(K_D\) 越大越好吗？</summary>
+          <div>不是。\(K_D=[A][B]/[AB]=k_{off}/k_{on}\)，数值越小表示较低浓度下也能形成较多复合物，亲和力越强。高 \(K_D\) 通常意味着结合弱或容易解离。</div>
+        </details>
+        <details class="quiz">
+          <summary>题 9：sandwich ELISA 为什么通常特异性高？</summary>
+          <div>因为目标抗原需要同时被捕获抗体和检测抗体识别，相当于双重识别。但它要求抗原有至少两个可同时识别的表位，因此小分子或单表位目标不一定适合。</div>
+        </details>
+        <details class="quiz">
+          <summary>题 10：侧向层析试纸的 control line 有什么作用？</summary>
+          <div>control line 证明样品流动、标记试剂释放和反应体系基本有效。若 control line 不出现，即使 test line 出现，也应判为无效测试。</div>
+        </details>
+        <details class="quiz">
+          <summary>题 11：PCR 荧光探针为什么能提高检测特异性？</summary>
+          <div>PCR 扩增负责把目标序列数量放大，荧光探针负责确认扩增产物是否包含目标序列。TaqMan 探针只有在正确杂交并被聚合酶水解后才释放荧光；FRET 探针则要求探针与目标序列形成合适空间距离。这样可以减少非特异扩增或引物二聚体带来的误读。</div>
+        </details>
+        <details class="quiz">
+          <summary>题 12：为什么气味传感常用阵列而不是单个传感器？</summary>
+          <div>气味样品通常是多分子混合物，单个受体或单个传感材料很难对所有 odorant 完全特异。阵列中每个单元对不同分子有交叉敏感性，多个单元共同形成响应指纹。分类时看的不是某一个通道，而是整组响应模式。</div>
+        </details>
+        <details class="quiz">
+          <summary>题 13：电容式压力传感器中压力增大导致间距变小，电容如何变化？</summary>
+          <div>由 \(C=\varepsilon A/d\)，若 \(A\) 和 \(\varepsilon\) 不变，\(d\) 减小会使 \(C\) 增大。</div>
+        </details>
+        <details class="quiz">
+          <summary>题 14：压电传感器为什么适合动态压力或振动？</summary>
+          <div>压电材料在应力变化时产生电荷/电压，动态载荷会持续产生可测信号；静态载荷下电荷可能泄漏，读数易漂移，因此压电传感器尤其适合快速变化、脉动和振动测量。</div>
+        </details>
+        <details class="quiz">
+          <summary>题 15：Hall sensor 的输入和输出分别是什么？</summary>
+          <div>输入是垂直于电流方向的磁场，输出是横向 Hall voltage。磁场使载流子受洛伦兹力偏转，在横向形成电势差。</div>
+        </details>
+        <details class="quiz">
+          <summary>题 16：MEMS 的三类主要 transducers 是什么？</summary>
+          <div>PPT 列出三类主要 transducers：capacitive、piezoelectric、thermal；另外还可包括 microfluidic。MEMS 常把微结构、传感器和执行器集成在微尺度芯片上。</div>
+        </details>
+      </section>
+
+      <section id="check" class="section">
+        <h2>掌握度清单</h2>
+        <div class="card">
+          <div class="progress-bar" aria-label="完成进度"><span data-progress></span></div>
+          <div class="checklist">
+            <label class="check-item"><input id="c1" data-check type="checkbox">我能用 \(S=f(X)\) 解释传感器输入、输出和校准。</label>
+            <label class="check-item"><input id="c2" data-check type="checkbox">我能区分 accuracy、precision、sensitivity、specificity、LOD、LOQ、SNR。</label>
+            <label class="check-item"><input id="c3" data-check type="checkbox">我能根据混淆矩阵计算 sensitivity 和 specificity。</label>
+            <label class="check-item"><input id="c4" data-check type="checkbox">我能解释一阶时间常数和二阶响应中的 rise time、settling time、overshoot。</label>
+            <label class="check-item"><input id="c5" data-check type="checkbox">我能区分 molecular、histologic、radiographic、physiologic biomarker。</label>
+            <label class="check-item"><input id="c6" data-check type="checkbox">我能解释 Michaelis-Menten 方程和葡萄糖安培型传感器。</label>
+            <label class="check-item"><input id="c7" data-check type="checkbox">我能用 Beer-Lambert Law 做浓度计算，并说明 NIR 组织窗口。</label>
+            <label class="check-item"><input id="c8" data-check type="checkbox">我能比较 SPR、QCM-D、ELISA 和 lateral flow assay。</label>
+            <label class="check-item"><input id="c9" data-check type="checkbox">我能解释 aptamer 折叠识别和 PCR 荧光探针的信号转换。</label>
+            <label class="check-item"><input id="c10" data-check type="checkbox">我能解释电阻、电容、压电、量热、光纤、霍尔、MEMS 传感原理。</label>
+            <label class="check-item"><input id="c11" data-check type="checkbox">我能按风险解释医疗器械 Class I、II、III。</label>
           </div>
         </div>
       </section>
-      <div class="content">
-        <article>
-          <h1 id="section-1">Intelligent Sensing Technology 考前提炼与模拟题</h1>
-<p>本文档根据 <code>1(1).md</code> 里的考前讲解转写整理。原文是口头说明，转写里有不少错字，本版只保留考试相关信息、课程主线和可操作的复习重点。</p>
-<h2 id="section-2">1. 考试形式与复习策略</h2>
-<p>老师的整体意思是：考试不会刻意出特别难、特别偏的题，重点是检查你是否能把整门课的主线讲清楚，是否能把不同传感器的输入、输出、识别元件、信号转换方式和应用场景对应起来。</p>
-<p>可能题型包括：</p>
-<ol>
-<li>
-<p>判断题<br>
-   难度较低，考基本概念对错。常见形式是给一句关于某种检测方法、识别元件、应用场景或性能指标的说法，让你判断对错。</p>
-</li>
-<li>
-<p>多选题<br>
-   每题可能一个或多个正确选项。重点不是复杂计算，而是概念归类、技术对应关系、不同方法的优缺点。</p>
-</li>
-<li>
-<p>小计算或定量推理题<br>
-   难度不高，可能是二选一。重点是数量级、LOD/LOQ、Beer-Lambert Law、传感器动态响应、简单电容/灵敏度关系等。</p>
-</li>
-<li>
-<p>问答题<br>
-   可能让你解释某个器件、某类传感器或某种检测流程，并举两三个应用。答题要讲清楚背景、原理、输入输出、优缺点和应用。</p>
-</li>
-</ol>
-<p>答题策略：</p>
-<ul>
-<li>先说清楚检测对象是什么，也就是 input (X)。</li>
-<li>再说清楚传感器输出是什么，也就是 signal (S)。</li>
-<li>再说明中间靠什么识别或转导：酶、抗体、核酸、光吸收、电容、电阻、磁场、压电材料等。</li>
-<li>最后说清楚如何评价：sensitivity、specificity、LOD、LOQ、accuracy、precision、response time、stability、interference 等。</li>
-<li>遇到器件题，不要只背名字，要拆成“识别元件 + transducer + signal readout + application”。</li>
-</ul>
-<h2 id="section-3">2. 课程主线提炼</h2>
-<h3 id="section-4">2.1 传感器的总框架</h3>
-<p>整门课最核心的抽象是：</p>
-<p>[
-S=f(X)
-]</p>
-<p>(X) 是真实世界中的被测量，例如葡萄糖浓度、温度、压力、位移、磁场、光吸收、抗原浓度、核酸序列。<br>
-(S) 是传感器产生的信号，例如电流、电压、电阻、电容、荧光强度、吸光度、频率、相位或图像信号。</p>
-<p>传感器不是直接给出“真实答案”，而是把输入转成信号。校准的目的就是建立 (S) 和 (X) 的关系，然后用测得的 (S) 反推 (X)。生物分析和医学检测的核心，就是把复杂生物过程定量化。</p>
-<h3 id="section-5">2.2 静态特性</h3>
-<p>常见静态特性包括：</p>
-<ul>
-<li>accuracy：测量结果接近真值的程度。</li>
-<li>precision：重复测量彼此接近的程度。</li>
-<li>sensitivity：输入变化引起输出变化的程度，常对应校准曲线斜率。</li>
-<li>specificity：对目标物的选择性，能否排除非目标物干扰。</li>
-<li>LOD：limit of detection，最低可检出量。</li>
-<li>LOQ：limit of quantification，最低可定量量。</li>
-<li>SNR：signal-to-noise ratio，信号和噪声的比值。</li>
-<li>linearity：输入输出是否保持线性关系。</li>
-<li>drift：信号随时间漂移。</li>
-<li>hysteresis：同一输入在上升和下降路径下输出不同。</li>
-<li>input range：可用测量范围。</li>
-<li>repeatability / reproducibility：同条件重复性和不同条件复现性。</li>
-</ul>
-<p>LOD/LOQ 是生物分析里非常常见的指标。常用经验式是：</p>
-<p>[
-LOD\approx \frac{3\sigma_b}{m},\quad LOQ\approx \frac{10\sigma_b}{m}
-]</p>
-<p>(\sigma_b) 是空白噪声标准差，(m) 是校准曲线斜率。3 倍和 10 倍不是绝对自然常数，而是常用经验标准。LOD 表示信号能从噪声里被看见，LOQ 表示信号足够可靠，可以定量。</p>
-<h3 id="section-6">2.3 医学检测中的 sensitivity 和 specificity</h3>
-<p>医学检测里，sensitivity 和 specificity 来自混淆矩阵：</p>
-<p>[
-sensitivity=\frac{TP}{TP+FN},\quad specificity=\frac{TN}{TN+FP}
-]</p>
-<p>Sensitivity 看真正患病的人里有多少被检出，关注漏诊。<br>
-Specificity 看真正健康的人里有多少被排除，关注误诊。</p>
-<p>注意：sensitivity / specificity 是检测方法本身的性能，不等于某个人阳性之后真的患病的概率。后者还受人群患病率影响。</p>
-<h3 id="section-7">2.4 动态特性</h3>
-<p>很多传感器的输出不会在输入变化后瞬间达到稳定，而是需要时间。动态特性描述这个过程。</p>
-<p>一阶系统常用时间常数 (\tau) 描述响应速度。以水银温度计为例：</p>
-<p>[
-k=\frac{K_{ex}V_b}{A_c},\quad \tau=\frac{\rho C V_b}{UA_b}
-]</p>
-<p>球泡体积 (V_b) 越大，灵敏度 (k) 越高，但时间常数 (\tau) 也越大，响应越慢。这体现了传感器设计中的 trade-off：提高灵敏度不一定同时提高速度。</p>
-<p>二阶系统可能出现 overshoot 和 oscillation。常见指标包括：</p>
-<ul>
-<li>rise time (t_r)：响应从低值上升到接近目标值所需时间。</li>
-<li>settling time (t_s)：进入允许误差范围并保持稳定的时间。</li>
-<li>overshoot：超过稳态值的幅度。</li>
-<li>attenuation：相邻峰值衰减。</li>
-</ul>
-<h3 id="section-8">2.5 Biomarker</h3>
-<p>Biomarker 不是只指血液里的某个分子。它是可测量的特征，用来指示正常生物过程、病理过程、暴露或治疗响应。</p>
-<p>常见类型：</p>
-<ul>
-<li>molecular biomarker：葡萄糖、蛋白、核酸、代谢物等。</li>
-<li>histologic biomarker：组织形态、病理切片特征等。</li>
-<li>radiographic biomarker：影像中的肿瘤大小、结构变化等。</li>
-<li>physiologic biomarker：血压、心率、体温、呼吸、运动等。</li>
-</ul>
-<p>判断一个检测技术时，先问它测的是哪类 biomarker，再判断需要什么识别元件和 transducer。</p>
-<h3 id="section-9">2.6 酶传感与小分子检测</h3>
-<p>小分子检测中，酶是很常见的识别元件。酶具有选择性，并能催化反应产生可读信号。</p>
-<p>Michaelis-Menten 方程：</p>
-<p>[
-v_0=\frac{V_{\max}[S]}{K_M+[S]}
-]</p>
-<p>低底物浓度时，响应近似线性；高底物浓度时，酶活性位点饱和，响应趋于平台。因此酶传感器通常希望工作在线性范围内。</p>
-<p>葡萄糖传感是典型例子。葡萄糖氧化酶 GOx 催化葡萄糖和氧气反应，生成 gluconolactone 和 (H_2O_2)。第一代葡萄糖传感器常通过 Pt 电极氧化 (H_2O_2)，测得电流，从而反推葡萄糖浓度。</p>
-<p>核心链路：</p>
-<p>葡萄糖浓度 (\rightarrow) 酶反应速率 (\rightarrow) (H_2O_2) 生成量 (\rightarrow) 电极电流 (\rightarrow) 浓度估计。</p>
-<h3 id="section-10">2.7 光学检测</h3>
-<p>不同波段对应不同物理过程：</p>
-<ul>
-<li>UV-vis：常对应电子跃迁。</li>
-<li>Fluorescence：分子吸收光后再发射光。</li>
-<li>FTIR：对应分子振动，包括 stretch 和 bending。</li>
-<li>X-ray：对应更高能量的电子或原子结构信息。</li>
-<li>Radiofrequency：可对应核自旋等过程。</li>
-</ul>
-<p>Beer-Lambert Law 是典型光学定量公式：</p>
-<p>[
-A=\log_{10}\frac{I_0}{I}=\varepsilon lc
-]</p>
-<p>它说明吸光度 (A) 与浓度 (c)、光程 (l)、摩尔吸光系数 (\varepsilon) 成正比。它适合线性范围内的吸收定量，样品浑浊、强散射、高浓度时要谨慎。</p>
-<p>荧光检测通常比吸收更灵敏，因为背景可通过波长和几何方向分离。PCR、NGS、免疫分析、细胞成像中都大量使用荧光读出。</p>
-<p>NIR 组织窗口的背景是：短波段受血红蛋白吸收和散射影响较大，长波段又受水吸收影响。650-950 nm 区间吸收相对较低，因此适合某些组织成像和体内检测。</p>
-<h3 id="section-11">2.8 气味传感与 VOC</h3>
-<p>气味检测面对的是复杂混合物。人体嗅觉系统不是靠一个受体识别一种气味，而是依靠受体阵列形成响应模式。</p>
-<p>生物嗅觉启发人工气味传感：</p>
-<ul>
-<li>鼻腔和纤毛结构增加接触面积。</li>
-<li>GPCR 等受体识别气味分子。</li>
-<li>细胞内第二信使放大信号。</li>
-<li>嗅球和大脑处理阵列式响应模式。</li>
-</ul>
-<p>人工鼻通常也不是追求单一传感器完全特异，而是用多个交叉敏感传感单元形成 fingerprint，再用统计或机器学习分类。VOC 检测可用于疾病状态、环境监测、食品安全等场景。</p>
-<h3 id="section-12">2.9 抗体、ELISA、SPR、QCM-D 和 lateral flow</h3>
-<p>抗体是蛋白检测中的重要识别元件。它能特异性识别抗原，因此在生物分析中非常核心。</p>
-<p>抗体亲和力常用：</p>
-<p>[
-K_D=\frac{[A][B]}{[AB]}=\frac{k_{off}}{k_{on}}
-]</p>
-<p>(K_D) 越小，说明亲和力越强。</p>
-<p>常见抗体检测平台：</p>
-<ul>
-<li>SPR：无标记、实时检测表面结合导致的折射率变化。</li>
-<li>QCM-D：检测质量加载和层的黏弹性质。</li>
-<li>ELISA：通过酶标抗体和显色底物实现信号放大。</li>
-<li>lateral flow assay：通过毛细流动、捕获线和标记颗粒实现快速检测。</li>
-</ul>
-<p>Sandwich ELISA 的核心是两个抗体夹住抗原，特异性较高，但要求抗原有两个可识别表位。Competitive ELISA 常用于小分子，因为小分子通常不能被两个抗体同时夹住。</p>
-<p>Lateral flow assay 中，control line 证明液体流动和试剂有效；test line 反映目标是否存在。若 control line 不出现，测试无效。</p>
-<h3 id="section-13">2.10 Aptamer、PCR、FRET 和 NGS</h3>
-<p>Aptamer 是可折叠成特定三维结构的 DNA/RNA 序列，可以像抗体一样识别蛋白、小分子或细胞表面目标。</p>
-<p>优点：</p>
-<ul>
-<li>尺寸小。</li>
-<li>可体外筛选。</li>
-<li>容易化学合成和修饰。</li>
-<li>批间差异较小。</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>结构受盐浓度、温度、pH、核酸酶影响。</li>
-<li>在复杂样品中稳定性和背景可能是问题。</li>
-</ul>
-<p>PCR/qPCR 的定量往往依赖荧光探针。TaqMan 探针、FRET 探针等把序列识别和扩增过程转成荧光变化。NGS 中也大量依赖荧光标记来读取碱基信息。</p>
-<h3 id="section-14">2.11 物理传感器</h3>
-<p>物理传感器把压力、位移、应变、磁场、加速度等物理量转成电信号或光信号。</p>
-<p>常见类型：</p>
-<ul>
-<li>电阻式：应变片、电位器。机械形变改变电阻。</li>
-<li>电容式：压力、触摸、液位、贴合状态。面积、距离或介电常数改变电容。</li>
-<li>压电式：机械应力与电荷/电压变化耦合，适合动态压力、振动、超声。</li>
-<li>光纤传感：压力、温度、应变等改变光强、波长或相位。</li>
-<li>Hall sensor：磁场使载流子偏转，产生横向 Hall voltage，可用于磁场、位置、磁珠标记检测。</li>
-<li>MEMS：用微纳加工把传感结构做小，常见 transducer 包括 capacitive、piezoelectric、thermal，也可结合 microfluidic。</li>
-</ul>
-<h3 id="section-15">2.12 医疗器械转化</h3>
-<p>医疗器械不能只看技术是否先进，还要看风险和监管路径。</p>
-<p>FDA 分类大致逻辑：</p>
-<ul>
-<li>Class I：低风险，一般控制。</li>
-<li>Class II：中等风险，一般控制 + 特殊控制。</li>
-<li>Class III：高风险，常涉及植入、维持生命或严重风险，需要更严格审批。</li>
-</ul>
-<p>做医疗器械时，要尽早考虑它会落在哪一类。能设计成 Class II 而不是 Class III，可能大幅减少时间和成本。</p>
-<p>植入式或长期接触器械还要考虑 foreign body reaction、排异、炎症、材料生物相容性和长期稳定性。</p>
-<h2 id="section-16">3. 判断题模拟题</h2>
-<p>判断下列说法是否正确。正确写 T，错误写 F。</p>
-<ol>
-<li>传感器的输出信号 (S) 可以直接等同于真实输入 (X)，不需要校准。</li>
-<li>传递函数 (S=f(X)) 描述的是被测量和传感器输出之间的关系。</li>
-<li>Accuracy 高表示重复测量点一定非常集中。</li>
-<li>Precision 高但 accuracy 低是可能出现的。</li>
-<li>Sensitivity 通常可以理解为校准曲线的斜率。</li>
-<li>Specificity 高表示对非目标物的响应较低。</li>
-<li>LOD 通常低于 LOQ。</li>
-<li>LOQ 表示最低可检出量，LOD 表示最低可定量量。</li>
-<li>空白噪声越大，LOD 通常越高。</li>
-<li>校准曲线斜率越大，在相同噪声下 LOD 越低。</li>
-<li>Sensitivity 和 specificity 不受人群患病率直接影响。</li>
-<li>阳性预测值和患病率无关。</li>
-<li>一阶系统的时间常数越大，响应越慢。</li>
-<li>提高传感器灵敏度一定不会影响响应速度。</li>
-<li>水银温度计球泡体积增大可能提高灵敏度，但也可能增加响应时间。</li>
-<li>二阶系统可能出现 overshoot。</li>
-<li>Biomarker 一定是血液里的蛋白分子。</li>
-<li>血压可以看作 physiologic biomarker。</li>
-<li>肿瘤大小可以看作 radiographic biomarker。</li>
-<li>酶传感器的选择性主要来自酶对底物的识别。</li>
-<li>Michaelis-Menten 方程说明酶反应在高底物浓度下可能饱和。</li>
-<li>第一代葡萄糖传感器常通过 (H_2O_2) 的电极反应读出信号。</li>
-<li>Amperometric sensor 主要测电压。</li>
-<li>Potentiometric sensor 主要测电位或电压。</li>
-<li>Conductometric sensor 主要测电导或电导率。</li>
-<li>Beer-Lambert Law 中吸光度随浓度增加而增加。</li>
-<li>Beer-Lambert Law 中 (l) 是比色皿中液体高度。</li>
-<li>荧光检测读的是样品发射光，而不是简单透过光。</li>
-<li>FTIR 主要与分子振动有关。</li>
-<li>NIR 组织窗口和血红蛋白、水的吸收有关。</li>
-<li>气味传感通常可以用单个完全特异的传感器解决所有问题。</li>
-<li>人工鼻常依赖传感阵列产生响应指纹。</li>
-<li>抗体检测只要能结合就一定没有非特异背景。</li>
-<li>(K_D) 越小，通常表示抗体-抗原结合越强。</li>
-<li>Sandwich ELISA 通常需要目标抗原有两个可被识别的表位。</li>
-<li>Competitive ELISA 中信号一定总是随目标浓度增加而增加。</li>
-<li>Lateral flow assay 中 control line 缺失时测试应判为无效。</li>
-<li>Aptamer 是蛋白质抗体的一种。</li>
-<li>Aptamer 可以是可折叠的 DNA/RNA 序列。</li>
-<li>qPCR 中荧光探针可以把扩增过程转成可读信号。</li>
-<li>应变片本质上利用机械变形导致电阻变化。</li>
-<li>电容传感中板间距增大时电容增大。</li>
-<li>压电传感器适合动态压力和振动测量。</li>
-<li>Hall sensor 的输出是磁场本身。</li>
-<li>MEMS 只是一种单一传感原理，不涉及加工平台。</li>
-<li>医疗器械 Class III 通常风险高、监管更严格。</li>
-<li>设计医疗器械时只需要考虑技术性能，不需要考虑监管分类。</li>
-<li>Foreign body reaction 对植入式器械很重要。</li>
-</ol>
-<h3 id="section-17">判断题答案</h3>
-<p class="quick-answer">答案速查：1 F；2 T；3 F；4 T；5 T；6 T；7 T；8 F；9 T；10 T；11 T；12 F；13 T；14 F；15 T；16 T；17 F；18 T；19 T；20 T；21 T；22 T；23 F；24 T；25 T；26 T；27 F；28 T；29 T；30 T；31 F；32 T；33 F；34 T；35 T；36 F；37 T；38 F；39 T；40 T；41 T；42 F；43 T；44 F；45 F；46 T；47 F；48 T。</p>
-<div id="tf-answer-guide" class="answer-guide" aria-label="判断题原题、答案和解释"></div>
-<h2 id="section-18">4. 多选题模拟题</h2>
-<p>每题至少一个正确答案。</p>
-<ol>
-<li>
-<p>关于传递函数 (S=f(X))，正确的是：<br>
-   A. (X) 是被测输入<br>
-   B. (S) 是传感器输出信号<br>
-   C. 校准可用于建立 (S) 和 (X) 的关系<br>
-   D. 不同传感器不能用这个框架描述</p>
-</li>
-<li>
-<p>下列哪些属于传感器静态特性？<br>
-   A. Accuracy<br>
-   B. Precision<br>
-   C. LOD<br>
-   D. Rise time</p>
-</li>
-<li>
-<p>下列哪些属于动态特性？<br>
-   A. Settling time<br>
-   B. Overshoot<br>
-   C. Time constant<br>
-   D. Specificity</p>
-</li>
-<li>
-<p>关于 LOD/LOQ，正确的是：<br>
-   A. LOD 通常低于 LOQ<br>
-   B. LOQ 对信号可靠性要求更高<br>
-   C. 空白噪声越大，LOD 越低<br>
-   D. 校准斜率越大，检测能力通常越好</p>
-</li>
-<li>
-<p>下列哪些指标来自混淆矩阵？<br>
-   A. Sensitivity<br>
-   B. Specificity<br>
-   C. True positive<br>
-   D. Michaelis constant</p>
-</li>
-<li>
-<p>关于 biomarker，正确的是：<br>
-   A. 可以是 molecular<br>
-   B. 可以是 physiologic<br>
-   C. 一定是蛋白质<br>
-   D. 可以用于反映治疗响应</p>
-</li>
-<li>
-<p>下列哪些可作为 biomarker？<br>
-   A. Blood glucose<br>
-   B. Blood pressure<br>
-   C. Tumor size in image<br>
-   D. Random background noise</p>
-</li>
-<li>
-<p>关于 Michaelis-Menten 方程，正确的是：<br>
-   A. 描述酶反应速率与底物浓度关系<br>
-   B. 高底物浓度时可能饱和<br>
-   C. (K_M) 是达到 (V_{\max}/2) 时的底物浓度<br>
-   D. 说明酶反应永远线性</p>
-</li>
-<li>
-<p>第一代葡萄糖传感器常涉及：<br>
-   A. Glucose oxidase<br>
-   B. (H_2O_2)<br>
-   C. Pt electrode<br>
-   D. Hall voltage</p>
-</li>
-<li>
-<p>电化学检测方法包括：<br>
-    A. Potentiometric<br>
-    B. Amperometric<br>
-    C. Conductometric<br>
-    D. Radiographic</p>
-</li>
-<li>
-<p>关于 Beer-Lambert Law，正确的是：<br>
-    A. (A=\log_{10}(I_0/I))<br>
-    B. (A) 与浓度 (c) 有关<br>
-    C. (l) 是光程<br>
-    D. 任何浓度下都严格线性</p>
-</li>
-<li>
-<p>下列哪些和光谱方法对应正确？<br>
-    A. UV-vis：电子跃迁/吸收<br>
-    B. FTIR：分子振动<br>
-    C. Fluorescence：发射光读出<br>
-    D. Hall sensor：光吸收</p>
-</li>
-<li>
-<p>NIR 组织窗口相关因素包括：<br>
-    A. Hemoglobin absorption<br>
-    B. Water absorption<br>
-    C. Tissue scattering<br>
-    D. Michaelis-Menten constant</p>
-</li>
-<li>
-<p>气味传感/人工鼻常见特点包括：<br>
-    A. 多传感单元阵列<br>
-    B. 交叉敏感性<br>
-    C. 响应指纹<br>
-    D. 完全不需要数据分析</p>
-</li>
-<li>
-<p>抗体传感可结合的读出方式包括：<br>
-    A. SPR<br>
-    B. QCM-D<br>
-    C. ELISA<br>
-    D. Lateral flow assay</p>
-</li>
-<li>
-<p>关于 (K_D)，正确的是：<br>
-    A. 是解离常数<br>
-    B. 越小通常亲和力越强<br>
-    C. 可写作 (k_{off}/k_{on})<br>
-    D. 没有单位</p>
-</li>
-<li>
-<p>Sandwich ELISA 的特点包括：<br>
-    A. 通常使用捕获抗体和检测抗体<br>
-    B. 适合很多蛋白抗原定量<br>
-    C. 目标越多，信号通常越强<br>
-    D. 一定最适合所有小分子</p>
-</li>
-<li>
-<p>Lateral flow assay 中常见结构包括：<br>
-    A. Sample pad<br>
-    B. Conjugate pad<br>
-    C. Test line<br>
-    D. Wicking pad</p>
-</li>
-<li>
-<p>Lateral flow assay 中 control line 的作用包括：<br>
-    A. 证明流动有效<br>
-    B. 证明试剂释放基本有效<br>
-    C. 判断测试是否有效<br>
-    D. 直接表示目标浓度一定很高</p>
-</li>
-<li>
-<p>Aptamer 的特点包括：<br>
-    A. 可由 DNA/RNA 构成<br>
-    B. 依赖折叠结构识别目标<br>
-    C. 可通过 SELEX 筛选<br>
-    D. 一定比抗体在所有环境下都稳定</p>
-</li>
-<li>
-<p>PCR/qPCR 荧光探针的作用包括：<br>
-    A. 将序列识别转成荧光信号<br>
-    B. 提高特异读出<br>
-    C. 可用于实时监测扩增<br>
-    D. 完全不依赖引物</p>
-</li>
-<li>
-<p>下列哪些属于物理传感器输入？<br>
-    A. Pressure<br>
-    B. Strain<br>
-    C. Magnetic field<br>
-    D. Fluorescent dye concentration</p>
-</li>
-<li>
-<p>应变片相关说法正确的是：<br>
-    A. 机械拉伸可改变电阻<br>
-    B. 对方向性敏感<br>
-    C. 可用于力或压力间接测量<br>
-    D. 本质上直接测 DNA 序列</p>
-</li>
-<li>
-<p>电容传感中可能改变电容的因素包括：<br>
-    A. Plate area<br>
-    B. Distance<br>
-    C. Dielectric constant<br>
-    D. Antibody (K_D)</p>
-</li>
-<li>
-<p>压电传感相关说法正确的是：<br>
-    A. 机械应力可产生电荷/电压<br>
-    B. 外加电场也可导致形变<br>
-    C. 适合动态压力和振动<br>
-    D. 只适合测静态浓度</p>
-</li>
-<li>
-<p>光纤传感可以读出：<br>
-    A. Intensity change<br>
-    B. Wavelength shift<br>
-    C. Phase change<br>
-    D. Antibody sequence</p>
-</li>
-<li>
-<p>Hall sensor 相关说法正确的是：<br>
-    A. 输入可为磁场<br>
-    B. 输出可为 Hall voltage<br>
-    C. 可结合磁珠做生物检测<br>
-    D. 本质是 Beer-Lambert Law</p>
-</li>
-<li>
-<p>MEMS 相关说法正确的是：<br>
-    A. 可通过微纳加工实现小型化<br>
-    B. 可整合多种传感原理<br>
-    C. 常见 transducer 包括 capacitive、piezoelectric、thermal<br>
-    D. 不可能用于加速度计</p>
-</li>
-<li>
-<p>医疗器械转化时需要考虑：<br>
-    A. Risk class<br>
-    B. Regulatory pathway<br>
-    C. Biocompatibility<br>
-    D. 只考虑论文创新性</p>
-</li>
-<li>
-<p>Class III 医疗器械通常可能具有：<br>
-    A. 高风险<br>
-    B. 植入或维持生命相关<br>
-    C. 更严格审批<br>
-    D. 完全无需临床证据</p>
-</li>
-</ol>
-<h3 id="section-19">多选题答案</h3>
-<p class="quick-answer">答案速查：1 ABC；2 ABC；3 ABC；4 ABD；5 ABC；6 ABD；7 ABC；8 ABC；9 ABC；10 ABC；11 ABC；12 ABC；13 ABC；14 ABC；15 ABCD；16 ABC；17 ABC；18 ABCD；19 ABC；20 ABC；21 ABC；22 ABC；23 ABC；24 ABC；25 ABC；26 ABC；27 ABC；28 ABC；29 ABC；30 ABC。</p>
-<div id="mc-answer-guide" class="answer-guide" aria-label="多选题原题、答案和解释"></div>
-<h2 id="section-20">5. 小计算与定量推理题</h2>
-<h3 id="section-21">题 1：Beer-Lambert Law</h3>
-<p>某样品在某波长下测得 (I_0/I=10)，光程 (l=1.0\ \mathrm{cm})，摩尔吸光系数 (\varepsilon=2.0\times10^4\ \mathrm{L\,mol^{-1}\,cm^{-1}})。求浓度。</p>
-<p>答案：</p>
-<p>[
-A=\log_{10}(10)=1
-]</p>
-<p>[
-c=\frac{A}{\varepsilon l}=\frac{1}{2.0\times10^4\times1.0}=5.0\times10^{-5}\ \mathrm{M}
-]</p>
-<h3 id="section-22">题 2：Beer-Lambert Law 方向判断</h3>
-<p>同一物质、同一波长、同一比色皿中，浓度从 (10\ \mu M) 增加到 (20\ \mu M)，若仍在线性范围内，吸光度如何变化？</p>
-<p>答案：吸光度约变为原来的 2 倍。</p>
-<h3 id="section-23">题 3：LOD/LOQ</h3>
-<p>空白噪声标准差 (\sigma_b=0.02)，校准曲线斜率 (m=0.50\ \mathrm{A.U./nM})。估计 LOD 和 LOQ。</p>
-<p>答案：</p>
-<p>[
-LOD\approx \frac{3\times0.02}{0.50}=0.12\ \mathrm{nM}
-]</p>
-<p>[
-LOQ\approx \frac{10\times0.02}{0.50}=0.40\ \mathrm{nM}
-]</p>
-<h3 id="section-24">题 4：LOD 改善</h3>
-<p>若空白噪声不变，校准曲线斜率提高 2 倍，LOD 如何变化？</p>
-<p>答案：LOD 变为原来的一半。</p>
-<h3 id="section-25">题 5：Sensitivity / Specificity</h3>
-<p>100 名患者中，检测阳性 90 人、阴性 10 人。100 名健康者中，检测阴性 95 人、阳性 5 人。求 sensitivity 和 specificity。</p>
-<p>答案：</p>
-<p>[
-sensitivity=\frac{90}{90+10}=90\%
-]</p>
-<p>[
-specificity=\frac{95}{95+5}=95\%
-]</p>
-<h3 id="section-26">题 6：假阴性数量</h3>
-<p>某检测 sensitivity 为 80%。若 50 个真正患病样本接受检测，预计漏检多少个？</p>
-<p>答案：检出 (50\times80\%=40) 个，漏检 10 个。</p>
-<h3 id="section-27">题 7：Michaelis-Menten 半最大速率</h3>
-<p>酶反应的 (V_{\max}=100\ \mathrm{nM/s})，(K_M=20\ \mu M)。当 ([S]=K_M) 时，(v_0) 是多少？</p>
-<p>答案：当 ([S]=K_M)，(v_0=V_{\max}/2=50\ \mathrm{nM/s})。</p>
-<h3 id="section-28">题 8：Michaelis-Menten 区域判断</h3>
-<p>若 (K_M=1\ \mathrm{mM})，样品 ([S]=10\ \mu M)，处于线性区还是饱和区？</p>
-<p>答案：([S]\ll K_M)，处于低浓度近似线性区。</p>
-<h3 id="section-29">题 9：一阶时间常数</h3>
-<p>某温度传感器时间常数 (\tau=5\ s)。若改设计后球泡体积 (V_b) 加倍，其他参数不变，(\tau) 如何变化？</p>
-<p>答案：(\tau\propto V_b)，变为 10 s。</p>
-<h3 id="section-30">题 10：温度计灵敏度</h3>
-<p>若水银温度计的 bulb volume (V_b) 加倍，毛细管截面积 (A_c) 不变，灵敏度 (k) 如何变化？</p>
-<p>答案：(k\propto V_b/A_c)，约加倍。</p>
-<h3 id="section-31">题 11：电容方向判断</h3>
-<p>平行板电容传感器中，压力使板间距 (d) 减小。若面积和介电常数不变，电容如何变化？</p>
-<p>答案：由 (C\propto 1/d)，(d) 减小，电容增大。</p>
-<h3 id="section-32">题 12：电容介电常数判断</h3>
-<p>液位传感器中，空气逐渐被水替代。水的介电常数高于空气，电容通常如何变化？</p>
-<p>答案：有效介电常数增大，电容增大。</p>
-<h3 id="section-33">题 13：抗体亲和力</h3>
-<p>抗体 A 的 (K_D=1\ \mathrm{nM})，抗体 B 的 (K_D=100\ \mathrm{nM})。哪个亲和力更强？</p>
-<p>答案：抗体 A。(K_D) 越小，亲和力通常越强。</p>
-<h3 id="section-34">题 14：Hall sensor 输入输出</h3>
-<p>Hall sensor 中电流方向固定，外加垂直磁场增强，横向 Hall voltage 通常如何变化？</p>
-<p>答案：Hall voltage 增大。Hall voltage 与磁场强度相关。</p>
-<h3 id="section-35">题 15：qPCR 荧光信号</h3>
-<p>若 TaqMan 探针完整时荧光被淬灭，扩增过程中探针被水解，荧光信号如何变化？</p>
-<p>答案：荧光信号增强，因为 fluorophore 与 quencher 分离。</p>
-<h2 id="section-36">6. 问答题模拟题</h2>
-<h3 id="section-37">题 1：解释传递函数在传感器中的意义。</h3>
-<p>答题要点：传感器把真实输入 (X) 转成输出信号 (S)。传递函数 (S=f(X)) 描述输入输出关系。校准用于建立这个关系，并根据测得的 (S) 反推未知 (X)。举例：葡萄糖浓度转成电流，压力转成电容或电压。</p>
-<h3 id="section-38">题 2：区分 accuracy 和 precision。</h3>
-<p>答题要点：accuracy 是接近真值，precision 是重复测量彼此接近。可以 precision 高但 accuracy 低，也可以 accuracy 较好但 precision 差。</p>
-<h3 id="section-39">题 3：解释 LOD 和 LOQ 的区别。</h3>
-<p>答题要点：LOD 是最低可检出量，表示能从噪声中看见；LOQ 是最低可定量量，要求更高信号可靠性。LOQ 通常高于 LOD。噪声越小、灵敏度越高，LOD/LOQ 越低。</p>
-<h3 id="section-40">题 4：为什么 sensitivity 和 specificity 不等同于阳性预测值？</h3>
-<p>答题要点：sensitivity/specificity 是检测方法本身针对患病/健康群体的性能；阳性预测值还取决于人群患病率。低患病率人群中，即使 specificity 高，阳性结果中也可能有不少假阳性。</p>
-<h3 id="section-41">题 5：用水银温度计说明灵敏度和响应速度的权衡。</h3>
-<p>答题要点：球泡体积增大，温度变化导致液体膨胀更多，灵敏度增加；但热容量也增加，达到热平衡更慢，时间常数增大。因此提高灵敏度可能牺牲响应速度。</p>
-<h3 id="section-42">题 6：什么是 biomarker？举三类例子。</h3>
-<p>答题要点：biomarker 是可测量并指示正常过程、病理过程或治疗响应的特征。例子：血糖是 molecular biomarker；肿瘤大小是 radiographic biomarker；血压是 physiologic biomarker。</p>
-<h3 id="section-43">题 7：解释 Michaelis-Menten 方程对酶传感器的意义。</h3>
-<p>答题要点：低浓度时反应速率近似随底物浓度线性增加；高浓度时酶活性位点饱和，响应进入平台。传感器最好在线性范围内工作，否则高浓度难以区分。</p>
-<h3 id="section-44">题 8：解释第一代葡萄糖传感器的工作链路。</h3>
-<p>答题要点：GOx 催化葡萄糖和氧气反应，产生 gluconolactone 和 (H_2O_2)。(H_2O_2) 在 Pt 电极上氧化产生电子，电流与葡萄糖浓度相关。通过校准由电流反推葡萄糖。</p>
-<h3 id="section-45">题 9：比较 potentiometric、amperometric、conductometric。</h3>
-<p>答题要点：potentiometric 测电位或电压；amperometric 测电流；conductometric 测电导或电导率。三者都是电化学读出，但输出量不同。</p>
-<h3 id="section-46">题 10：解释 Beer-Lambert Law 的变量和限制。</h3>
-<p>答题要点：(A=\log_{10}(I_0/I)=\varepsilon lc)。(A) 是吸光度，(I_0) 入射光，(I) 透过光，(l) 光程，(c) 浓度，(\varepsilon) 摩尔吸光系数。限制包括高浓度、散射、浑浊、杂散光和非线性。</p>
-<h3 id="section-47">题 11：为什么近红外适合组织检测？</h3>
-<p>答题要点：短波段受血红蛋白吸收和散射影响较强；更长波段水吸收增强。650-950 nm 附近吸收相对较低，穿透较深，适合部分体内成像和组织检测。</p>
-<h3 id="section-48">题 12：解释荧光检测为什么常比吸收检测灵敏。</h3>
-<p>答题要点：吸收检测测入射光减少，背景大；荧光检测测样品发射光，可通过波长和方向区分激发光与发射光，背景较低，适合低浓度检测。但荧光有光漂白、自发荧光、淬灭等问题。</p>
-<h3 id="section-49">题 13：解释气味传感为什么常用阵列。</h3>
-<p>答题要点：气味是复杂混合物，单个受体或材料难以完全特异。阵列中多个传感单元对不同分子交叉响应，形成指纹图案，再用模式识别分类。</p>
-<h3 id="section-50">题 14：抗体为什么是蛋白检测的重要工具？</h3>
-<p>答题要点：抗体可特异识别抗原，适合蛋白等大分子检测。它可以与 SPR、QCM-D、ELISA、lateral flow 等读出方式结合。限制包括非特异吸附、交叉反应、成本和稳定性。</p>
-<h3 id="section-51">题 15：解释 (K_D) 的意义。</h3>
-<p>答题要点：(K_D=[A][B]/[AB]=k_{off}/k_{on})。(K_D) 越小，说明结合越强、较低浓度下也能形成较多复合物。单位是浓度。</p>
-<h3 id="section-52">题 16：解释 sandwich ELISA 的流程。</h3>
-<p>答题要点：孔板固定捕获抗体，样品中抗原被捕获，再加入带酶标或可被酶标二抗识别的检测抗体，最后加底物显色。目标越多，显色通常越强。优点是特异性高，限制是目标需要两个表位。</p>
-<h3 id="section-53">题 17：解释 lateral flow assay 中 C 线和 T 线。</h3>
-<p>答题要点：T line 显示目标被捕获；C line 证明样品流动和试剂有效。若 C line 不出现，测试无效。两条线通常表示阳性，只有 C 线表示阴性，无 C 线表示无效。</p>
-<h3 id="section-54">题 18：aptamer 和 antibody 有什么相似和不同？</h3>
-<p>答题要点：二者都可作为识别元件。抗体是蛋白，aptamer 是 DNA/RNA，靠折叠结构识别目标。Aptamer 可体外筛选、合成和修饰方便，但受环境和核酸酶影响。</p>
-<h3 id="section-55">题 19：qPCR 荧光探针为什么能定量？</h3>
-<p>答题要点：扩增过程中目标序列数量增加，荧光探针将扩增事件转成荧光信号。TaqMan 探针水解释放荧光，FRET 探针利用距离相关能量转移。实时荧光变化可反映初始模板量。</p>
-<h3 id="section-56">题 20：应变片如何把力学变化转成电信号？</h3>
-<p>答题要点：应变片贴在结构表面，结构受拉伸或压缩时应变片几何尺寸变化，电阻随之变化。通过电路读出电阻变化，可间接得到应变、力、压力或弯矩。</p>
-<h3 id="section-57">题 21：电容传感器可测哪些量？为什么？</h3>
-<p>答题要点：电容 (C\approx \varepsilon A/d)。压力可改变距离 (d)，液位可改变介电常数，触摸改变电场分布和耦合电容，材料分析可利用介电性质变化。</p>
-<h3 id="section-58">题 22：压电传感器为什么适合动态信号？</h3>
-<p>答题要点：压电材料在机械应力变化下产生电荷/电压，响应快，适合压力脉动、振动、超声等动态信号。静态长期压力下电荷可能泄漏，容易漂移。</p>
-<h3 id="section-59">题 23：光纤传感有哪些读出方式？</h3>
-<p>答题要点：可读光强变化、波长变化、相位变化。压力、温度、弯曲、应变可改变传播损耗、光栅周期、折射率或光程差。</p>
-<h3 id="section-60">题 24：Hall sensor 如何用于生物检测？</h3>
-<p>答题要点：Hall sensor 本身检测磁场或磁标签，不直接识别生物分子。抗体、核酸探针等负责特异识别，磁珠或磁纳米颗粒作为标签，结合事件导致局部磁场变化，被 Hall 阵列读出。</p>
-<h3 id="section-61">题 25：MEMS 的意义是什么？</h3>
-<p>答题要点：MEMS 是微机电系统，通过微纳加工把机械结构、传感元件、执行器和电路集成到小尺度器件中。常见 transducer 包括 capacitive、piezoelectric、thermal。优势是小型化、批量制造、集成化。</p>
-<h3 id="section-62">题 26：医疗器械 Class I/II/III 的区别。</h3>
-<p>答题要点：Class I 低风险，一般控制；Class II 中等风险，需要特殊控制；Class III 高风险，常涉及植入或维持生命，需要严格审批。技术开发早期就要考虑监管路径。</p>
-<h3 id="section-63">题 27：为什么医疗器械转化不能只看技术先进性？</h3>
-<p>答题要点：还要看风险、监管分类、临床验证、制造、成本、用户操作、稳定性、生物相容性。能否以较低风险类别进入市场会极大影响时间和成本。</p>
-<h3 id="section-64">题 28：foreign body reaction 为什么重要？</h3>
-<p>答题要点：植入或长期接触人体的器械会引发炎症、纤维包裹、排异或不适，影响安全性和长期稳定性。材料选择、表面修饰和器件设计都要考虑这种反应。</p>
-<h3 id="section-65">题 29：如果让你介绍一种传感器，答题结构怎么写？</h3>
-<p>答题要点：先说检测对象和应用场景；再说识别元件或物理效应；再说 transducer 如何把输入变成信号；再说读出方式；最后说优点、限制和例子。</p>
-<h3 id="section-66">题 30：为什么说这门课是一个工具箱？</h3>
-<p>答题要点：课程覆盖从分子识别到物理转导、从光学/电化学到器件转化的多个工具。实际科研和工程问题常不是发明全新原理，而是把已有识别元件、传感机制、信号放大、数据处理和工程化平台组合起来。</p>
-<h2 id="section-67">7. 考前最应该会背的简答模板</h2>
-<h3 id="section-68">模板 1：解释某个传感器</h3>
-<p>这个传感器检测的输入是……；核心识别或物理效应是……；它把输入变化转换成……信号；这个信号通过……读出；优点是……；限制是……；典型应用是……</p>
-<h3 id="section-69">模板 2：解释某个检测方法</h3>
-<p>这个方法的目标物是……；识别元件是……；信号放大来自……；读出方式是……；如果出现假阳性/假阴性，可能原因是……；适合的场景是……</p>
-<h3 id="section-70">模板 3：比较两个概念</h3>
-<p>二者都用于……；区别在于……。A 更关注……，B 更关注……。在实际应用中，选择哪个取决于……。</p>
-<h3 id="section-71">模板 4：解释一个性能指标</h3>
-<p>这个指标衡量的是……；它的计算或定义是……；数值变大/变小代表……；它和另一个容易混淆的指标区别是……；在实际检测中受……影响。</p>
-<h2 id="section-72">8. 最后复习清单</h2>
-<p>考前至少确认自己能回答：</p>
-<ul>
-<li>什么是 (S=f(X))，为什么校准重要？</li>
-<li>accuracy 和 precision 怎么区别？</li>
-<li>sensitivity 和 specificity 的分母分别是什么？</li>
-<li>LOD 和 LOQ 有什么区别？</li>
-<li>一阶响应为什么有时间常数？</li>
-<li>二阶响应为什么会 overshoot？</li>
-<li>biomarker 可以有哪些类型？</li>
-<li>Michaelis-Menten 的低浓度线性和高浓度饱和是什么意思？</li>
-<li>第一代葡萄糖传感器为什么是 amperometric？</li>
-<li>Beer-Lambert Law 每个变量是什么意思？</li>
-<li>UV-vis、fluorescence、FTIR 分别看什么？</li>
-<li>NIR 组织窗口为什么存在？</li>
-<li>气味传感为什么适合阵列？</li>
-<li>ELISA 和 lateral flow assay 的核心流程是什么？</li>
-<li>aptamer 和 antibody 有什么区别？</li>
-<li>qPCR 荧光探针怎么把扩增转成信号？</li>
-<li>应变片、电容、压电、光纤、Hall sensor 分别测什么物理变化？</li>
-<li>MEMS 是什么，不是哪一种单一传感原理？</li>
-<li>Class I/II/III 医疗器械为什么监管不同？</li>
-</ul>
-        </article>
-      </div>
+
+      <footer class="foot">
+        <p>本讲义基于当前目录的 <code>short review(3).pdf</code> 内容重写，并借鉴 <a href="https://medicalmmz.wormforce.net/">medicalmmz.wormforce.net</a> 的学习站组织方式；参考仓库：<a href="https://github.com/7b7b7b/medicalmmz">github.com/7b7b7b/medicalmmz</a>。页面内容为本地学习讲义，未复制原站讲义正文。</p>
+      </footer>
     </main>
   </div>
+
   <script>
-    const tfEnglish = [
-      "The sensor output signal S can be directly treated as the real input X without calibration.",
-      "The transfer function S=f(X) describes the relationship between the measured quantity and the sensor output.",
-      "High accuracy means repeated measurement points must be very close to one another.",
-      "It is possible to have high precision but low accuracy.",
-      "Sensitivity can usually be understood as the slope of the calibration curve.",
-      "High specificity means the response to non-target substances is low.",
-      "LOD is usually lower than LOQ.",
-      "LOQ means the lowest detectable amount, while LOD means the lowest quantifiable amount.",
-      "A larger blank noise usually leads to a higher LOD.",
-      "With the same noise level, a larger calibration slope gives a lower LOD.",
-      "Sensitivity and specificity are not directly affected by disease prevalence.",
-      "Positive predictive value is independent of disease prevalence.",
-      "For a first-order system, a larger time constant means a slower response.",
-      "Increasing sensor sensitivity never affects response speed.",
-      "Increasing the bulb volume of a mercury thermometer may improve sensitivity, but may also increase response time.",
-      "A second-order system may show overshoot.",
-      "A biomarker must be a protein molecule in blood.",
-      "Blood pressure can be considered a physiologic biomarker.",
-      "Tumor size can be considered a radiographic biomarker.",
-      "The selectivity of an enzyme sensor mainly comes from enzyme recognition of its substrate.",
-      "The Michaelis-Menten equation shows that an enzyme reaction may become saturated at high substrate concentration.",
-      "First-generation glucose sensors often read the signal through the electrode reaction of H2O2.",
-      "An amperometric sensor mainly measures voltage.",
-      "A potentiometric sensor mainly measures potential or voltage.",
-      "A conductometric sensor mainly measures conductance or conductivity.",
-      "In the Beer-Lambert law, absorbance increases as concentration increases.",
-      "In the Beer-Lambert law, l is the liquid height in the cuvette.",
-      "Fluorescence detection reads emitted light from the sample, not simply transmitted light.",
-      "FTIR is mainly related to molecular vibration.",
-      "The NIR tissue window is related to absorption by hemoglobin and water.",
-      "Odor sensing can usually solve all problems with one perfectly specific sensor.",
-      "An electronic nose often relies on a sensor array to generate response fingerprints.",
-      "Antibody detection has no nonspecific background as long as binding occurs.",
-      "A smaller KD usually indicates stronger antibody-antigen binding.",
-      "Sandwich ELISA usually requires the target antigen to have two recognizable epitopes.",
-      "In competitive ELISA, the signal always increases as the target concentration increases.",
-      "If the control line is missing in a lateral flow assay, the test should be considered invalid.",
-      "An aptamer is a type of protein antibody.",
-      "An aptamer can be a foldable DNA or RNA sequence.",
-      "In qPCR, fluorescent probes can convert amplification into a readable signal.",
-      "A strain gauge essentially uses mechanical deformation to cause resistance change.",
-      "In capacitive sensing, capacitance increases when the plate distance increases.",
-      "Piezoelectric sensors are suitable for dynamic pressure and vibration measurements.",
-      "The output of a Hall sensor is the magnetic field itself.",
-      "MEMS is only a single sensing principle and is not related to a fabrication platform.",
-      "Class III medical devices are usually high risk and more strictly regulated.",
-      "When designing a medical device, only technical performance matters; regulatory classification does not matter.",
-      "Foreign body reaction is important for implantable devices."
-    ];
-    const mcEnglish = [
-      "About the transfer function S=f(X), which statements are correct?\nA. X is the measured input\nB. S is the sensor output signal\nC. Calibration can be used to establish the relationship between S and X\nD. Different sensors cannot be described using this framework",
-      "Which of the following are static characteristics of a sensor?\nA. Accuracy\nB. Precision\nC. LOD\nD. Rise time",
-      "Which of the following are dynamic characteristics?\nA. Settling time\nB. Overshoot\nC. Time constant\nD. Specificity",
-      "About LOD/LOQ, which statements are correct?\nA. LOD is usually lower than LOQ\nB. LOQ requires more reliable signal for quantification\nC. Larger blank noise makes LOD lower\nD. A larger calibration slope usually improves detection capability",
-      "Which of the following metrics come from a confusion matrix?\nA. Sensitivity\nB. Specificity\nC. True positive\nD. Michaelis constant",
-      "About biomarkers, which statements are correct?\nA. A biomarker can be molecular\nB. A biomarker can be physiologic\nC. A biomarker must be a protein\nD. A biomarker can reflect treatment response",
-      "Which of the following can be biomarkers?\nA. Blood glucose\nB. Blood pressure\nC. Tumor size in an image\nD. Random background noise",
-      "About the Michaelis-Menten equation, which statements are correct?\nA. It describes the relationship between enzyme reaction rate and substrate concentration\nB. The reaction may saturate at high substrate concentration\nC. KM is the substrate concentration at Vmax/2\nD. It shows that enzyme reactions are always linear",
-      "First-generation glucose sensors often involve:\nA. Glucose oxidase\nB. H2O2\nC. Pt electrode\nD. Hall voltage",
-      "Electrochemical detection methods include:\nA. Potentiometric\nB. Amperometric\nC. Conductometric\nD. Radiographic",
-      "About the Beer-Lambert law, which statements are correct?\nA. A=log10(I0/I)\nB. A is related to concentration c\nC. l is the optical path length\nD. It is strictly linear at any concentration",
-      "Which method-property matches are correct?\nA. UV-vis: electronic transition/absorption\nB. FTIR: molecular vibration\nC. Fluorescence: emitted-light readout\nD. Hall sensor: optical absorption",
-      "Factors related to the NIR tissue window include:\nA. Hemoglobin absorption\nB. Water absorption\nC. Tissue scattering\nD. Michaelis-Menten constant",
-      "Common features of odor sensing/electronic noses include:\nA. Multi-sensor array\nB. Cross-sensitivity\nC. Response fingerprint\nD. No need for data analysis at all",
-      "Antibody-based sensing can be combined with which readout methods?\nA. SPR\nB. QCM-D\nC. ELISA\nD. Lateral flow assay",
-      "About KD, which statements are correct?\nA. It is a dissociation constant\nB. A smaller value usually means stronger affinity\nC. It can be written as koff/kon\nD. It has no unit",
-      "Features of sandwich ELISA include:\nA. It usually uses a capture antibody and a detection antibody\nB. It is suitable for quantifying many protein antigens\nC. More target usually gives a stronger signal\nD. It is always best for all small molecules",
-      "Common components in a lateral flow assay include:\nA. Sample pad\nB. Conjugate pad\nC. Test line\nD. Wicking pad",
-      "Functions of the control line in a lateral flow assay include:\nA. Showing that flow worked\nB. Showing that reagent release basically worked\nC. Indicating whether the test is valid\nD. Directly indicating that the target concentration is very high",
-      "Features of aptamers include:\nA. They can be made of DNA/RNA\nB. They recognize targets through folded structures\nC. They can be selected by SELEX\nD. They are always more stable than antibodies in all environments",
-      "Functions of PCR/qPCR fluorescent probes include:\nA. Converting sequence recognition into fluorescence signal\nB. Improving specific readout\nC. Monitoring amplification in real time\nD. Working completely without primers",
-      "Which of the following are physical sensor inputs?\nA. Pressure\nB. Strain\nC. Magnetic field\nD. Fluorescent dye concentration",
-      "Which statements about strain gauges are correct?\nA. Mechanical stretching can change resistance\nB. They are direction-sensitive\nC. They can be used for indirect force or pressure measurement\nD. They directly measure DNA sequence",
-      "In capacitive sensing, which factors can change capacitance?\nA. Plate area\nB. Distance\nC. Dielectric constant\nD. Antibody KD",
-      "Which statements about piezoelectric sensing are correct?\nA. Mechanical stress can generate charge/voltage\nB. An applied electric field can also cause deformation\nC. It is suitable for dynamic pressure and vibration\nD. It is only suitable for measuring static concentration",
-      "Optical fiber sensors can read:\nA. Intensity change\nB. Wavelength shift\nC. Phase change\nD. Antibody sequence",
-      "Which statements about Hall sensors are correct?\nA. The input can be a magnetic field\nB. The output can be Hall voltage\nC. They can be combined with magnetic beads for biodetection\nD. Their principle is Beer-Lambert law",
-      "Which statements about MEMS are correct?\nA. MEMS can be miniaturized through micro/nanofabrication\nB. MEMS can integrate multiple sensing principles\nC. Common transducers include capacitive, piezoelectric, and thermal types\nD. MEMS cannot be used in accelerometers",
-      "During medical-device translation, which factors should be considered?\nA. Risk class\nB. Regulatory pathway\nC. Biocompatibility\nD. Only paper novelty",
-      "Class III medical devices usually may have:\nA. High risk\nB. Implantation or life-support relevance\nC. Stricter approval requirements\nD. No need for clinical evidence at all"
-    ];
-    const calcEnglish = [
-      { title: "Question 1: Beer-Lambert Law", prompt: "A sample gives I0/I=10 at a certain wavelength. The path length is l=1.0 cm and the molar absorptivity is epsilon=2.0 x 10^4 L mol^-1 cm^-1. Calculate the concentration." },
-      { title: "Question 2: Direction of Beer-Lambert Law", prompt: "For the same substance, wavelength, and cuvette, the concentration increases from 10 microM to 20 microM. If it is still in the linear range, how does absorbance change?" },
-      { title: "Question 3: LOD/LOQ", prompt: "The standard deviation of blank noise is sigma_b=0.02, and the calibration slope is m=0.50 A.U./nM. Estimate LOD and LOQ." },
-      { title: "Question 4: Improving LOD", prompt: "If blank noise stays unchanged and the calibration slope doubles, how does LOD change?" },
-      { title: "Question 5: Sensitivity / Specificity", prompt: "Among 100 patients, 90 test positive and 10 test negative. Among 100 healthy people, 95 test negative and 5 test positive. Calculate sensitivity and specificity." },
-      { title: "Question 6: Number of False Negatives", prompt: "A test has 80% sensitivity. If 50 truly diseased samples are tested, how many are expected to be missed?" },
-      { title: "Question 7: Half-Maximal Rate in Michaelis-Menten", prompt: "For an enzyme reaction with Vmax=100 nM/s and KM=20 microM, what is v0 when [S]=KM?" },
-      { title: "Question 8: Michaelis-Menten Region", prompt: "If KM=1 mM and the sample has [S]=10 microM, is the sensor in the linear region or the saturated region?" },
-      { title: "Question 9: First-Order Time Constant", prompt: "A temperature sensor has a time constant tau=5 s. If the bulb volume Vb doubles and all other parameters stay unchanged, how does tau change?" },
-      { title: "Question 10: Thermometer Sensitivity", prompt: "If the bulb volume Vb of a mercury thermometer doubles while the capillary cross-sectional area Ac stays unchanged, how does sensitivity k change?" },
-      { title: "Question 11: Direction of Capacitance Change", prompt: "In a parallel-plate capacitive sensor, pressure decreases the plate distance d. If area and dielectric constant stay unchanged, how does capacitance change?" },
-      { title: "Question 12: Dielectric Constant in Capacitive Sensing", prompt: "In a liquid-level sensor, air is gradually replaced by water. Water has a higher dielectric constant than air. How does capacitance usually change?" },
-      { title: "Question 13: Antibody Affinity", prompt: "Antibody A has KD=1 nM, and antibody B has KD=100 nM. Which antibody has stronger affinity?" },
-      { title: "Question 14: Hall Sensor Input and Output", prompt: "In a Hall sensor, the current direction is fixed and the perpendicular magnetic field increases. How does the transverse Hall voltage usually change?" },
-      { title: "Question 15: qPCR Fluorescence Signal", prompt: "If a TaqMan probe is quenched when intact and is hydrolyzed during amplification, how does the fluorescence signal change?" }
-    ];
-    const shortEnglish = [
-      "Question 1: Explain the meaning of the transfer function in sensors.",
-      "Question 2: Distinguish accuracy and precision.",
-      "Question 3: Explain the difference between LOD and LOQ.",
-      "Question 4: Why are sensitivity and specificity not the same as positive predictive value?",
-      "Question 5: Use a mercury thermometer to explain the trade-off between sensitivity and response speed.",
-      "Question 6: What is a biomarker? Give three categories of examples.",
-      "Question 7: Explain the significance of the Michaelis-Menten equation for enzyme sensors.",
-      "Question 8: Explain the working chain of a first-generation glucose sensor.",
-      "Question 9: Compare potentiometric, amperometric, and conductometric methods.",
-      "Question 10: Explain the variables and limitations of Beer-Lambert law.",
-      "Question 11: Why is near-infrared light suitable for tissue detection?",
-      "Question 12: Explain why fluorescence detection is often more sensitive than absorption detection.",
-      "Question 13: Explain why odor sensing often uses arrays.",
-      "Question 14: Why are antibodies important tools for protein detection?",
-      "Question 15: Explain the meaning of KD.",
-      "Question 16: Explain the workflow of sandwich ELISA.",
-      "Question 17: Explain the C line and T line in a lateral flow assay.",
-      "Question 18: What are the similarities and differences between aptamers and antibodies?",
-      "Question 19: Why can qPCR fluorescent probes be used for quantification?",
-      "Question 20: How does a strain gauge convert mechanical change into an electrical signal?",
-      "Question 21: What quantities can capacitive sensors measure, and why?",
-      "Question 22: Why are piezoelectric sensors suitable for dynamic signals?",
-      "Question 23: What readout modes can optical fiber sensors use?",
-      "Question 24: How can a Hall sensor be used for biodetection?",
-      "Question 25: What is the significance of MEMS?",
-      "Question 26: Distinguish medical-device Class I, II, and III.",
-      "Question 27: Why can medical-device translation not focus only on technical novelty?",
-      "Question 28: Why is foreign body reaction important?",
-      "Question 29: If asked to introduce a type of sensor, what answer structure should you use?",
-      "Question 30: Why can this course be viewed as a toolbox?"
-    ];
+    (function () {
+      const protectedEvents = ["copy", "cut", "paste", "contextmenu", "selectstart", "dragstart"];
+      const protectedKeys = new Set(["a", "c", "p", "s", "x"]);
 
-    const tfAnswers = [
-      "F", "T", "F", "T", "T", "T", "T", "F", "T", "T", "T", "F",
-      "T", "F", "T", "T", "F", "T", "T", "T", "T", "T", "F", "T",
-      "T", "T", "F", "T", "T", "T", "F", "T", "F", "T", "T", "F",
-      "T", "F", "T", "T", "T", "F", "T", "F", "F", "T", "F", "T"
-    ];
-    const tfExplanations = [
-      "输出信号 S 只是仪器读数，本身不能直接等同于真实输入 X。必须先用已知标准样品建立校准曲线，才能把电流、光强、电压等信号换算成浓度、压力、温度等真实量。",
-      "传递函数就是把被测输入 X 和输出信号 S 联系起来的关系。对传感器来说，理解 S=f(X) 是定量测量的基础。",
-      "Accuracy 说的是测量值接近真值，precision 说的是重复测量彼此接近。点可以很集中但整体偏离真值，所以 precision 高不等于 accuracy 高。",
-      "这是经典情况：重复性很好，但是存在系统偏差。例如仪器零点偏移时，多次测量可能很集中，却都偏离真实值。",
-      "在线性校准范围里，sensitivity 常对应输出对输入的变化率，也就是校准曲线斜率。斜率越大，同样输入变化引起的输出变化越明显。",
-      "Specificity 关注传感器能否主要响应目标物，而不是被非目标物干扰。特异性高意味着交叉反应和背景响应较低。",
-      "LOD 是最低可检出量，LOQ 是最低可可靠定量量。定量比检出要求更严格，所以 LOQ 通常高于 LOD。",
-      "这句话把两者说反了。LOD 是 limit of detection，LOQ 是 limit of quantification。",
-      "常用估算式是 LOD≈3σb/m。空白噪声 σb 越大，信号越难从背景里分辨出来，所以 LOD 会升高。",
-      "在相同噪声下，斜率 m 越大，同样浓度变化产生的信号越大，因此更容易检出低浓度目标物，LOD 越低。",
-      "Sensitivity 和 specificity 是检测方法在患病者、健康者中的表现，定义时分母分别是 TP+FN 和 TN+FP，本身不直接包含患病率。",
-      "阳性预测值表示阳性结果里真正患病的比例，它会受到人群患病率影响。同样的测试用于低患病率人群时，阳性预测值可能明显下降。",
-      "一阶系统时间常数 τ 越大，达到稳态需要的时间越长，响应越慢。",
-      "传感器设计经常存在 trade-off。比如温度计球泡更大可能让灵敏度提高，但热容量也增大，响应速度会变慢。",
-      "水银温度计中球泡体积增大可使液柱变化更明显，但体积和热容量也会增大，所以达到热平衡更慢。",
-      "二阶系统可能因为惯性和阻尼不足而超过最终稳态值，这就是 overshoot。",
-      "Biomarker 是可测量的生物相关特征，不限于血液蛋白。它也可以是血压、影像肿瘤大小、组织切片形态、DNA 突变等。",
-      "血压反映心血管系统功能状态，是典型 physiologic biomarker。",
-      "肿瘤大小由影像测量得到，用来反映疾病状态或治疗响应，属于 radiographic biomarker。",
-      "酶传感器的选择性主要来自酶活性位点对底物的识别和催化。例如 GOx 对葡萄糖有选择性。",
-      "Michaelis-Menten 方程显示低底物浓度时近似线性，高底物浓度时酶活性位点逐渐饱和，反应速率趋近 Vmax。",
-      "第一代葡萄糖传感常用 GOx 生成 H2O2，再在电极上氧化 H2O2 产生电流，所以可通过 H2O2 间接读出葡萄糖。",
-      "Amperometric sensor 测的是电流，不是电压。它通常在固定电位下观察氧化还原反应产生的电流。",
-      "Potentiometric sensor 读出的是电位差或电压，例如离子选择电极。",
-      "Conductometric sensor 关注电导、电导率或电阻变化，适合测离子浓度、反应导致的导电性变化等。",
-      "Beer-Lambert Law 中 A=εlc。在 ε 和光程 l 固定时，浓度 c 越高，吸光度 A 越大。",
-      "l 是光程，也就是光在样品中通过的距离，不是简单的液体高度。比色皿标准光程常见是 1 cm。",
-      "荧光检测通常用激发光照射样品，再读样品发出的较长波长发射光，而不是只看透过光强。",
-      "FTIR 主要探测红外吸收，对应分子键的振动模式，因此可用于识别官能团和分子结构信息。",
-      "NIR 组织窗口来自组织中主要吸收体和散射的共同影响，血红蛋白和水的吸收决定了哪些波段更适合穿透组织。",
-      "气味通常是多种 VOC 的混合物，很难靠单个完全特异传感器解决。人工鼻通常依赖阵列响应和模式识别。",
-      "人工鼻的核心就是多个交叉敏感传感单元产生整体响应指纹，再用统计或机器学习方法区分气味。",
-      "抗体结合也会有非特异吸附、交叉反应和背景信号，所以 ELISA、SPR 等实验都需要 blocking、洗涤和对照。",
-      "KD 是解离常数，数值越小表示平衡时复合物更稳定，通常代表亲和力越强。",
-      "Sandwich ELISA 需要一个捕获抗体和一个检测抗体分别识别抗原的不同表位。目标太小或只有一个表位时不适合。",
-      "Competitive ELISA 常见情况是目标物越多，能结合到板上的酶标物越少，信号反而降低；所以不能说信号一定随目标浓度增加而增加。",
-      "Control line 用来证明样品流动、试剂释放和层析过程基本有效。C 线缺失时，即使 T 线有变化也应判为无效。",
-      "Aptamer 不是蛋白质抗体，而是能折叠成特定结构并识别目标的核酸序列，通常是 DNA 或 RNA。",
-      "Aptamer 可由 DNA/RNA 组成，通过三维折叠结构与蛋白、小分子、离子等目标结合。",
-      "qPCR 中荧光探针或染料把扩增产物累积转化成荧光信号，从而可以实时监测扩增过程。",
-      "应变片利用材料变形导致电阻改变。机械拉伸、压缩会改变长度、截面积或电阻率，从而改变电信号。",
-      "平行板电容 C≈εA/d。板间距 d 增大时，电容减小，不是增大。",
-      "压电材料受动态压力或振动时会产生电荷/电压，因此特别适合动态信号测量。",
-      "Hall sensor 的直接输出通常是 Hall voltage，它与磁场有关。磁场是输入，不是传感器直接输出的信号本身。",
-      "MEMS 是微机电系统和微纳加工平台，可以集成多种传感和执行原理，不是一种单一物理传感机理。",
-      "Class III 医疗器械通常风险最高，常与植入、维持生命或重大风险相关，因此监管更严格。",
-      "医疗器械设计必须同时考虑安全性、有效性、风险分类、临床证据、制造和监管路径，不能只看技术性能。",
-      "植入式或长期接触人体的器械会引发炎症、纤维包裹、排异等 foreign body reaction，直接影响安全性和长期稳定性。"
-    ];
-    const mcAnswers = [
-      "ABC", "ABC", "ABC", "ABD", "ABC", "ABD", "ABC", "ABC", "ABC", "ABC",
-      "ABC", "ABC", "ABC", "ABC", "ABCD", "ABC", "ABC", "ABCD", "ABC", "ABC",
-      "ABC", "ABC", "ABC", "ABC", "ABC", "ABC", "ABC", "ABC", "ABC", "ABC"
-    ];
-    const mcExplanations = [
-      "X 是被测输入，S 是输出信号，校准就是建立二者关系。S=f(X) 是通用抽象，不同类型传感器都可以用这个框架描述。",
-      "Accuracy、precision、LOD 都描述传感器在稳定输入条件下的静态性能。Rise time 描述响应过程，属于动态特性。",
-      "Settling time、overshoot 和 time constant 都描述输出随时间变化的过程。Specificity 是选择性指标，不是动态响应指标。",
-      "LOD 通常低于 LOQ，LOQ 对可靠定量要求更高；斜率越大越有利于低浓度检出。空白噪声越大应使 LOD 升高，所以 C 错。",
-      "Sensitivity、specificity、TP 都来自真实状态和测试结果构成的混淆矩阵。Michaelis constant KM 属于酶动力学参数。",
-      "Biomarker 可以是 molecular、histologic、radiographic、physiologic 等，也可用于反映治疗响应；它不一定是蛋白质。",
-      "血糖是 molecular biomarker，血压是 physiologic biomarker，影像肿瘤大小是 radiographic biomarker。随机背景噪声不是反映生物状态的指标。",
-      "Michaelis-Menten 描述酶速率与底物浓度的关系；高浓度饱和；KM 是速率达到 Vmax/2 时的底物浓度。它不说明反应永远线性。",
-      "第一代葡萄糖传感器典型链路是 GOx 催化葡萄糖生成 H2O2，再由 Pt 电极氧化 H2O2 产生电流。Hall voltage 属于磁场传感，不属于此链路。",
-      "电化学读出包括 potentiometric、amperometric、conductometric 等。Radiographic 是影像学方法，不是电化学检测。",
-      "Beer-Lambert Law 写作 A=log10(I0/I)=εlc，A 与浓度和光程有关。但在过高浓度、散射、化学平衡变化等情况下不一定严格线性。",
-      "UV-vis 常与电子跃迁/吸收有关，FTIR 与分子振动有关，fluorescence 读发射光。Hall sensor 是磁电效应，不是光吸收。",
-      "NIR 组织窗口由血红蛋白吸收、水吸收和组织散射共同决定。Michaelis-Menten constant 属于酶动力学，不决定光在组织中的传播窗口。",
-      "人工鼻通常使用多传感单元阵列，利用交叉敏感性形成响应指纹，再用数据分析分类。说完全不需要数据分析不对。",
-      "抗体识别可以接多种 transducer 或 readout：SPR 看折射率变化，QCM-D 看质量/粘弹变化，ELISA 看酶信号，lateral flow 看层析显色线。",
-      "KD 是解离常数，常可写作 koff/kon，越小通常亲和力越强。KD 有浓度单位，所以 D 错。",
-      "Sandwich ELISA 用捕获抗体和检测抗体夹住抗原，适合很多蛋白抗原定量，目标越多信号通常越强。小分子常因表位不足而不适合所有 sandwich 格式。",
-      "Lateral flow assay 常由 sample pad、conjugate pad、test line 和 wicking pad 等组成，它们分别负责加样、释放标记物、捕获检测和驱动毛细流。",
-      "Control line 证明流动和试剂释放基本有效，并用于判断测试是否有效。它不是目标浓度高低的直接读数。",
-      "Aptamer 可由 DNA/RNA 构成，依赖折叠结构识别目标，常通过 SELEX 筛选。但不能绝对说它在所有环境下都比抗体稳定。",
-      "PCR/qPCR 荧光探针把序列特异扩增转化为荧光读数，可实时监测扩增并提高特异性。PCR 仍然依赖引物，所以 D 错。",
-      "压力、应变、磁场都是典型物理输入。荧光染料浓度更像化学/光学检测对象，不是这组物理传感器的典型机械或磁输入。",
-      "应变片在拉伸或压缩时电阻改变，且对方向敏感，可通过结构变形间接测力、压力或位移。它不能直接测 DNA 序列。",
-      "电容 C≈εA/d，面积、距离和介电常数都会影响电容。抗体 KD 是结合亲和力参数，不直接出现在基本电容公式中。",
-      "压电材料受机械应力可产生电信号，外加电场也可导致形变；它适合动态压力和振动，不只适合静态浓度测量。",
-      "光纤传感可读强度、波长、相位等变化。抗体序列不是光纤本身直接读出的物理量。",
-      "Hall sensor 以磁场为输入，输出 Hall voltage；结合磁珠可以把生物结合事件转成局部磁场变化。它不是 Beer-Lambert 光吸收定律。",
-      "MEMS 通过微纳加工实现小型化，可整合电容、压电、热等多种 transducer，也广泛用于加速度计，所以 D 错。",
-      "医疗器械转化要考虑风险分类、监管路径和生物相容性。论文创新性有价值，但不是产品获批和临床使用的唯一标准。",
-      "Class III 通常高风险，可能涉及植入或维持生命，因此审批更严格，常需要更充分临床和安全有效性证据。"
-    ];
-
-    function buildAnswerGuide(questionSectionId, targetId, answers, explanations) {
-      const heading = document.getElementById(questionSectionId);
-      const target = document.getElementById(targetId);
-      if (!heading || !target) return;
-      let list = heading.nextElementSibling;
-      while (list && list.tagName !== "OL") list = list.nextElementSibling;
-      if (!list) return;
-      target.textContent = "";
-      Array.from(list.children).forEach((item, index) => {
-        const card = document.createElement("section");
-        card.className = "answer-card";
-
-        const header = document.createElement("div");
-        header.className = "answer-card-header";
-        const number = document.createElement("span");
-        number.className = "answer-index";
-        number.textContent = String(index + 1);
-        const answer = document.createElement("span");
-        answer.className = "answer-value";
-        answer.textContent = "正确答案：" + answers[index];
-        header.append(number, answer);
-
-        const originalLabel = document.createElement("p");
-        originalLabel.className = "answer-label";
-        originalLabel.textContent = "原题";
-        const original = document.createElement("p");
-        original.className = "answer-original";
-        original.textContent = item.innerText.trim().replace(/\n\s+/g, "\n");
-
-        const explanationLabel = document.createElement("p");
-        explanationLabel.className = "answer-label";
-        explanationLabel.textContent = "解释";
-        const explanation = document.createElement("p");
-        explanation.className = "answer-explanation";
-        explanation.textContent = explanations[index] || "这题主要考察对应概念的定义和适用边界。";
-
-        card.append(header, originalLabel, original, explanationLabel, explanation);
-        target.appendChild(card);
+      protectedEvents.forEach((type) => {
+        document.addEventListener(type, (event) => {
+          const target = event.target;
+          if (target && /^(INPUT|TEXTAREA|SELECT|BUTTON)$/i.test(target.tagName || "")) return;
+          event.preventDefault();
+          event.stopPropagation();
+        }, true);
       });
-    }
 
-    function findOrderedListAfterHeading(sectionId) {
-      const heading = document.getElementById(sectionId);
-      if (!heading) return null;
-      let list = heading.nextElementSibling;
-      while (list && list.tagName !== "OL") list = list.nextElementSibling;
-      return list;
-    }
-
-    function createEnglishListSection(id, title, intro, entries) {
-      if (document.getElementById(id)) return null;
-      const section = document.createElement("section");
-      section.id = id;
-      section.className = "english-question-section";
-
-      const heading = document.createElement("h3");
-      heading.textContent = title;
-      const introNode = document.createElement("p");
-      introNode.textContent = intro;
-      const list = document.createElement("ol");
-
-      entries.forEach((entry) => {
-        const item = document.createElement("li");
-        if (typeof entry === "string") {
-          item.textContent = entry;
-        } else {
-          const itemTitle = document.createElement("strong");
-          itemTitle.textContent = entry.title;
-          const itemPrompt = document.createElement("span");
-          itemPrompt.textContent = entry.prompt;
-          item.append(itemTitle, itemPrompt);
+      document.addEventListener("keydown", (event) => {
+        const key = (event.key || "").toLowerCase();
+        if ((event.ctrlKey || event.metaKey) && protectedKeys.has(key)) {
+          event.preventDefault();
+          event.stopPropagation();
         }
-        list.appendChild(item);
-      });
+      }, true);
 
-      section.append(heading, introNode, list);
-      return section;
-    }
+      try {
+        window.print = function () { return false; };
+      } catch (_) { }
+    })();
 
-    function addEnglishListAfterChineseList(sectionId, englishId, title, intro, translations) {
-      const list = findOrderedListAfterHeading(sectionId);
-      if (!list) return;
-      const section = createEnglishListSection(englishId, title, intro, translations);
-      if (section) list.insertAdjacentElement("afterend", section);
-    }
+    (function () {
+      const checks = Array.from(document.querySelectorAll("[data-check]"));
+      const progress = document.querySelector("[data-progress]");
+      const key = "intelligent-sensing-review:checks";
 
-    function insertEnglishSectionBeforeNextH2(sectionId, englishId, title, intro, entries) {
-      const heading = document.getElementById(sectionId);
-      if (!heading) return;
-      let cursor = heading.nextElementSibling;
-      while (cursor && cursor.tagName !== "H2") cursor = cursor.nextElementSibling;
-      const section = createEnglishListSection(englishId, title, intro, entries);
-      if (!section) return;
-      if (cursor) cursor.insertAdjacentElement("beforebegin", section);
-      else heading.parentElement.appendChild(section);
-    }
-
-    function addEnglishQuestionSections() {
-      addEnglishListAfterChineseList(
-        "section-16",
-        "section-16-english",
-        "True/False Questions - English Version",
-        "Judge whether each statement is correct. Write T for true and F for false.",
-        tfEnglish
-      );
-      addEnglishListAfterChineseList(
-        "section-18",
-        "section-18-english",
-        "Multiple-Choice Questions - English Version",
-        "Each question has at least one correct answer.",
-        mcEnglish
-      );
-      insertEnglishSectionBeforeNextH2(
-        "section-20",
-        "section-20-english",
-        "Calculation and Quantitative Reasoning Questions - English Version",
-        "The English questions are grouped here separately from the Chinese version.",
-        calcEnglish
-      );
-      insertEnglishSectionBeforeNextH2(
-        "section-36",
-        "section-36-english",
-        "Short-Answer Questions - English Version",
-        "The English questions are grouped here separately from the Chinese version.",
-        shortEnglish
-      );
-    }
-
-    function getQuestionList(sectionId) {
-      const heading = document.getElementById(sectionId);
-      if (!heading) return null;
-      let list = heading.nextElementSibling;
-      while (list && list.tagName !== "OL") list = list.nextElementSibling;
-      return list;
-    }
-
-    function getEnglishQuestionList(sectionId) {
-      const section = document.getElementById(sectionId);
-      return section ? section.querySelector("ol") : null;
-    }
-
-    function createPracticePanel() {
-      if (document.getElementById("practice-panel")) return;
-      const firstHeading = document.getElementById("section-16");
-      if (!firstHeading) return;
-
-      const panel = document.createElement("section");
-      panel.id = "practice-panel";
-      panel.className = "practice-panel";
-
-      const title = document.createElement("strong");
-      title.textContent = "交互练习";
-
-      const intro = document.createElement("p");
-      intro.textContent = "选择判断题和多选题答案后，点击检查即可看到错题和未做题；清空会取消所有已选项并移除标记。";
-
-      const actions = document.createElement("div");
-      actions.className = "practice-actions";
-
-      const checkButton = document.createElement("button");
-      checkButton.type = "button";
-      checkButton.className = "practice-button";
-      checkButton.textContent = "检查全部";
-      checkButton.addEventListener("click", checkAllPractice);
-
-      const checkChineseButton = document.createElement("button");
-      checkChineseButton.type = "button";
-      checkChineseButton.className = "practice-button secondary";
-      checkChineseButton.textContent = "只检查中文题";
-      checkChineseButton.addEventListener("click", function () { checkPracticeScope("cn"); });
-
-      const checkEnglishButton = document.createElement("button");
-      checkEnglishButton.type = "button";
-      checkEnglishButton.className = "practice-button secondary";
-      checkEnglishButton.textContent = "只检查英文题";
-      checkEnglishButton.addEventListener("click", function () { checkPracticeScope("en"); });
-
-      const clearButton = document.createElement("button");
-      clearButton.type = "button";
-      clearButton.className = "practice-button secondary";
-      clearButton.textContent = "清空全部选择";
-      clearButton.addEventListener("click", clearAllPractice);
-
-      const result = document.createElement("div");
-      result.id = "practice-result";
-      result.className = "practice-result";
-      result.textContent = "还没有检查。";
-
-      actions.append(checkButton, checkChineseButton, checkEnglishButton, clearButton);
-      panel.append(title, intro, actions, result);
-      firstHeading.insertAdjacentElement("afterend", panel);
-    }
-
-    function appendFeedback(item) {
-      let feedback = item.querySelector(".question-feedback");
-      if (!feedback) {
-        feedback = document.createElement("div");
-        feedback.className = "question-feedback";
-        item.appendChild(feedback);
+      function readState() {
+        try { return JSON.parse(localStorage.getItem(key) || "{}"); }
+        catch { return {}; }
       }
-      return feedback;
-    }
 
-    function resetQuestionState(item) {
-      item.classList.remove("practice-correct", "practice-incorrect", "practice-unanswered");
-      const feedback = item.querySelector(".question-feedback");
-      if (feedback) feedback.remove();
-    }
+      function writeState(state) {
+        try { localStorage.setItem(key, JSON.stringify(state)); }
+        catch { }
+      }
 
-    function setupChoicePractice(list, type, namePrefix) {
-      if (!list) return;
-      Array.from(list.children).forEach((item, index) => {
-        if (item.querySelector(".choice-group")) return;
-        const group = document.createElement("div");
-        group.className = "choice-group";
-        const values = type === "tf" ? ["T", "F"] : ["A", "B", "C", "D"];
-        values.forEach((value) => {
-          const label = document.createElement("label");
-          label.className = "choice-pill";
-          const input = document.createElement("input");
-          input.type = type === "tf" ? "radio" : "checkbox";
-          input.name = namePrefix + "-question-" + index;
-          input.value = value;
-          label.append(input, document.createTextNode(value));
-          group.appendChild(label);
+      function refresh() {
+        if (!progress || checks.length === 0) return;
+        const done = checks.filter((item) => item.checked).length;
+        progress.style.width = Math.round(done / checks.length * 100) + "%";
+      }
+
+      const saved = readState();
+      checks.forEach((check, index) => {
+        const id = check.id || ("check-" + index);
+        check.checked = Boolean(saved[id]);
+        check.addEventListener("change", () => {
+          const state = readState();
+          state[id] = check.checked;
+          writeState(state);
+          refresh();
         });
-        item.appendChild(group);
       });
-    }
-
-    function setupTfPractice() {
-      setupChoicePractice(getQuestionList("section-16"), "tf", "tf-cn");
-      setupChoicePractice(getEnglishQuestionList("section-16-english"), "tf", "tf-en");
-    }
-
-    function setupMcPractice() {
-      setupChoicePractice(getQuestionList("section-18"), "mc", "mc-cn");
-      setupChoicePractice(getEnglishQuestionList("section-18-english"), "mc", "mc-en");
-    }
-
-    function getTfSelection(item) {
-      const checked = item.querySelector("input[type='radio']:checked");
-      return checked ? checked.value : "";
-    }
-
-    function getMcSelection(item) {
-      return Array.from(item.querySelectorAll("input[type='checkbox']:checked"))
-        .map((input) => input.value)
-        .sort()
-        .join("");
-    }
-
-    function markQuestion(item, state, message) {
-      resetQuestionState(item);
-      item.classList.add(state);
-      appendFeedback(item).textContent = message;
-    }
-
-    function checkQuestionList(list, answers, type, label) {
-      const wrong = [];
-      const unanswered = [];
-      let correct = 0;
-      if (!list) return { label, total: 0, correct, wrong, unanswered };
-
-      Array.from(list.children).forEach((item, index) => {
-        const expected = answers[index];
-        const selected = type === "tf" ? getTfSelection(item) : getMcSelection(item);
-        if (!selected) {
-          unanswered.push(index + 1);
-          markQuestion(item, "practice-unanswered", "未作答。正确答案：" + expected);
-          return;
-        }
-        if (selected === expected) {
-          correct += 1;
-          markQuestion(item, "practice-correct", "正确。");
-          return;
-        }
-        wrong.push(index + 1);
-        markQuestion(item, "practice-incorrect", "错误。你的答案：" + selected + "；正确答案：" + expected);
-      });
-
-      return { label, total: answers.length, correct, wrong, unanswered };
-    }
-
-    function getPracticeSets(scope) {
-      const sets = [
-        { scope: "cn", label: "中文判断题", list: getQuestionList("section-16"), answers: tfAnswers, type: "tf" },
-        { scope: "cn", label: "中文多选题", list: getQuestionList("section-18"), answers: mcAnswers, type: "mc" },
-        { scope: "en", label: "英文判断题", list: getEnglishQuestionList("section-16-english"), answers: tfAnswers, type: "tf" },
-        { scope: "en", label: "英文多选题", list: getEnglishQuestionList("section-18-english"), answers: mcAnswers, type: "mc" }
-      ];
-      return scope === "all" ? sets : sets.filter((set) => set.scope === scope);
-    }
-
-    function formatQuestionNumbers(numbers) {
-      return numbers.length ? numbers.join("、") : "无";
-    }
-
-    function checkPracticeScope(scope) {
-      const checkedSets = getPracticeSets(scope).map((set) =>
-        checkQuestionList(set.list, set.answers, set.type, set.label)
-      );
-      const result = document.getElementById("practice-result");
-      if (!result) return;
-      const total = checkedSets.reduce((sum, set) => sum + set.total, 0);
-      const correct = checkedSets.reduce((sum, set) => sum + set.correct, 0);
-      const wrongCount = checkedSets.reduce((sum, set) => sum + set.wrong.length, 0);
-      const unansweredCount = checkedSets.reduce((sum, set) => sum + set.unanswered.length, 0);
-      const detail = checkedSets
-        .map((set) =>
-          "\n" + set.label + "错题：" + formatQuestionNumbers(set.wrong) +
-          "\n" + set.label + "未做：" + formatQuestionNumbers(set.unanswered)
-        )
-        .join("");
-      result.textContent =
-        "总分：" + correct + " / " + total +
-        "\n错题：" + wrongCount + " 题；未做：" + unansweredCount + " 题。" +
-        detail;
-    }
-
-    function checkAllPractice() {
-      checkPracticeScope("all");
-    }
-
-    function clearAllPractice() {
-      document.querySelectorAll(".choice-group input").forEach((input) => { input.checked = false; });
-      getPracticeSets("all").forEach((set) => {
-        const list = set.list;
-        if (!list) return;
-        Array.from(list.children).forEach(resetQuestionState);
-      });
-      const result = document.getElementById("practice-result");
-      if (result) result.textContent = "已清空全部选择。";
-    }
-
-    function setupPracticeSystem() {
-      createPracticePanel();
-      setupTfPractice();
-      setupMcPractice();
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-      addEnglishQuestionSections();
-      buildAnswerGuide("section-16", "tf-answer-guide", tfAnswers, tfExplanations);
-      buildAnswerGuide("section-18", "mc-answer-guide", mcAnswers, mcExplanations);
-      setupPracticeSystem();
-    });
-
-    document.addEventListener('contextmenu', function (event) { event.preventDefault(); });
-    document.addEventListener('copy', function (event) { event.preventDefault(); });
-    document.addEventListener('cut', function (event) { event.preventDefault(); });
-    document.addEventListener('keydown', function (event) {
-      const key = event.key.toLowerCase();
-      if ((event.ctrlKey || event.metaKey) && ['c', 'x', 'p', 's', 'a'].includes(key)) {
-        event.preventDefault();
-      }
-    });
+      refresh();
+    })();
   </script>
 </body>
 </html>
